@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4b6ax6g8wx7w"]
+
+[ext_resource type="Script" path="res://cultist_idle.gd" id="1_2q26w"]
+[ext_resource type="Texture2D" uid="uid://d2wpgfn5moccc" path="res://textures/characters/cultist/cultist.png" id="2_j7q04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duuep"]
+size = Vector2(20, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmdv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j7q04")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxmxs"]
+size = Vector2(28, 65)
+
+[node name="CultistWalking" type="CharacterBody2D" groups=["puffTarget"]]
+script = ExtResource("1_2q26w")
+metadata/enemy = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_duuep")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pmdv0")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_hxmxs")
+
+[node name="EyeSight1" type="RayCast2D" parent="."]
+position = Vector2(0, -32)
+target_position = Vector2(272, -16)
+
+[node name="EyeSight2" type="RayCast2D" parent="."]
+position = Vector2(0, -16)
+target_position = Vector2(288, 0)
+
+[node name="EyeSight3" type="RayCast2D" parent="."]
+position = Vector2(4, 0)
+target_position = Vector2(268, 16)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

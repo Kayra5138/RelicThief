@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://bowxeshevyosm"]
+
+[ext_resource type="Script" path="res://icespike.gd" id="1_80x3q"]
+[ext_resource type="Texture2D" uid="uid://c41vlsd7yaxg3" path="res://textures/objects/icespike.png" id="2_aw38s"]
+[ext_resource type="AudioStream" uid="uid://t31wlhuliofr" path="res://sounds/throw.wav" id="3_4sf66"]
+[ext_resource type="AudioStream" uid="uid://d2hpaw2ccy3jl" path="res://sounds/shatter.wav" id="4_q582x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bftdp"]
+size = Vector2(30, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv7gq"]
+atlas = ExtResource("2_aw38s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e7yd"]
+atlas = ExtResource("2_aw38s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo1b4"]
+atlas = ExtResource("2_aw38s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfre3"]
+atlas = ExtResource("2_aw38s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kwbo"]
+atlas = ExtResource("2_aw38s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ban2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv7gq")
+}],
+"loop": true,
+"name": &"air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e7yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo1b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfre3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kwbo")
+}],
+"loop": true,
+"name": &"impact",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nytbp"]
+size = Vector2(1, 11)
+
+[node name="IceSpike" type="CharacterBody2D" groups=["strong"]]
+script = ExtResource("1_80x3q")
+metadata/spike = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_bftdp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ban2w")
+animation = &"impact"
+autoplay = "air"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(15.5, -1.5)
+shape = SubResource("RectangleShape2D_nytbp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4sf66")
+autoplay = true
+
+[node name="ShatterAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_q582x")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

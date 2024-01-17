@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://ca31cw1jfv7ek"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ikhbi"]
+[ext_resource type="Texture2D" uid="uid://brka67nyafyir" path="res://textures/characters/player/player.png" id="2_amstg"]
+[ext_resource type="Texture2D" uid="uid://chyuvv41h6ygs" path="res://textures/characters/player/jump.png" id="3_o4nuv"]
+[ext_resource type="Texture2D" uid="uid://5dono78lpoje" path="res://textures/characters/player/player_walk.png" id="4_5ijwe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucfc2"]
+atlas = ExtResource("4_5ijwe")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enxqo"]
+atlas = ExtResource("4_5ijwe")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50iat"]
+atlas = ExtResource("4_5ijwe")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3fdl"]
+atlas = ExtResource("4_5ijwe")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y6ks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_amstg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o4nuv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucfc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enxqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50iat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3fdl")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayaa6"]
+size = Vector2(26, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl3an"]
+size = Vector2(39, 67)
+
+[node name="Player" type="CharacterBody2D" groups=["puffTarget", "riding"]]
+floor_constant_speed = true
+script = ExtResource("1_ikhbi")
+metadata/Player = true
+metadata/puffTarget = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8y6ks")
+animation = &"walk"
+autoplay = "idle"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_ayaa6")
+
+[node name="IceSpikePosition" type="Marker2D" parent="."]
+position = Vector2(37, 0)
+
+[node name="IceSpikeCollideCheck" type="RayCast2D" parent="."]
+target_position = Vector2(40, 0)
+
+[node name="IceSpikeCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-5.5, 0.5)
+shape = SubResource("RectangleShape2D_xl3an")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

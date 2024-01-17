@@ -1,0 +1,159 @@
+[gd_scene load_steps=18 format=3 uid="uid://dnd8tokwljq6g"]
+
+[ext_resource type="Script" path="res://puffball.gd" id="1_aummi"]
+[ext_resource type="Texture2D" uid="uid://cq0rc62btmeqi" path="res://textures/characters/puffball/puffballSprites.png" id="2_in0s7"]
+[ext_resource type="Texture2D" uid="uid://c41vlsd7yaxg3" path="res://textures/objects/icespike.png" id="3_qoxmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1doj"]
+size = Vector2(32, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbl4a"]
+radius = 126.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2rk0"]
+radius = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2748n"]
+atlas = ExtResource("2_in0s7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p5tv"]
+atlas = ExtResource("2_in0s7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpira"]
+atlas = ExtResource("2_in0s7")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymhsq"]
+atlas = ExtResource("2_in0s7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxfrw"]
+atlas = ExtResource("2_in0s7")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr1qg"]
+atlas = ExtResource("2_in0s7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bknen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2748n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p5tv")
+}],
+"loop": true,
+"name": &"eepy",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpira")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymhsq")
+}],
+"loop": true,
+"name": &"pursue",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxfrw")
+}],
+"loop": true,
+"name": &"pursue_jump",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr1qg")
+}],
+"loop": true,
+"name": &"search",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21bq8"]
+atlas = ExtResource("3_qoxmh")
+region = Rect2(0, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1445g"]
+atlas = ExtResource("3_qoxmh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8j7uj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21bq8")
+}],
+"loop": true,
+"name": &"invisible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1445g")
+}],
+"loop": true,
+"name": &"visible",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tsrl"]
+size = Vector2(36, 21)
+
+[node name="puffball" type="CharacterBody2D" groups=["riding"]]
+position = Vector2(0, -9)
+script = ExtResource("1_aummi")
+metadata/puffball = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_f1doj")
+debug_color = Color(0.317647, 0.584314, 0.627451, 0.419608)
+
+[node name="Vision" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+visible = false
+shape = SubResource("CircleShape2D_hbl4a")
+
+[node name="DangerZone" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
+shape = SubResource("CircleShape2D_u2rk0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bknen")
+animation = &"search"
+autoplay = "eepy"
+
+[node name="IceSpike" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(-25, 7)
+sprite_frames = SubResource("SpriteFrames_8j7uj")
+animation = &"visible"
+autoplay = "invisible"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_7tsrl")
+
+[connection signal="body_entered" from="DangerZone" to="." method="_on_danger_zone_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

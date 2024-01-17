@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfuymasi14n4t"]
+
+[ext_resource type="Script" path="res://realestmc.gd" id="1_7f7wx"]
+[ext_resource type="Texture2D" uid="uid://drnavl5bpaxtw" path="res://textures/objects/minecart.png" id="2_0wosg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8gfi"]
+size = Vector2(62, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d81la"]
+size = Vector2(41, 3)
+
+[sub_resource type="Animation" id="Animation_chxid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hvlma"]
+resource_name = "goA"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wl72b"]
+resource_name = "goB"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_demf4"]
+_data = {
+"RESET": SubResource("Animation_chxid"),
+"goA": SubResource("Animation_hvlma"),
+"goB": SubResource("Animation_wl72b")
+}
+
+[node name="realestmc" type="Path2D"]
+script = ExtResource("1_7f7wx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="minecart" type="CharacterBody2D" parent="PathFollow2D"]
+collision_mask = 3
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/minecart"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_q8gfi")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/minecart"]
+z_index = 1
+position = Vector2(0, -32)
+texture = ExtResource("2_0wosg")
+region_rect = Rect2(324, 54, 18, 18)
+
+[node name="inside" type="Area2D" parent="PathFollow2D/minecart"]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/minecart/inside"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_d81la")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D/minecart"]
+position = Vector2(0, -5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_demf4")
+}

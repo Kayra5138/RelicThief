@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cho7jf3vpugsf"]
+
+[ext_resource type="Texture2D" path="res://CaveBG.png" id="1_tq6b8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u78h"]
+size = Vector2(32, 32)
+
+[node name="block" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8u78h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+texture = ExtResource("1_tq6b8")
+region_enabled = true
+region_rect = Rect2(416, 32, 32, 32)

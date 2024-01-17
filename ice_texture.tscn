@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://caysvknh2h1ad"]
+
+[ext_resource type="Texture2D" uid="uid://b3jbbl5ujiai0" path="res://textures/objects/ice.png" id="1_aukua"]
+
+[node name="IceTexture" type="Line2D"]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, -16)
+width = 36.0
+texture = ExtResource("1_aukua")
+texture_mode = 1

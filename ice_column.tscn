@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj7tmucguljoc"]
+
+[ext_resource type="Script" path="res://IceColumn.gd" id="1_qm6t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glig5"]
+size = Vector2(32, 16)
+
+[node name="IceColumn" type="CharacterBody2D"]
+texture_repeat = 2
+collision_layer = 3
+input_pickable = true
+script = ExtResource("1_qm6t3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_glig5")
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
