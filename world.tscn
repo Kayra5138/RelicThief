@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d4d8d8vkryx0u"]
+[gd_scene load_steps=16 format=3 uid="uid://d4d8d8vkryx0u"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_tvpsv"]
 [ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://tilemap.tscn" id="2_hteig"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://spikes.tscn" id="9_hamcg"]
 [ext_resource type="PackedScene" uid="uid://cfuymasi14n4t" path="res://realestmc.tscn" id="10_mxhb1"]
 [ext_resource type="PackedScene" uid="uid://cj7tmucguljoc" path="res://ice_column.tscn" id="11_ku111"]
+[ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://water.tscn" id="13_4uoyv"]
 
 [sub_resource type="Curve2D" id="Curve2D_gbpab"]
 _data = {
@@ -20,7 +21,7 @@ _data = {
 point_count = 6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5g0q"]
-size = Vector2(85, 67)
+size = Vector2(96, 32)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_tvpsv")
@@ -31,6 +32,15 @@ position = Vector2(512, 288)
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_5tebq")]
 offset = Vector2(-64, -128)
 transform = Transform2D(1, 0, 0, 1, -64, -128)
+
+[node name="Water" parent="." instance=ExtResource("13_4uoyv")]
+position = Vector2(720, 400)
+
+[node name="Water2" parent="." instance=ExtResource("13_4uoyv")]
+position = Vector2(752, 400)
+
+[node name="Water3" parent="." instance=ExtResource("13_4uoyv")]
+position = Vector2(784, 400)
 
 [node name="TileMap" parent="." instance=ExtResource("2_hteig")]
 position = Vector2(0, 0)
@@ -55,7 +65,7 @@ position = Vector2(896, 520)
 position = Vector2(48, 200)
 
 [node name="puffball" parent="." instance=ExtResource("5_aapc5")]
-position = Vector2(704, 280)
+position = Vector2(816, 368)
 
 [node name="Player" parent="." instance=ExtResource("2_jhbmm")]
 position = Vector2(432, 192)
@@ -68,20 +78,20 @@ position = Vector2(320, 448)
 curve = SubResource("Curve2D_gbpab")
 
 [node name="IceColumn" parent="." node_paths=PackedStringArray("lst", "col") instance=ExtResource("11_ku111")]
-position = Vector2(704, 408)
+position = Vector2(752, 416)
 speed = 6
 lst = [NodePath("../IceColP1"), NodePath("../IceColP2")]
 col = NodePath("CollisionShape2D2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="IceColumn"]
-position = Vector2(0, 8)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u5g0q")
 
 [node name="IceColP1" type="Node2D" parent="."]
-position = Vector2(704, 336)
+position = Vector2(752, 352)
 
 [node name="IceColP2" type="Node2D" parent="."]
-position = Vector2(704, 256)
+position = Vector2(752, 320)
 
 [node name="Spikes2" parent="." instance=ExtResource("9_hamcg")]
 position = Vector2(992, 352)

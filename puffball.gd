@@ -134,13 +134,7 @@ func lockMovement():
 	lockMove = true
 
 func releaseMovement():
-	lockMove = false
-
-
-func _on_hitbox_body_entered(body):
-	if body.has_meta("spike"):
-		$IceSpike.animation = "visible"
-		
+	lockMove = false		
 
 func explode():
 	queue_free()
