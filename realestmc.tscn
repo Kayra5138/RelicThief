@@ -68,7 +68,7 @@ script = ExtResource("1_7f7wx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 
-[node name="minecart" type="CharacterBody2D" parent="PathFollow2D" groups=["strong"]]
+[node name="minecart" type="CharacterBody2D" parent="PathFollow2D"]
 collision_mask = 3
 motion_mode = 1
 
