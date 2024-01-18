@@ -688,8 +688,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_5todj")
 
 [node name="TileMap" type="TileMap" groups=["strong"]]
-position = Vector2(6, -3)
-rotation = 0.000903669
 tile_set = SubResource("TileSet_b08q3")
 rendering_quadrant_size = 32
 format = 2

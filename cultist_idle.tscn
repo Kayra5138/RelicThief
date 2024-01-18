@@ -49,4 +49,9 @@ target_position = Vector2(288, 0)
 position = Vector2(4, 0)
 target_position = Vector2(268, 16)
 
+[node name="EyeSightBack" type="RayCast2D" parent="."]
+position = Vector2(-16, 0)
+scale = Vector2(1, 5)
+target_position = Vector2(-48, 0)
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -3,7 +3,7 @@ extends CharacterBody2D
 const explosionScene = preload("res://explosion.tscn")
 
 var lockMove = false
-var minecartOffset = -8
+var minecartOffset = -24
 
 const SPEED = 400.0
 const JUMP_VELOCITY = -500.0

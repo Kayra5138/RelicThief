@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var speed = 70.0
+@export var speed = 70.0
 const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = true
@@ -15,6 +15,9 @@ func _physics_process(delta):
 	if $EyeSight2.is_colliding() and $EyeSight2.get_collider().has_meta("Player"):
 		playerSeen = true
 	if $EyeSight3.is_colliding() and $EyeSight3.get_collider().has_meta("Player"):
+		playerSeen = true
+	if $EyeSightBack.is_colliding() and $EyeSightBack.get_collider().has_meta("Player"):
+		flip()
 		playerSeen = true
 	if not is_on_floor():
 		velocity.y += gravity * delta

@@ -7,7 +7,7 @@
 size = Vector2(32, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbl4a"]
-radius = 126.0
+radius = 132.015
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2rk0"]
 radius = 36.0
@@ -97,11 +97,9 @@ shape = SubResource("RectangleShape2D_f1doj")
 debug_color = Color(0.317647, 0.584314, 0.627451, 0.419608)
 
 [node name="Vision" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-visible = false
 shape = SubResource("CircleShape2D_hbl4a")
 
 [node name="DangerZone" type="Area2D" parent="."]

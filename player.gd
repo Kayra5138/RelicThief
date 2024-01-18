@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 130
+@export var speed = 140
 @export var jump_speed = -500
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
@@ -12,10 +12,28 @@ const ice_spike_path = preload("res://icespike.tscn")
 var coyoteJumpTimer = 15
 var lockControls = false
 var minecartOffset = -32
+const CLIMB_SPEED = 100
+enum {sMOVE, sCLIMB}
+var curState = sMOVE
+
+func climbing_state():
+	var input = Vector2.ZERO
+	input.x = Input.get_axis("left","right")
+	input.y = Input.get_axis("up","down")
+	velocity = input*CLIMB_SPEED
+	move_and_slide()
 
 func _physics_process(delta):
+	ladder_check()
+	if curState == sCLIMB:
+		climbing_state()
+		return
 	if lockControls:
 		$AnimatedSprite2D.animation = "idle"
+		if facing == 0:
+			transform.x.x = -1
+		if facing == 1:
+			transform.x.x = 1
 		return
 	velocity.y += gravity * delta
 	var dir = Input.get_axis("left", "right")
@@ -100,3 +118,8 @@ func lockMovement():
 func releaseMovement():
 	lockControls = false
 
+func ladder_check():
+	if $LadderCheck.get_collider() is Ladder and Input.get_axis("down","up") != 0:
+		curState = sCLIMB
+	else:
+		curState = sMOVE

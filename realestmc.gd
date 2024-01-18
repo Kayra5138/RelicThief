@@ -30,11 +30,14 @@ func entered(body):
 			anime.play("goB")
 			curState = goingB
 			body.lockMovement()
+			$PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
 			riding = body
 		waitingB:
 			anime.play("goA")
 			curState = goingA
 			body.lockMovement()
+			if body.has_meta("Player"): $PathFollow2D/minecart/RemoteTransform2D.scale.x = -1
+			else: $PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
 			riding = body
 
 func exited(body):
