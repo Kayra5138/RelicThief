@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b3jbbl5ujiai0" path="res://textures/objects/ice.png" id="1_aukua"]
 
 [node name="IceTexture" type="Line2D"]
+show_behind_parent = true
 texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, -16)
 width = 50.0

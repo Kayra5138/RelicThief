@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://152w1t2ii543"]
+
+[ext_resource type="Texture2D" uid="uid://dhfka88y1ge3o" path="res://textures/objects/caveDoor.png" id="1_qwkkd"]
+[ext_resource type="Script" path="res://cave_door.gd" id="1_tbkdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c57gu"]
+size = Vector2(96, 96)
+
+[node name="caveDoor" type="Area2D"]
+script = ExtResource("1_tbkdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c57gu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qwkkd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

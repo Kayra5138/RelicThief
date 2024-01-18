@@ -99,3 +99,4 @@ func lockMovement():
 
 func releaseMovement():
 	lockControls = false
+

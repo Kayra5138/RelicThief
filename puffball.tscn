@@ -87,6 +87,7 @@ size = Vector2(36, 21)
 
 [node name="puffball" type="CharacterBody2D" groups=["riding"]]
 position = Vector2(0, -9)
+platform_on_leave = 1
 script = ExtResource("1_aummi")
 metadata/puffball = true
 
