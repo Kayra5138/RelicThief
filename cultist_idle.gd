@@ -8,6 +8,9 @@ var facing = true
 var playerSeen = false
 var collider
 
+func _ready():
+	flip()
+
 func _physics_process(delta):
 	playerSeen = false
 	if $EyeSight1.is_colliding() and $EyeSight1.get_collider().has_meta("Player"):
