@@ -56,9 +56,9 @@ func explode():
 	$Area2D.scale.y = 1
 	last_y_scale = 1
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	mouse_input(event)
 
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	mouse_input(event)

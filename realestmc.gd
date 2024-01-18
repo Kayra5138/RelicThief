@@ -46,7 +46,7 @@ func exited(body):
 		finishedB:
 			curState = waitingB
 
-func animeEnded(ok):
+func animeEnded(_ok):
 	match curState:
 		goingA:
 			curState = finishedA
@@ -65,6 +65,4 @@ func animeEnded(ok):
 	$PathFollow2D/minecart/RemoteTransform2D.remote_path = ""
 	$PathFollow2D/minecart/RemoteTransform2D.position.y = ogPos
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+

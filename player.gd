@@ -58,6 +58,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("up") and (is_on_floor() or coyoteJumpTimer>0):
 		velocity.y = jump_speed
+		coyoteJumpTimer = 0
 
 	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding():
 		skill += -1
