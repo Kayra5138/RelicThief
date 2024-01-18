@@ -5,6 +5,6 @@
 [node name="IceTexture" type="Line2D"]
 texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, -16)
-width = 36.0
+width = 50.0
 texture = ExtResource("1_aukua")
 texture_mode = 1

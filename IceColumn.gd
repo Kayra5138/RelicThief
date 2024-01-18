@@ -1,9 +1,9 @@
-extends CharacterBody2D
+extends StaticBody2D
 
 var ice_texture = preload("res://ice_texture.tscn")
 
 var rising_time = 0
-@export var speed = 0.05
+@export var speed = 2
 
 @export var lst:Array[Node2D]
 var state = 0
@@ -27,13 +27,13 @@ func _physics_process(delta):
 	if rise:
 		ice_text.add_point(top.global_position - global_position)
 		var curPoint = lst[state]
-		scale.y += speed
-		if top.global_position.distance_to(curPoint.global_position) < 0.7:
+		scale.y += speed * delta
+		if top.global_position.distance_to(curPoint.global_position) < 5:
 			rise = false
 			$Area2D.scale.y /= scale.y/last_y_scale
 			last_y_scale = scale.y
 			state += 1
-	move_and_slide()
+	
 
 func mouse_input(event):
 	if state == len(lst):
@@ -46,6 +46,15 @@ func mouse_input(event):
 				ice_text.position = position
 				get_parent().add_child(ice_text)
 				first = false
+
+func explode():
+	if ice_text != null:
+		ice_text.queue_free()
+	first = true
+	state = 0
+	scale.y = 1
+	$Area2D.scale.y = 1
+	last_y_scale = 1
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	mouse_input(event)
