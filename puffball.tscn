@@ -7,7 +7,7 @@
 size = Vector2(32, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbl4a"]
-radius = 132.015
+radius = 176.139
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2rk0"]
 radius = 36.0
@@ -87,6 +87,7 @@ size = Vector2(36, 21)
 
 [node name="puffball" type="CharacterBody2D" groups=["riding"]]
 position = Vector2(0, -9)
+collision_mask = 3
 platform_on_leave = 1
 script = ExtResource("1_aummi")
 metadata/puffball = true

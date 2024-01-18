@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0jla38n3tj3p"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_52nu6"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://parallaxbackground.tscn" id="2_jf4dk"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://tilemap.tscn" id="3_hbaj3"]
+[ext_resource type="PackedScene" uid="uid://152w1t2ii543" path="res://cave_door.tscn" id="4_a4hu2"]
+[ext_resource type="PackedScene" uid="uid://ca31cw1jfv7ek" path="res://player.tscn" id="5_g4j1i"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://button.tscn" id="6_jd8j2"]
+[ext_resource type="PackedScene" uid="uid://ctqaokas1u1ya" path="res://door.tscn" id="7_7orag"]
+[ext_resource type="PackedScene" uid="uid://rs24nl1crjlg" path="res://ladder.tscn" id="8_31byd"]
+[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://cultist_idle.tscn" id="9_aabry"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_52nu6")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_jf4dk")]
+offset = Vector2(-64, -128)
+transform = Transform2D(1, 0, 0, 1, -64, -128)
+
+[node name="TileMap" parent="." instance=ExtResource("3_hbaj3")]
+layer_0/tile_data = PackedInt32Array(-65504, 589824, 1, 32, 851968, 1, 65568, 589824, 1, 131104, 589824, 1, 196640, 589824, 1, 262176, 589824, 1, 327712, 589824, 1, 393248, 589824, 1, 458784, 589824, 1, 524320, 589824, 1, 589856, 589824, 1, 655392, 589824, 1, 720928, 589824, 1, 786464, 589824, 1, 852000, 589824, 1, 917536, 589824, 1, 983072, 589824, 1, 1048608, 589824, 1, 1114144, 589824, 1, 1179680, 589824, 1, 1179679, 589824, 1, 1179678, 589824, 1, 1179677, 589824, 1, 1179676, 589824, 1, 1179675, 589824, 1, 1179674, 589824, 1, 1179673, 589824, 1, 1179672, 589824, 1, 1179671, 589824, 1, 1179670, 589824, 1, 1179669, 589824, 1, 1179668, 589824, 1, 1179667, 589824, 1, 1179666, 589824, 1, 1179665, 589824, 1, 1179664, 851968, 1, 1179663, 589824, 1, 1179662, 589824, 1, 1179661, 589824, 1, 1179660, 589824, 1, 1179659, 589824, 1, 1179658, 589824, 1, 1179657, 589824, 1, 1179656, 589824, 1, 1179655, 589824, 1, 1179654, 589824, 1, 1179653, 589824, 1, 1179652, 589824, 1, 1179651, 589824, 1, 1179650, 589824, 1, 1179649, 589824, 1, 1179648, 589824, 1, 1245183, 589824, 1, 1179647, 589824, 1, 1114111, 589824, 1, 1048575, 589824, 1, 983039, 589824, 1, 917503, 589824, 1, 851967, 589824, 1, 786431, 589824, 1, 720895, 589824, 1, 655359, 851968, 1, 589823, 589824, 1, 524287, 589824, 1, 458751, 589824, 1, 393215, 589824, 1, 327679, 589824, 1, 262143, 589824, 1, 196607, 589824, 1, 131071, 589824, 1, 65535, 589824, 1, -1, 589824, 1, -65536, 589824, 1, -65535, 589824, 1, -65534, 589824, 1, -65533, 589824, 1, -65532, 589824, 1, -65531, 589824, 1, -65530, 589824, 1, -65529, 589824, 1, -65528, 589824, 1, -65527, 589824, 1, -65526, 589824, 1, -65525, 589824, 1, -65524, 589824, 1, -65523, 589824, 1, -65522, 589824, 1, -65521, 589824, 1, -65520, 589824, 1, -65519, 589824, 1, -65518, 589824, 1, -65517, 589824, 1, -65516, 589824, 1, -65515, 589824, 1, -65514, 589824, 1, -65513, 589824, 1, -65512, 589824, 1, -65511, 589824, 1, -65510, 589824, 1, -65509, 589824, 1, -65508, 589824, 1, -65507, 589824, 1, -65506, 589824, 1, -65505, 589824, 1, 1114112, 851968, 1, 1114113, 851968, 1, 1114114, 851968, 1, 1114115, 851968, 1, 1114116, 851968, 1, 1114117, 851968, 1, 1114118, 851968, 1, 1114127, 851968, 1, 1114128, 851968, 1, 1114129, 851968, 1, 1114126, 851968, 1, 1114125, 851968, 1, 1114124, 851968, 1, 1114120, 851968, 1, 1114119, 851968, 1, 1114121, 851968, 1, 1114122, 851968, 1, 1114123, 851968, 1, 1114130, 851968, 1, 1114131, 851968, 1, 1114132, 851968, 1, 1114133, 851968, 1, 1114134, 851968, 1, 1114143, 851968, 1, 1114135, 851968, 1, 1114136, 851968, 1, 1114137, 851968, 1, 1114138, 851968, 1, 1114139, 851968, 1, 1114140, 851968, 1, 1114141, 851968, 1, 1114142, 851968, 1, 786433, 851968, 1, 786434, 851968, 1, 786435, 851968, 1, 786436, 851968, 1, 786437, 851968, 1, 786438, 851968, 1, 524288, 851968, 1, 524289, 851968, 1, 524290, 851968, 1, 524291, 851968, 1, 524292, 851968, 1, 524293, 851968, 1, 524294, 851968, 1, 524295, 851968, 1, 524296, 851968, 1, 589832, 851968, 1, 655368, 851968, 1, 720904, 851968, 1, 786440, 851968, 1, 851976, 851968, 1)
+
+[node name="caveDoor" parent="." instance=ExtResource("4_a4hu2")]
+position = Vector2(464, 80)
+
+[node name="Player" parent="." instance=ExtResource("5_g4j1i")]
+position = Vector2(72, 512)
+
+[node name="Button" parent="." instance=ExtResource("6_jd8j2")]
+position = Vector2(128, 512)
+
+[node name="Button2" parent="." instance=ExtResource("6_jd8j2")]
+position = Vector2(376, 512)
+
+[node name="Door" parent="." instance=ExtResource("7_7orag")]
+position = Vector2(272, 464)
+
+[node name="Door2" parent="." instance=ExtResource("7_7orag")]
+position = Vector2(272, 496)
+
+[node name="Door3" parent="." instance=ExtResource("7_7orag")]
+position = Vector2(272, 528)
+
+[node name="Ladder" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(16, 528)
+
+[node name="Ladder2" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(16, 496)
+
+[node name="Ladder3" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(16, 464)
+
+[node name="Ladder4" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(16, 432)
+
+[node name="Ladder5" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(16, 400)
+
+[node name="Ladder6" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(16, 368)
+
+[node name="Ladder7" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(240, 528)
+
+[node name="Ladder8" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(240, 496)
+
+[node name="Ladder9" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(240, 464)
+
+[node name="Ladder10" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(240, 432)
+
+[node name="Ladder11" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(240, 400)
+
+[node name="Ladder12" parent="." instance=ExtResource("8_31byd")]
+position = Vector2(240, 368)
+
+[node name="CultistWalking" parent="." instance=ExtResource("9_aabry")]
+position = Vector2(432, 512)
+scale = Vector2(-1, 1)
+speed = 60.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
