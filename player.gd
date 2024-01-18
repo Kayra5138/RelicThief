@@ -17,6 +17,7 @@ enum {sMOVE, sCLIMB}
 var curState = sMOVE
 
 func climbing_state():
+	$AnimatedSprite2D.animation = "jump"
 	var input = Vector2.ZERO
 	input.x = Input.get_axis("left","right")
 	input.y = Input.get_axis("up","down")
@@ -119,7 +120,7 @@ func releaseMovement():
 	lockControls = false
 
 func ladder_check():
-	if $LadderCheck.get_collider() is Ladder and Input.get_axis("down","up") != 0:
+	if $LadderCheck.get_collider() is Ladder:
 		curState = sCLIMB
 	else:
 		curState = sMOVE

@@ -63,7 +63,7 @@ _data = {
 "goB": SubResource("Animation_wl72b")
 }
 
-[node name="realestmc" type="Path2D"]
+[node name="realestmc" type="Path2D" groups=["strong"]]
 script = ExtResource("1_7f7wx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
