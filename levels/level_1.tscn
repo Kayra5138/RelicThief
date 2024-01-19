@@ -149,6 +149,7 @@ position = Vector2(944, 272)
 [node name="realestmc" parent="." instance=ExtResource("14_eakqk")]
 position = Vector2(720, 256)
 curve = SubResource("Curve2D_rt1bn")
+speed = 2.0
 reversed = true
 
 [node name="caveDoor" parent="." instance=ExtResource("6_1ywkw")]
@@ -161,6 +162,6 @@ position = Vector2(272, 448)
 position = Vector2(752, 528)
 
 [node name="Player" parent="." instance=ExtResource("12_8ywdf")]
-position = Vector2(32, 512)
+position = Vector2(64, 512)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
