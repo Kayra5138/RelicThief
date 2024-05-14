@@ -15,6 +15,7 @@ var minecartOffset = -32
 const CLIMB_SPEED = 100
 enum {sMOVE, sCLIMB}
 var curState = sMOVE
+var throwing = false
 
 func climbing_state():
 	$AnimatedSprite2D.animation = "jump"
@@ -73,7 +74,10 @@ func _physics_process(delta):
 	if is_on_floor():
 		coyoteJumpTimer = 15
 		if velocity.x == 0:
-			animatedSprite.animation = "idle"
+			if throwing:
+				animatedSprite.animation = "throw"
+			else:
+				animatedSprite.animation = "idle"
 
 	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("up")) and (is_on_floor() or coyoteJumpTimer>0):
 		velocity.y = jump_speed
@@ -94,6 +98,7 @@ func _physics_process(delta):
 		
 	
 func shoot_ice_spike():
+	
 	var ice_spike = ice_spike_path.instantiate()
 	$IceSpikeCooldown.start(1)
 	get_parent().add_child(ice_spike)

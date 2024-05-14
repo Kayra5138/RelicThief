@@ -1,9 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca31cw1jfv7ek"]
+[gd_scene load_steps=15 format=3 uid="uid://ca31cw1jfv7ek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
 [ext_resource type="Texture2D" uid="uid://chyuvv41h6ygs" path="res://textures/characters/player/jump.png" id="3_o4nuv"]
+[ext_resource type="Texture2D" uid="uid://4l0mpnd8y3ed" path="res://textures/characters/player/throw.png" id="4_02tpv"]
 [ext_resource type="Texture2D" uid="uid://doasmp3ocm4tn" path="res://textures/characters/player/walking.png" id="4_cyirp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2vyb"]
+atlas = ExtResource("4_02tpv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_005vt"]
+atlas = ExtResource("4_02tpv")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nj5o1"]
 atlas = ExtResource("4_cyirp")
@@ -41,6 +50,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w2vyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_005vt")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nj5o1")
 }, {
 "duration": 1.0,
@@ -71,7 +91,7 @@ metadata/puffTarget = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8y6ks")
-animation = &"walk"
+animation = &"throw"
 autoplay = "idle"
 speed_scale = 2.0
 
