@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 140
 @export var jump_speed = -500
-@export_range(0.0, 1.0) var friction = 0.1
+@export_range(0.0, 1.0) var friction = 0.25
 @export_range(0.0 , 1.0) var acceleration = 0.25
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = 1 #right: 1 - left: 0
@@ -75,7 +75,7 @@ func _physics_process(delta):
 		if velocity.x == 0:
 			animatedSprite.animation = "idle"
 
-	if Input.is_action_just_pressed("up") and (is_on_floor() or coyoteJumpTimer>0):
+	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("up")) and (is_on_floor() or coyoteJumpTimer>0):
 		velocity.y = jump_speed
 		coyoteJumpTimer = 0
 
