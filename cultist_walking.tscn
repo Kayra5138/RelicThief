@@ -20,7 +20,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxmxs"]
 size = Vector2(28, 65)
 
-[node name="CultistWalking" type="CharacterBody2D" groups=["puffTarget"]]
+[node name="CultistWalking" type="CharacterBody2D" groups=["cultist", "puffTarget"]]
 script = ExtResource("1_2rhdr")
 metadata/enemy = true
 

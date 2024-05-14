@@ -63,7 +63,7 @@ size = Vector2(25, 63)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xl3an"]
 size = Vector2(39, 67)
 
-[node name="Player" type="CharacterBody2D" groups=["puffTarget", "riding"]]
+[node name="Player" type="CharacterBody2D" groups=["player", "puffTarget", "riding"]]
 floor_constant_speed = true
 script = ExtResource("1_ikhbi")
 metadata/Player = true
@@ -76,7 +76,6 @@ autoplay = "idle"
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_mfero")
 
 [node name="IceSpikePosition" type="Marker2D" parent="."]
@@ -91,10 +90,8 @@ target_position = Vector2(40, 0)
 one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2(-5.5, 0.5)
 shape = SubResource("RectangleShape2D_xl3an")
 
@@ -115,3 +112,4 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]

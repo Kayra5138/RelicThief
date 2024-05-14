@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://tilemap.tscn" id="5_svunb"]
 [ext_resource type="PackedScene" uid="uid://152w1t2ii543" path="res://cave_door.tscn" id="6_1ywkw"]
 [ext_resource type="Texture2D" uid="uid://n1kjnn3vv1x3" path="res://textures/objects/track.png" id="6_mlwkm"]
-[ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://cultist_walking.tscn" id="9_83sqa"]
+[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://cultist_idle.tscn" id="10_mraxd"]
 [ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://puffball.tscn" id="11_5xiyg"]
 [ext_resource type="PackedScene" uid="uid://ca31cw1jfv7ek" path="res://player.tscn" id="12_8ywdf"]
 [ext_resource type="PackedScene" uid="uid://rs24nl1crjlg" path="res://ladder.tscn" id="12_ibgjc"]
@@ -155,13 +155,13 @@ reversed = true
 [node name="caveDoor" parent="." instance=ExtResource("6_1ywkw")]
 position = Vector2(48, 208)
 
-[node name="CultistWalking" parent="." instance=ExtResource("9_83sqa")]
-position = Vector2(272, 448)
-
 [node name="puffball" parent="." instance=ExtResource("11_5xiyg")]
-position = Vector2(752, 528)
+position = Vector2(664, 472)
 
 [node name="Player" parent="." instance=ExtResource("12_8ywdf")]
-position = Vector2(64, 512)
+position = Vector2(96, 496)
+
+[node name="CultistIdle" parent="." instance=ExtResource("10_mraxd")]
+position = Vector2(704, 112)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
