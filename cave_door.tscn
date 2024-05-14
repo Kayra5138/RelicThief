@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://152w1t2ii543"]
+[gd_scene load_steps=6 format=3 uid="uid://152w1t2ii543"]
 
 [ext_resource type="Texture2D" uid="uid://dhfka88y1ge3o" path="res://textures/objects/caveDoor.png" id="1_qwkkd"]
 [ext_resource type="Script" path="res://cave_door.gd" id="1_tbkdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c57gu"]
 size = Vector2(96, 96)
+
+[sub_resource type="Gradient" id="Gradient_6ucvl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c62uk"]
+gradient = SubResource("Gradient_6ucvl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [node name="caveDoor" type="Area2D" groups=["strong"]]
 script = ExtResource("1_tbkdu")
@@ -17,6 +26,16 @@ texture = ExtResource("1_qwkkd")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 16)
+scale = Vector2(32.8906, 19.7461)
+energy = 0.8
+range_layer_min = -512
+range_layer_max = 512
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_c62uk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

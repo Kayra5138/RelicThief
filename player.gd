@@ -9,7 +9,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = 1 #right: 1 - left: 0
 var skill = 5
-@onready var animatedSprite = $AnimatedSprite2D 
+@onready var playerSprite = $PlayerSprite 
 const ice_spike_path = preload("res://icespike.tscn")
 var coyoteJumpTimer = 15
 var lockControls = false
@@ -20,7 +20,7 @@ var curState = sMOVE
 var throwing = false
 
 func climbing_state():
-	$AnimatedSprite2D.animation = "jump"
+	playerSprite.animation = "jump"
 	var input = Vector2.ZERO
 	input.x = Input.get_axis("left","right")
 	input.y = Input.get_axis("up","down")
@@ -37,6 +37,13 @@ func domination(delta):
 	move_and_slide()
 
 func _physics_process(delta):
+	match skill:
+		5: $TankSprite.animation = "5"
+		4: $TankSprite.animation = "4"
+		3: $TankSprite.animation = "3"
+		2: $TankSprite.animation = "2"
+		1: $TankSprite.animation = "1"
+		0: $TankSprite.animation = "0"
 	if dominating != null:
 		domination(delta)
 		return
@@ -46,7 +53,7 @@ func _physics_process(delta):
 		climbing_state()
 		return
 	if lockControls:
-		$AnimatedSprite2D.animation = "idle"
+		playerSprite.animation = "idle"
 		if facing == 0:
 			transform.x.x = -1
 		if facing == 1:
@@ -69,21 +76,21 @@ func _physics_process(delta):
 	if throwing == false:
 		if Input.is_action_pressed("left"):
 			if is_on_floor(): 
-				animatedSprite.animation = "walk"
+				playerSprite.animation = "walk"
 			facing = 0
 
 		if Input.is_action_pressed("right"):
 			if is_on_floor(): 
-				animatedSprite.animation = "walk"
-				animatedSprite.play("walk")
+				playerSprite.animation = "walk"
+				playerSprite.play("walk")
 			facing = 1
 
 			
 	if (Input.is_action_just_released("right") or Input.is_action_just_released("left")):
-		animatedSprite.animation = "idle"
+		playerSprite.animation = "idle"
 	
 	if !is_on_floor():
-		animatedSprite.animation = "jump"
+		playerSprite.animation = "jump"
 		if coyoteJumpTimer > 0:
 			coyoteJumpTimer += -1
 		
@@ -92,10 +99,10 @@ func _physics_process(delta):
 		coyoteJumpTimer = 15
 		if velocity.x == 0:
 			if throwing == true:
-				animatedSprite.animation = "throw"
+				playerSprite.animation = "throw"
 			else:
-				animatedSprite.animation = "idle"
-				animatedSprite.play("idle")
+				playerSprite.animation = "idle"
+				playerSprite.play("idle")
 
 	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("up")) and (is_on_floor() or coyoteJumpTimer>0):
 		velocity.y = jump_speed
@@ -103,7 +110,8 @@ func _physics_process(delta):
 
 
 	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor():
-		skill -= -1
+		skill -= 1
+		print(skill)
 		shoot_ice_spike()
 		
 	#DEBUG
@@ -150,7 +158,7 @@ func _on_hitbox_body_entered(body):
 		restart()
 
 func lockMovement():
-	$AnimatedSprite2D.animation = "idle"
+	playerSprite.animation = "idle"
 	lockControls = true
 
 func releaseMovement():
@@ -171,16 +179,16 @@ func mouse_input(event):
 				dominating = null
 				releaseMovement()
 
-func _on_hitbox_input_event(viewport, event, shape_idx):
+func _on_hitbox_input_event(event):
 	mouse_input(event)
 
 func _on_animated_sprite_2d_animation_finished():
-	if animatedSprite.animation == "throw":
+	if playerSprite.animation == "throw":
 		throwing = false
 
 func _on_animated_sprite_2d_animation_changed():
-	if animatedSprite == null:
+	if playerSprite == null:
 		return
-	if animatedSprite.animation != "throw":
+	if playerSprite.animation != "throw":
 		throwing = false
 

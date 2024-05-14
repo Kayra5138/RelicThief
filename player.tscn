@@ -1,10 +1,101 @@
-[gd_scene load_steps=15 format=3 uid="uid://ca31cw1jfv7ek"]
+[gd_scene load_steps=25 format=3 uid="uid://ca31cw1jfv7ek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
 [ext_resource type="Texture2D" uid="uid://chyuvv41h6ygs" path="res://textures/characters/player/jump.png" id="3_o4nuv"]
 [ext_resource type="Texture2D" uid="uid://4l0mpnd8y3ed" path="res://textures/characters/player/throw.png" id="4_02tpv"]
 [ext_resource type="Texture2D" uid="uid://doasmp3ocm4tn" path="res://textures/characters/player/walking.png" id="4_cyirp"]
+[ext_resource type="Texture2D" uid="uid://c2qvwpqqw3htk" path="res://textures/characters/player/tank.png" id="6_yrmxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v2ct"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryty2"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4elt"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwl1s"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyj3f"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjalk"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c64tv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v2ct")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryty2")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4elt")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwl1s")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyj3f")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjalk")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q676h"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2dc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q676h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2vyb"]
 atlas = ExtResource("4_02tpv")
@@ -92,10 +183,17 @@ script = ExtResource("1_ikhbi")
 metadata/Player = true
 metadata/puffTarget = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="TankSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c64tv")
+animation = &"5"
+
+[node name="ChainsSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n2dc4")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8y6ks")
-animation = &"throw"
-autoplay = "walk"
+animation = &"idle"
+autoplay = "idle"
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -134,7 +232,7 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 
-[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]

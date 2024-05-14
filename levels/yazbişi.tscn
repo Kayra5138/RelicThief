@@ -27,10 +27,6 @@ position = Vector2(976, 208)
 
 [node name="Player" parent="." instance=ExtResource("5_hjs18")]
 position = Vector2(400, 512)
-speed = 140
-jump_speed = -500
-friction = 0.25
-acceleration = 0.25
 
 [node name="CultistWalking" parent="." instance=ExtResource("8_glelt")]
 position = Vector2(440, 192)
