@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var can_spike = true
 @export var speed = 140
 @export var jump_speed = -500
-@export_range(0.0, 1.0) var friction = 0.1
+@export_range(0.0, 1.0) var friction = 0.25
 @export_range(0.0 , 1.0) var acceleration = 0.25
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = 1 #right: 1 - left: 0
@@ -17,6 +17,7 @@ var minecartOffset = -32
 const CLIMB_SPEED = 100
 enum {sMOVE, sCLIMB}
 var curState = sMOVE
+var throwing = false
 
 func climbing_state():
 	$AnimatedSprite2D.animation = "jump"
@@ -65,15 +66,17 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("restart"):
 		restart()
 	
-	if Input.is_action_pressed("left"):
-		if is_on_floor(): 
-			animatedSprite.animation = "walk"
-		facing = 0
+	if throwing == false:
+		if Input.is_action_pressed("left"):
+			if is_on_floor(): 
+				animatedSprite.animation = "walk"
+			facing = 0
 
-	if Input.is_action_pressed("right"):
-		if is_on_floor(): 
-			animatedSprite.animation = "walk"
-		facing = 1
+		if Input.is_action_pressed("right"):
+			if is_on_floor(): 
+				animatedSprite.animation = "walk"
+				animatedSprite.play("walk")
+			facing = 1
 
 			
 	if (Input.is_action_just_released("right") or Input.is_action_just_released("left")):
@@ -88,16 +91,20 @@ func _physics_process(delta):
 	if is_on_floor():
 		coyoteJumpTimer = 15
 		if velocity.x == 0:
-			animatedSprite.animation = "idle"
+			if throwing == true:
+				animatedSprite.animation = "throw"
+			else:
+				animatedSprite.animation = "idle"
+				animatedSprite.play("idle")
 
-	if Input.is_action_just_pressed("up") and (is_on_floor() or coyoteJumpTimer>0):
+	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("up")) and (is_on_floor() or coyoteJumpTimer>0):
 		velocity.y = jump_speed
 		coyoteJumpTimer = 0
 
-	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding():
-		if can_spike:
-			skill -= 1
-			shoot_ice_spike()
+
+	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor():
+		skill -= -1
+		shoot_ice_spike()
 		
 	#DEBUG
 	if Input.is_action_just_pressed("down"):
@@ -110,6 +117,7 @@ func _physics_process(delta):
 		
 	
 func shoot_ice_spike():
+	throwing = true
 	var ice_spike = ice_spike_path.instantiate()
 	$IceSpikeCooldown.start(1)
 	get_parent().add_child(ice_spike)
@@ -154,6 +162,7 @@ func ladder_check():
 	else:
 		curState = sMOVE
 
+
 func mouse_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -164,3 +173,14 @@ func mouse_input(event):
 
 func _on_hitbox_input_event(viewport, event, shape_idx):
 	mouse_input(event)
+
+func _on_animated_sprite_2d_animation_finished():
+	if animatedSprite.animation == "throw":
+		throwing = false
+
+func _on_animated_sprite_2d_animation_changed():
+	if animatedSprite == null:
+		return
+	if animatedSprite.animation != "throw":
+		throwing = false
+

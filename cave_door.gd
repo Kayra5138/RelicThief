@@ -8,9 +8,6 @@ func _on_body_entered(body):
 	if body.has_meta("Player"):
 		$Timer.start()
 
-		
-
-
 func _on_timer_timeout():
 	current_level = get_tree().current_scene.scene_file_path
 	next_level_number = current_level.to_int() + 1

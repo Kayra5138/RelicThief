@@ -1,8 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddsokcxvng3o5"]
+[gd_scene load_steps=11 format=3 uid="uid://ddsokcxvng3o5"]
 
 [ext_resource type="Texture2D" uid="uid://dne2odci7vrtx" path="res://textures/objects/water.png" id="1_cv1o3"]
+[ext_resource type="Shader" path="res://water.gdshader" id="2_l444p"]
+[ext_resource type="Texture2D" uid="uid://c2g8qx3s5fqyt" path="res://icon.svg" id="3_soov8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ami45"]
+size = Vector2(32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3n8ru"]
+resource_local_to_scene = true
+shader = ExtResource("2_l444p")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vinil"]
 atlas = ExtResource("1_cv1o3")
@@ -44,6 +51,13 @@ animations = [{
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ami45")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3n8ru")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_soov8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.792157)
