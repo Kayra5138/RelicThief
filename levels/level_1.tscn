@@ -163,5 +163,9 @@ position = Vector2(752, 528)
 
 [node name="Player" parent="." instance=ExtResource("12_8ywdf")]
 position = Vector2(64, 512)
+speed = 140
+jump_speed = -500
+friction = 0.25
+acceleration = 0.25
 
 [connection signal="ready" from="." to="." method="_on_ready"]
