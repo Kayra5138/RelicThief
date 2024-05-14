@@ -20,7 +20,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxmxs"]
 size = Vector2(28, 65)
 
-[node name="CultistIdle" type="CharacterBody2D" groups=["puffTarget"]]
+[node name="CultistIdle" type="CharacterBody2D" groups=["cultist", "puffTarget", "riding"]]
 script = ExtResource("1_2q26w")
 metadata/enemy = true
 
@@ -55,3 +55,4 @@ scale = Vector2(1, 8)
 target_position = Vector2(-64, 0)
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]

@@ -36,7 +36,7 @@ func entered(body):
 			anime.play("goA")
 			curState = goingA
 			body.lockMovement()
-			if body.has_meta("Player"): $PathFollow2D/minecart/RemoteTransform2D.scale.x = -1
+			if body.has_meta("Player") or body.is_in_group("cultist"): $PathFollow2D/minecart/RemoteTransform2D.scale.x = -1
 			else: $PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
 			riding = body
 
