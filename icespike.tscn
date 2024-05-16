@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bowxeshevyosm"]
+[gd_scene load_steps=15 format=3 uid="uid://bowxeshevyosm"]
 
 [ext_resource type="Script" path="res://icespike.gd" id="1_80x3q"]
 [ext_resource type="Texture2D" uid="uid://c41vlsd7yaxg3" path="res://textures/objects/icespike.png" id="2_aw38s"]
 [ext_resource type="AudioStream" uid="uid://t31wlhuliofr" path="res://sounds/throw.wav" id="3_4sf66"]
 [ext_resource type="AudioStream" uid="uid://d2hpaw2ccy3jl" path="res://sounds/shatter.wav" id="4_q582x"]
+[ext_resource type="Texture2D" uid="uid://fbxgj1q0rfmb" path="res://textures/objects/particle.png" id="5_6i1b0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bftdp"]
 size = Vector2(30, 11)
@@ -59,6 +60,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytbp"]
 size = Vector2(1, 11)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o38rw"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.5
+
 [node name="IceSpike" type="CharacterBody2D" groups=["strong"]]
 script = ExtResource("1_80x3q")
 metadata/spike = true
@@ -84,5 +94,10 @@ autoplay = true
 
 [node name="ShatterAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_q582x")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-15, 0)
+process_material = SubResource("ParticleProcessMaterial_o38rw")
+texture = ExtResource("5_6i1b0")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

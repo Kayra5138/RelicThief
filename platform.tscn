@@ -1,11 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://c57agvoqhc2og"]
+[gd_scene load_steps=9 format=3 uid="uid://c57agvoqhc2og"]
 
-[ext_resource type="Texture2D" uid="uid://n1kjnn3vv1x3" path="res://textures/objects/track.png" id="1_na3y3"]
+[ext_resource type="Script" path="res://platform.gd" id="1_aq5wu"]
+[ext_resource type="Texture2D" uid="uid://cr2sxrdh8nwoq" path="res://textures/objects/platform.png" id="1_l4dhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgcwt"]
 size = Vector2(32, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5mb8"]
+atlas = ExtResource("1_l4dhb")
+region = Rect2(0, 24, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2cde"]
+atlas = ExtResource("1_l4dhb")
+region = Rect2(0, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqwb6"]
+atlas = ExtResource("1_l4dhb")
+region = Rect2(0, 16, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euaun"]
+atlas = ExtResource("1_l4dhb")
+region = Rect2(0, 8, 32, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0b2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5mb8")
+}],
+"loop": true,
+"name": &"double",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2cde")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqwb6")
+}],
+"loop": true,
+"name": &"middle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euaun")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
 [node name="Platform" type="StaticBody2D"]
+script = ExtResource("1_aq5wu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -13,6 +66,8 @@ shape = SubResource("RectangleShape2D_kgcwt")
 one_way_collision = true
 debug_color = Color(0, 0.588235, 0.768627, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("1_na3y3")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 4)
+sprite_frames = SubResource("SpriteFrames_p0b2b")
+animation = &"double"
+autoplay = "double"
