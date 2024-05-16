@@ -64,6 +64,8 @@ func explode():
 	die()
 
 func die():
+	if dominated:
+		letGoPls.emit()
 	queue_free()
 	
 func mouse_input(event):

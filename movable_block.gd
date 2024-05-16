@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export var speed = 5000
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var friction = 10
+@export var friction = 400
 var pusher_groups = ["player","cultist"]
 func _ready():
 	pass # Replace with function body.
@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity.x = move_toward(velocity.x,0,friction)
+	velocity.x = move_toward(velocity.x,0,friction*delta)
 	for body in $Left.get_overlapping_bodies():
 		for group in pusher_groups:
 			if body.is_in_group(group):
