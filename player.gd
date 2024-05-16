@@ -151,6 +151,8 @@ func shoot_ice_spike():
 
 var dominating = null
 func dominate(cultist):
+	if dominating != null:
+		return
 	if not can_dominate or skill == 0:
 		return
 	skill -= 1
