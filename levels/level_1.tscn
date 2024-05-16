@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d4d8d8vkryx0u"]
+[gd_scene load_steps=14 format=3 uid="uid://d4d8d8vkryx0u"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_qbkj0"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://parallaxbackground.tscn" id="2_88amo"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ca31cw1jfv7ek" path="res://player.tscn" id="12_8ywdf"]
 [ext_resource type="PackedScene" uid="uid://c57agvoqhc2og" path="res://platform.tscn" id="12_apxvb"]
 [ext_resource type="PackedScene" uid="uid://rs24nl1crjlg" path="res://ladder.tscn" id="12_ibgjc"]
-[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://cultist_idle.tscn" id="13_x0nkj"]
 [ext_resource type="PackedScene" uid="uid://cfuymasi14n4t" path="res://realestmc.tscn" id="14_eakqk"]
 
 [sub_resource type="Curve2D" id="Curve2D_rt1bn"]
@@ -186,11 +185,5 @@ position = Vector2(944, 256)
 
 [node name="Platform3" parent="." instance=ExtResource("12_apxvb")]
 position = Vector2(976, 256)
-
-[node name="CultistIdle" parent="." instance=ExtResource("13_x0nkj")]
-position = Vector2(832, 224)
-
-[node name="CultistWalking2" parent="." instance=ExtResource("9_83sqa")]
-position = Vector2(288, 448)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -17,4 +17,3 @@ func fln():
 	else:
 		$CollisionShape2D.set_deferred("disabled", true);
 		$AnimatedSprite2D.animation = "open";
-		$AnimatedSprite2D

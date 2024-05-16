@@ -196,7 +196,7 @@ func mouse_input(event):
 				dominating = null
 				releaseMovement()
 
-func _on_hitbox_input_event(_a,event,_b):
+func _on_hitbox_input_event(_a, event, _b):
 	mouse_input(event)
 
 func _on_animated_sprite_2d_animation_finished():

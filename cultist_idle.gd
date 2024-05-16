@@ -96,5 +96,6 @@ func mouse_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			dominateMe.emit(self)
 
-func _on_hitbox_input_event(_a,event,_b):
+
+func _on_hitbox_input_event(_a, event, _b):
 	mouse_input(event)
