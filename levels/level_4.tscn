@@ -99,15 +99,6 @@ position = Vector2(46, 336)
 [node name="Ladder" parent="Ladders" instance=ExtResource("6_vuyou")]
 position = Vector2(46, 560)
 
-[node name="CultistIdle" parent="." instance=ExtResource("10_avco2")]
-position = Vector2(480, 384)
-
-[node name="Player" parent="." instance=ExtResource("5_bf2sv")]
-position = Vector2(80, 544)
-
-[node name="puffball" parent="." instance=ExtResource("7_gkyib")]
-position = Vector2(560, 208)
-
 [node name="Platforms" type="CanvasGroup" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("14_45u1a")]
@@ -167,5 +158,14 @@ position = Vector2(848, 592)
 
 [node name="Door9" parent="Doors" instance=ExtResource("9_8y5a6")]
 position = Vector2(880, 592)
+
+[node name="CultistIdle" parent="." instance=ExtResource("10_avco2")]
+position = Vector2(480, 384)
+
+[node name="Player" parent="." instance=ExtResource("5_bf2sv")]
+position = Vector2(80, 544)
+
+[node name="puffball" parent="." instance=ExtResource("7_gkyib")]
+position = Vector2(560, 208)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
