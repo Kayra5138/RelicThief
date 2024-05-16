@@ -5,9 +5,6 @@ const explosionScene = preload("res://explosion.tscn")
 var lockMove = false
 var minecartOffset = -24
 
-const SPEED = 400.0
-const JUMP_VELOCITY = -500.0
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")/2
 
@@ -18,7 +15,7 @@ var agitationLimit = 50
 var charge = 0
 var chargeLimit = 50
 
-var speed = 150
+var speed = -300
 
 var exploding = false
 var explosionCharge = 0
@@ -111,7 +108,7 @@ func _physics_process(delta):
 				if charge > chargeLimit:
 					var target = targetHere(bodies)
 					var vec:Vector2 = target.position - position
-					velocity = Vector2(speed,-speed) if vec.x > 0 else Vector2(-speed,-speed)
+					velocity = Vector2.from_angle(PI*110/180)*speed if vec.x > 0 else Vector2.from_angle(PI*70/180)*speed
 					charge = 0
 				else:
 					charge += 1

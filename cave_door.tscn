@@ -6,11 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c57gu"]
 size = Vector2(96, 96)
 
-[sub_resource type="Gradient" id="Gradient_6ucvl"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_1w1ja"]
+offsets = PackedFloat32Array(0, 0.707792, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0454546, 0.0454546, 0.0454546, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_c62uk"]
-gradient = SubResource("Gradient_6ucvl")
+gradient = SubResource("Gradient_1w1ja")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
@@ -28,13 +29,25 @@ texture = ExtResource("1_qwkkd")
 one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 16)
-scale = Vector2(32.8906, 19.7461)
-energy = 0.8
+scale = Vector2(10, 10)
+color = Color(0.768627, 0.803922, 1, 1)
+energy = 0.2
+range_layer_min = -512
+range_layer_max = 512
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_c62uk")
+
+[node name="PointLight2DShadows" type="PointLight2D" parent="."]
+scale = Vector2(10, 10)
+color = Color(0.768627, 0.803922, 1, 1)
+energy = 0.2
 range_layer_min = -512
 range_layer_max = 512
 shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
+shadow_filter_smooth = 1.0
 texture = SubResource("GradientTexture2D_c62uk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

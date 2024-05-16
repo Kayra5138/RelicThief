@@ -38,12 +38,24 @@ func domination(delta):
 
 func _physics_process(delta):
 	match skill:
-		5: $TankSprite.animation = "5"
-		4: $TankSprite.animation = "4"
-		3: $TankSprite.animation = "3"
-		2: $TankSprite.animation = "2"
-		1: $TankSprite.animation = "1"
-		0: $TankSprite.animation = "0"
+		5: 
+			$TankSprite.animation = "5"
+			$TankLight.energy = 0.7
+		4: 
+			$TankSprite.animation = "4"
+			$TankLight.energy = 0.6
+		3: 
+			$TankSprite.animation = "3"
+			$TankLight.energy = 0.5
+		2: 
+			$TankSprite.animation = "2"
+			$TankLight.energy = 0.4
+		1: 
+			$TankSprite.animation = "1"
+			$TankLight.energy = 0.3
+		0: 
+			$TankSprite.animation = "0"
+			$TankLight.energy = 0.2
 	if dominating != null:
 		domination(delta)
 		return
@@ -61,10 +73,13 @@ func _physics_process(delta):
 		return
 	velocity.y += gravity * delta
 	var dir = Input.get_axis("left", "right")
-	if dir != 0:
-		velocity.x = lerp(velocity.x, dir * speed, acceleration)
+	if throwing == false:
+		if dir != 0:
+			velocity.x = lerp(velocity.x, dir * speed, acceleration)
+		else:
+			velocity.x = lerp(velocity.x, 0.0, friction)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, friction)
+		velocity.x = 0
 	move_and_slide()
 	
 	if (velocity.x > 0 and velocity.x < 10) or (velocity.x > -10 and velocity.x < 0):
@@ -77,8 +92,8 @@ func _physics_process(delta):
 		if Input.is_action_pressed("left"):
 			if is_on_floor(): 
 				playerSprite.animation = "walk"
+				playerSprite.play("walk")
 			facing = 0
-
 		if Input.is_action_pressed("right"):
 			if is_on_floor(): 
 				playerSprite.animation = "walk"
@@ -111,12 +126,12 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor():
 		skill -= 1
-		print(skill)
 		shoot_ice_spike()
 		
-	#DEBUG
+	
 	if Input.is_action_just_pressed("down"):
-		skill = 5
+		position.y += 1
+		skill = 5 #DEBUG
 
 	if facing == 0:
 		transform.x.x = -1

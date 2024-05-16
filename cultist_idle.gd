@@ -29,13 +29,13 @@ func _physics_process(delta):
 		am_dom(delta)
 		return
 	playerSeen = false
-	if $EyeSight1.is_colliding() and $EyeSight1.get_collider().has_meta("Player"):
+	if $EyeSight/EyeSight1.is_colliding() and $EyeSight/EyeSight1.get_collider().has_meta("Player"):
 		playerSeen = true
-	if $EyeSight2.is_colliding() and $EyeSight2.get_collider().has_meta("Player"):
+	if $EyeSight/EyeSight2.is_colliding() and $EyeSight/EyeSight2.get_collider().has_meta("Player"):
 		playerSeen = true
-	if $EyeSight3.is_colliding() and $EyeSight3.get_collider().has_meta("Player"):
+	if $EyeSight/EyeSight3.is_colliding() and $EyeSight/EyeSight3.get_collider().has_meta("Player"):
 		playerSeen = true
-	if $EyeSightBack.is_colliding() and $EyeSightBack.get_collider().has_meta("Player"):
+	if $EyeSight/EyeSightBack.is_colliding() and $EyeSight/EyeSightBack.get_collider().has_meta("Player"):
 		flip()
 		playerSeen = true
 	if not is_on_floor():
@@ -94,5 +94,5 @@ func mouse_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			dominateMe.emit(self)
 
-func _on_hitbox_input_event(viewport, event, shape_idx):
+func _on_hitbox_input_event(event):
 	mouse_input(event)

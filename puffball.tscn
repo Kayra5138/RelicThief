@@ -110,7 +110,7 @@ shape = SubResource("CircleShape2D_u2rk0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bknen")
-animation = &"search"
+animation = &"pursue_jump"
 autoplay = "eepy"
 
 [node name="Hitbox" type="Area2D" parent="."]

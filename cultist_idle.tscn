@@ -18,7 +18,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxmxs"]
-size = Vector2(28, 65)
+size = Vector2(30, 65)
 
 [node name="CultistIdle" type="CharacterBody2D" groups=["cultist", "puffTarget", "riding"]]
 script = ExtResource("1_2q26w")
@@ -37,19 +37,21 @@ sprite_frames = SubResource("SpriteFrames_pmdv0")
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_hxmxs")
 
-[node name="EyeSight1" type="RayCast2D" parent="."]
+[node name="EyeSight" type="CanvasGroup" parent="."]
+
+[node name="EyeSight1" type="RayCast2D" parent="EyeSight"]
 position = Vector2(0, -32)
 target_position = Vector2(272, -16)
 
-[node name="EyeSight2" type="RayCast2D" parent="."]
+[node name="EyeSight2" type="RayCast2D" parent="EyeSight"]
 position = Vector2(0, -16)
 target_position = Vector2(288, 0)
 
-[node name="EyeSight3" type="RayCast2D" parent="."]
+[node name="EyeSight3" type="RayCast2D" parent="EyeSight"]
 position = Vector2(4, 0)
 target_position = Vector2(268, 16)
 
-[node name="EyeSightBack" type="RayCast2D" parent="."]
+[node name="EyeSightBack" type="RayCast2D" parent="EyeSight"]
 position = Vector2(-16, 0)
 scale = Vector2(1, 8)
 target_position = Vector2(-64, 0)

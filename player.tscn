@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ca31cw1jfv7ek"]
+[gd_scene load_steps=27 format=3 uid="uid://ca31cw1jfv7ek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
@@ -81,6 +81,16 @@ animations = [{
 "name": &"5",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_8j6o5"]
+offsets = PackedFloat32Array(0, 0.766234)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2tvje"]
+gradient = SubResource("Gradient_8j6o5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q676h"]
 atlas = ExtResource("6_yrmxm")
@@ -171,11 +181,11 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfero"]
-size = Vector2(25, 63)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ox8u1"]
+size = Vector2(12, 60)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl3an"]
-size = Vector2(39, 67)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn1vm"]
+size = Vector2(24, 60)
 
 [node name="Player" type="CharacterBody2D" groups=["player", "puffTarget", "riding"]]
 floor_constant_speed = true
@@ -187,21 +197,34 @@ metadata/puffTarget = true
 sprite_frames = SubResource("SpriteFrames_c64tv")
 animation = &"5"
 
+[node name="TankLight" type="PointLight2D" parent="."]
+position = Vector2(-13, -5.00001)
+scale = Vector2(7.18359, 6.28516)
+color = Color(0.8, 0.980392, 1, 1)
+energy = 0.5
+range_layer_min = -512
+range_layer_max = 512
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.0
+texture = SubResource("GradientTexture2D_2tvje")
+
 [node name="ChainsSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n2dc4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8y6ks")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
 speed_scale = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mfero")
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_ox8u1")
 
 [node name="IceSpikePosition" type="Marker2D" parent="."]
 visible = false
-position = Vector2(37, 0)
+position = Vector2(24, -1)
 
 [node name="IceSpikeCollideCheck" type="RayCast2D" parent="."]
 visible = false
@@ -213,13 +236,12 @@ one_shot = true
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-5.5, 0.5)
-shape = SubResource("RectangleShape2D_xl3an")
+position = Vector2(-3, 2)
+shape = SubResource("RectangleShape2D_dn1vm")
 
 [node name="LadderCheck" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(0, -32)
-target_position = Vector2(0, 72)
+position = Vector2(0, -24)
+target_position = Vector2(0, 56)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false

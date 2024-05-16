@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c57agvoqhc2og"]
+
+[ext_resource type="Texture2D" uid="uid://n1kjnn3vv1x3" path="res://textures/objects/track.png" id="1_na3y3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgcwt"]
+size = Vector2(32, 8)
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_kgcwt")
+one_way_collision = true
+debug_color = Color(0, 0.588235, 0.768627, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_na3y3")

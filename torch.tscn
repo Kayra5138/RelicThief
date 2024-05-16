@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyavsfwnxjfsi"]
+
+[ext_resource type="Texture2D" uid="uid://bovrybyqhtyxv" path="res://textures/objects/torch.png" id="1_uglcu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ijlv"]
+atlas = ExtResource("1_uglcu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs37j"]
+atlas = ExtResource("1_uglcu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljvby"]
+atlas = ExtResource("1_uglcu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmp7u"]
+atlas = ExtResource("1_uglcu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eage2"]
+atlas = ExtResource("1_uglcu")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tm1j1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ijlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs37j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljvby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmp7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eage2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_sllfn"]
+offsets = PackedFloat32Array(0, 0.677419)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fntt7"]
+gradient = SubResource("Gradient_sllfn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="Torch" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tm1j1")
+autoplay = "default"
+frame_progress = 0.274825
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(6, 6)
+color = Color(0.827451, 0.239216, 0.0196078, 1)
+energy = 0.5
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_fntt7")
+
+[node name="PointLight2DShadows" type="PointLight2D" parent="."]
+scale = Vector2(6, 6)
+color = Color(0.827451, 0.239216, 0.0196078, 1)
+energy = 0.5
+range_layer_min = -512
+range_layer_max = 512
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_fntt7")
