@@ -9,6 +9,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = 1 #right: 1 - left: 0
 var skill = 5
+var FLOOR_NORMAL = Vector2.UP
 @onready var playerSprite = $PlayerSprite 
 const ice_spike_path = preload("res://icespike.tscn")
 var coyoteJumpTimer = 15
@@ -26,7 +27,7 @@ func climbing_state():
 	input.y = Input.get_axis("up","down")
 	velocity = input*CLIMB_SPEED
 	move_and_slide()
-
+	
 func domination(delta):
 	if Input.is_action_pressed("left"):
 		dominating.move_left()
