@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbka2e84hbhkg"
-path="res://.godot/imported/pixel-art-wooden-box-crate-icon-for-8bit-game-on-white-background-vector.jpg-79b8ab359ffb5bb5697db03d7b4a5c59.ctex"
+uid="uid://cy0gx4gchlvsi"
+path="res://.godot/imported/crate.png-b431fd90b20f1608553d3bf1359e0464.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixel-art-wooden-box-crate-icon-for-8bit-game-on-white-background-vector.jpg"
-dest_files=["res://.godot/imported/pixel-art-wooden-box-crate-icon-for-8bit-game-on-white-background-vector.jpg-79b8ab359ffb5bb5697db03d7b4a5c59.ctex"]
+source_file="res://textures/objects/crate.png"
+dest_files=["res://.godot/imported/crate.png-b431fd90b20f1608553d3bf1359e0464.ctex"]
 
 [params]
 

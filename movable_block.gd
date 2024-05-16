@@ -1,7 +1,7 @@
 extends CharacterBody2D
-@export var speed = 100
+@export var speed = 80
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var friction = 500
+@export var friction = 160
 var pusher_groups = ["player","cultist"]
 
 func _process(delta):

@@ -1,35 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://4j2y73lxx7kh"]
+[gd_scene load_steps=7 format=3 uid="uid://4j2y73lxx7kh"]
 
 [ext_resource type="Script" path="res://movable_block.gd" id="1_3bod6"]
-[ext_resource type="Texture2D" uid="uid://cbka2e84hbhkg" path="res://pixel-art-wooden-box-crate-icon-for-8bit-game-on-white-background-vector.jpg" id="1_rs8e3"]
+[ext_resource type="Texture2D" uid="uid://cy0gx4gchlvsi" path="res://textures/objects/crate.png" id="2_fjpf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kld15"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e70e"]
-size = Vector2(1, 14)
+size = Vector2(1.5, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xd8b"]
-size = Vector2(1, 14)
+size = Vector2(1.5, 30)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a4m6l"]
+polygon = PackedVector2Array(-8, -8, 24, -8, 24, 24, -8, 24)
 
 [node name="MovableBlock" type="CharacterBody2D"]
 script = ExtResource("1_3bod6")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2.38419e-07, 2.38419e-07)
+texture = ExtResource("2_fjpf0")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kld15")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.00833333, 0.00833333)
-texture = ExtResource("1_rs8e3")
 
 [node name="Left" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
-position = Vector2(-9.5, 0)
+position = Vector2(-17, 0)
 shape = SubResource("RectangleShape2D_4e70e")
 
 [node name="Right" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
-position = Vector2(9.5, 0)
+position = Vector2(17, 0)
 shape = SubResource("RectangleShape2D_2xd8b")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2(-8, -8)
+occluder = SubResource("OccluderPolygon2D_a4m6l")

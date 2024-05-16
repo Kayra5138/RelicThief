@@ -170,10 +170,10 @@ reversed = true
 position = Vector2(48, 208)
 
 [node name="puffball" parent="." instance=ExtResource("11_5xiyg")]
-position = Vector2(752, 528)
+position = Vector2(720, 528)
 
 [node name="Player" parent="." instance=ExtResource("12_8ywdf")]
-position = Vector2(64, 512)
+position = Vector2(48, 512)
 
 [node name="CultistWalking" parent="." instance=ExtResource("9_83sqa")]
 position = Vector2(384, 448)
@@ -191,7 +191,6 @@ position = Vector2(976, 256)
 type = 1
 
 [node name="MovableBlock" parent="." instance=ExtResource("13_dsr55")]
-position = Vector2(107, 525)
-scale = Vector2(2, 2)
+position = Vector2(624, 528)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

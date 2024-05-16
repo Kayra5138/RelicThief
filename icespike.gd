@@ -7,6 +7,7 @@ var disappearing = 0
 var lifetime = 50
 func _physics_process(delta):
 	if disappearing:
+		$GPUParticles2D.emitting = false
 		speed = 0
 		lifetime += -1
 	if lifetime == 45:

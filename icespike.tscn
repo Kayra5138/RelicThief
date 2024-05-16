@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bowxeshevyosm"]
+[gd_scene load_steps=17 format=3 uid="uid://bowxeshevyosm"]
 
 [ext_resource type="Script" path="res://icespike.gd" id="1_80x3q"]
 [ext_resource type="Texture2D" uid="uid://c41vlsd7yaxg3" path="res://textures/objects/icespike.png" id="2_aw38s"]
@@ -60,14 +60,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytbp"]
 size = Vector2(1, 11)
 
+[sub_resource type="Gradient" id="Gradient_p6uop"]
+offsets = PackedFloat32Array(0.663934, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aosor"]
+gradient = SubResource("Gradient_p6uop")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o38rw"]
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 30.0
 direction = Vector3(0, 0, 0)
+initial_velocity_min = -100.0
+initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.5
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_aosor")
 
 [node name="IceSpike" type="CharacterBody2D" groups=["strong"]]
 script = ExtResource("1_80x3q")
@@ -96,7 +105,8 @@ autoplay = true
 stream = ExtResource("4_q582x")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-15, 0)
+position = Vector2(-23.5147, -0.176777)
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_o38rw")
 texture = ExtResource("5_6i1b0")
 
