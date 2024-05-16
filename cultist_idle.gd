@@ -90,9 +90,11 @@ func releaseMovement():
 
 var dominated = false
 func mouse_input(event):
+	if dominated:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			dominateMe.emit(self)
 
-func _on_hitbox_input_event(event):
+func _on_hitbox_input_event(_a,event,_b):
 	mouse_input(event)
