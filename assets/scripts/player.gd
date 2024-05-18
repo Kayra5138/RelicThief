@@ -23,6 +23,11 @@ var throwing = false
 var is_dead = false
 var dominating = null
 
+@onready var Hitbox:Area2D = $Hitbox
+@onready var Remote:RemoteTransform2D = $RemoteTransform2D
+@onready var putDownLoc:Node2D = $putDownLoc
+var carrying:RigidBody2D = null
+
 func climbing_state():
 	playerSprite.animation = "jump"
 	var input = Vector2.ZERO
@@ -103,7 +108,21 @@ func _physics_process(delta):
 				playerSprite.animation = "walk"
 				playerSprite.play("walk")
 			facing = 1
-
+		if Input.is_action_just_pressed("interact") and is_on_floor():
+			match carrying:
+				null:
+					for tmp in Hitbox.get_overlapping_areas():
+						if tmp.is_in_group("pickup"):
+							carrying = tmp.get_parent()
+							break
+					if carrying:
+						carrying.being_carried = true
+						Remote.remote_path = carrying.get_path()
+				_:
+					Remote.remote_path = ""
+					carrying.position = putDownLoc.global_position
+					carrying.being_carried = false
+					carrying = null
 			
 	if (Input.is_action_just_released("right") or Input.is_action_just_released("left")):
 		playerSprite.animation = "idle"
