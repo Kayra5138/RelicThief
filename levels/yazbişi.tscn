@@ -1,19 +1,19 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxxm4xxyvp86s"]
 
-[ext_resource type="Script" path="res://levels/yazbişi.gd" id="1_povq2"]
-[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://parallaxbackground.tscn" id="2_u7onu"]
-[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://tilemap.tscn" id="3_h2yar"]
-[ext_resource type="PackedScene" uid="uid://152w1t2ii543" path="res://cave_door.tscn" id="4_608ot"]
-[ext_resource type="PackedScene" uid="uid://ca31cw1jfv7ek" path="res://player.tscn" id="5_hjs18"]
-[ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://water.tscn" id="6_qpwxp"]
-[ext_resource type="PackedScene" uid="uid://cj7tmucguljoc" path="res://ice_column.tscn" id="7_8nclh"]
-[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://cultist_idle.tscn" id="8_glelt"]
+[ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_fn31r"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_u7onu"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/terrain/tilemap.tscn" id="3_h2yar"]
+[ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="4_608ot"]
+[ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="5_hjs18"]
+[ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://assets/objects/water.tscn" id="6_qpwxp"]
+[ext_resource type="PackedScene" uid="uid://cj7tmucguljoc" path="res://assets/skills/ice_column.tscn" id="7_8nclh"]
+[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="8_glelt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgi"]
 size = Vector2(128, 32)
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_povq2")
+script = ExtResource("1_fn31r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 288)
@@ -26,7 +26,7 @@ transform = Transform2D(1, 0, 0, 1, -64, -128)
 position = Vector2(976, 208)
 
 [node name="Player" parent="." instance=ExtResource("5_hjs18")]
-position = Vector2(400, 512)
+position = Vector2(600, 184)
 
 [node name="CultistWalking" parent="." instance=ExtResource("8_glelt")]
 position = Vector2(440, 192)
