@@ -185,7 +185,7 @@ animations = [{
 size = Vector2(20.6293, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn1vm"]
-size = Vector2(25, 61)
+size = Vector2(28, 61.4326)
 
 [sub_resource type="Animation" id="Animation_ct2ne"]
 resource_name = "Death"
@@ -220,7 +220,7 @@ sprite_frames = SubResource("SpriteFrames_c64tv")
 animation = &"5"
 
 [node name="TankLight" type="PointLight2D" parent="."]
-position = Vector2(-13, -5.00001)
+position = Vector2(-16, -4.76837e-07)
 scale = Vector2(7.18359, 6.28516)
 color = Color(0.8, 0.980392, 1, 1)
 energy = 0.5
@@ -235,21 +235,20 @@ texture = SubResource("GradientTexture2D_2tvje")
 sprite_frames = SubResource("SpriteFrames_n2dc4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_8y6ks")
 animation = &"walk"
 autoplay = "idle"
 speed_scale = 2.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-2.31465, 2)
+position = Vector2(-0.314651, 2)
 shape = SubResource("RectangleShape2D_ox8u1")
 
 [node name="IceSpikePosition" type="Marker2D" parent="."]
-visible = false
 position = Vector2(24, -1)
 
 [node name="IceSpikeCollideCheck" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(40, 0)
 
 [node name="IceSpikeCooldown" type="Timer" parent="."]
@@ -258,7 +257,7 @@ one_shot = true
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-3.5, 1.5)
+position = Vector2(-2, 1.71628)
 shape = SubResource("RectangleShape2D_dn1vm")
 
 [node name="LadderCheck" type="RayCast2D" parent="."]
@@ -269,7 +268,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
+position = Vector2(2, 0)
 color = Color(0.870588, 1, 1, 1)
 energy = 0.3
 shadow_enabled = true
@@ -283,12 +282,16 @@ libraries = {
 }
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(0, -52)
+position = Vector2(0, -48)
 update_rotation = false
 update_scale = false
 
 [node name="putDownLoc" type="Node2D" parent="."]
 position = Vector2(32, 0)
+
+[node name="CarriedBoxCollision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -64, 16, -64, 16, -32, 7.5, -29, -15.8793, -28.9694, -16, -32)
+disabled = true
 
 [connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]

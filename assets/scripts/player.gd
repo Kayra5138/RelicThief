@@ -117,9 +117,11 @@ func _physics_process(delta):
 							break
 					if carrying:
 						carrying.being_carried = true
+						$CarriedBoxCollision.disabled = false
 						Remote.remote_path = carrying.get_path()
 				_:
 					Remote.remote_path = ""
+					$CarriedBoxCollision.disabled = true
 					carrying.position = putDownLoc.global_position
 					carrying.being_carried = false
 					carrying = null
@@ -229,4 +231,6 @@ func _on_animated_sprite_2d_animation_changed():
 
 func restart(): # R TUŞU İLE RESTART DÜNYA SKRIPTİNDE DE VAR ONU KAPATMAYI UNUTMA
 	is_dead = true
+	if carrying:
+		carrying.explode()
 	

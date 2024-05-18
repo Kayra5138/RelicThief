@@ -9,7 +9,11 @@ var being_carried = false
 
 func _physics_process(delta):
 	if being_carried:
+		$CollisionShape2D.disabled = true
 		linear_velocity = Vector2.ZERO
+	else:
+		$CollisionShape2D.disabled = false
+		
 
 func explode():
 	queue_free()
