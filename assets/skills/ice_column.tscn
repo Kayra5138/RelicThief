@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj7tmucguljoc"]
 
-[ext_resource type="Script" path="res://IceColumn.gd" id="1_qm6t3"]
+[ext_resource type="Script" path="res://assets/scripts/IceColumn.gd" id="1_qm6t3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glig5"]
 size = Vector2(48, 16)

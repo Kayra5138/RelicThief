@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4b6ax6g8wx7w"]
 
-[ext_resource type="Script" path="res://cultist_idle.gd" id="1_2q26w"]
+[ext_resource type="Script" path="res://assets/scripts/cultist_idle.gd" id="1_2q26w"]
 [ext_resource type="Texture2D" uid="uid://d2wpgfn5moccc" path="res://textures/characters/cultist/cultist.png" id="2_j7q04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duuep"]

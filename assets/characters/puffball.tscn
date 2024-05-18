@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dnd8tokwljq6g"]
 
-[ext_resource type="Script" path="res://puffball.gd" id="1_aummi"]
+[ext_resource type="Script" path="res://assets/scripts/puffball.gd" id="1_aummi"]
 [ext_resource type="Texture2D" uid="uid://cq0rc62btmeqi" path="res://textures/characters/puffball/puffballSprites.png" id="2_in0s7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1doj"]

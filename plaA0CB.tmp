@@ -1,0 +1,304 @@
+[gd_scene load_steps=30 format=3 uid="uid://ctj1spwblps66"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ikhbi"]
+[ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
+[ext_resource type="Texture2D" uid="uid://chyuvv41h6ygs" path="res://textures/characters/player/jump.png" id="3_o4nuv"]
+[ext_resource type="Texture2D" uid="uid://4l0mpnd8y3ed" path="res://textures/characters/player/throw.png" id="4_02tpv"]
+[ext_resource type="Texture2D" uid="uid://doasmp3ocm4tn" path="res://textures/characters/player/walking.png" id="4_cyirp"]
+[ext_resource type="Texture2D" uid="uid://c2qvwpqqw3htk" path="res://textures/characters/player/tank.png" id="6_yrmxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v2ct"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryty2"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4elt"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwl1s"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyj3f"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjalk"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c64tv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v2ct")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryty2")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4elt")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwl1s")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyj3f")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjalk")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_8j6o5"]
+offsets = PackedFloat32Array(0, 0.766234)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2tvje"]
+gradient = SubResource("Gradient_8j6o5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q676h"]
+atlas = ExtResource("6_yrmxm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2dc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q676h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2vyb"]
+atlas = ExtResource("4_02tpv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_005vt"]
+atlas = ExtResource("4_02tpv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj5o1"]
+atlas = ExtResource("4_cyirp")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv7hf"]
+atlas = ExtResource("4_cyirp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4i67"]
+atlas = ExtResource("4_cyirp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbsai"]
+atlas = ExtResource("4_cyirp")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y6ks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_urc0t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o4nuv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2vyb")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_005vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2vyb")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj5o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv7hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4i67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbsai")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ox8u1"]
+size = Vector2(15, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5lkw"]
+size = Vector2(8, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn1vm"]
+size = Vector2(25, 61)
+
+[sub_resource type="Animation" id="Animation_ct2ne"]
+resource_name = "Death"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.341509),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyovr"]
+_data = {
+"Death": SubResource("Animation_ct2ne")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player", "puffTarget", "riding"]]
+modulate = Color(0.759095, 0.759095, 0.759095, 1)
+floor_constant_speed = true
+script = ExtResource("1_ikhbi")
+can_dominate = null
+can_spike = null
+speed = null
+jump_speed = null
+friction = null
+acceleration = null
+metadata/Player = true
+metadata/puffTarget = true
+
+[node name="TankSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c64tv")
+animation = &"5"
+
+[node name="TankLight" type="PointLight2D" parent="."]
+position = Vector2(-13, -5.00001)
+scale = Vector2(7.18359, 6.28516)
+color = Color(0.8, 0.980392, 1, 1)
+energy = 0.5
+range_layer_min = -512
+range_layer_max = 512
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.0
+texture = SubResource("GradientTexture2D_2tvje")
+
+[node name="ChainsSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n2dc4")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8y6ks")
+animation = &"walk"
+autoplay = "idle"
+speed_scale = 2.0
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_ox8u1")
+
+[node name="TankCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-11, -3.5)
+shape = SubResource("RectangleShape2D_j5lkw")
+
+[node name="IceSpikePosition" type="Marker2D" parent="."]
+visible = false
+position = Vector2(24, -1)
+
+[node name="IceSpikeCollideCheck" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(40, 0)
+
+[node name="IceSpikeCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3.5, 1.5)
+shape = SubResource("RectangleShape2D_dn1vm")
+
+[node name="LadderCheck" type="RayCast2D" parent="."]
+position = Vector2(0, -24)
+target_position = Vector2(0, 56)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+color = Color(0.870588, 1, 1, 1)
+energy = 0.3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_uyovr")
+}
+
+[connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]

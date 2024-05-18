@@ -10,7 +10,7 @@ func _physics_process(delta):
 		$GPUParticles2D.emitting = false
 		speed = 0
 		lifetime += -1
-	if lifetime == 45:
+	if lifetime == 48:
 		$ShatterAudio.play()
 	if lifetime < 0:
 		queue_free()
@@ -23,6 +23,6 @@ func _on_hitbox_body_entered(body):
 		disappearing = 1
 		lifetime = 50
 		$AnimatedSprite2D.animation = "impact"
-	if !disappearing and !body.has_meta("spike"):
+	elif !disappearing and !body.has_meta("spike"):
 		disappearing = 1
 		$AnimatedSprite2D.animation = "impact"

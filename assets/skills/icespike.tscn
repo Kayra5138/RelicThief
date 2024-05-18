@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bowxeshevyosm"]
 
-[ext_resource type="Script" path="res://icespike.gd" id="1_80x3q"]
+[ext_resource type="Script" path="res://assets/scripts/icespike.gd" id="1_80x3q"]
 [ext_resource type="Texture2D" uid="uid://c41vlsd7yaxg3" path="res://textures/objects/icespike.png" id="2_aw38s"]
 [ext_resource type="AudioStream" uid="uid://t31wlhuliofr" path="res://sounds/throw.wav" id="3_4sf66"]
 [ext_resource type="AudioStream" uid="uid://d2hpaw2ccy3jl" path="res://sounds/shatter.wav" id="4_q582x"]
@@ -43,18 +43,18 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2e7yd")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_oo1b4")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_kfre3")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_6kwbo")
 }],
 "loop": true,
 "name": &"impact",
-"speed": 4.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytbp"]

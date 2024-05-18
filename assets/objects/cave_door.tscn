@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://152w1t2ii543"]
+[gd_scene load_steps=6 format=3 uid="uid://yuf2lpqfe8ef"]
 
 [ext_resource type="Texture2D" uid="uid://dhfka88y1ge3o" path="res://textures/objects/caveDoor.png" id="1_qwkkd"]
-[ext_resource type="Script" path="res://cave_door.gd" id="1_tbkdu"]
+[ext_resource type="Script" path="res://assets/scripts/cave_door.gd" id="1_tbkdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c57gu"]
 size = Vector2(96, 96)
@@ -20,6 +20,7 @@ fill_to = Vector2(0, 0)
 script = ExtResource("1_tbkdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_c57gu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

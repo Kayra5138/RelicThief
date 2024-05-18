@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://4j2y73lxx7kh"]
+[gd_scene load_steps=7 format=3 uid="uid://bimav6wdt23om"]
 
-[ext_resource type="Script" path="res://movable_block.gd" id="1_3bod6"]
+[ext_resource type="Script" path="res://assets/scripts/movable_block.gd" id="1_3bod6"]
 [ext_resource type="Texture2D" uid="uid://cy0gx4gchlvsi" path="res://textures/objects/crate.png" id="2_fjpf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kld15"]

@@ -1,19 +1,19 @@
 [gd_scene load_steps=16 format=3 uid="uid://babm65apehjmu"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_10wwv"]
-[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://parallaxbackground.tscn" id="2_pfp7h"]
-[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://tilemap.tscn" id="3_3n87t"]
-[ext_resource type="PackedScene" uid="uid://cj7tmucguljoc" path="res://ice_column.tscn" id="3_inyih"]
-[ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://water.tscn" id="4_dbonb"]
-[ext_resource type="PackedScene" uid="uid://152w1t2ii543" path="res://cave_door.tscn" id="4_lcagw"]
-[ext_resource type="PackedScene" uid="uid://ca31cw1jfv7ek" path="res://player.tscn" id="5_bf2sv"]
-[ext_resource type="PackedScene" uid="uid://rs24nl1crjlg" path="res://ladder.tscn" id="6_vuyou"]
-[ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://puffball.tscn" id="7_gkyib"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://button.tscn" id="8_only8"]
-[ext_resource type="PackedScene" uid="uid://ctqaokas1u1ya" path="res://door.tscn" id="9_8y5a6"]
-[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://cultist_idle.tscn" id="10_avco2"]
-[ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://spikes.tscn" id="13_u5urp"]
-[ext_resource type="PackedScene" uid="uid://c57agvoqhc2og" path="res://platform.tscn" id="14_45u1a"]
+[ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_10wwv"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_pfp7h"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/terrain/tilemap.tscn" id="3_3n87t"]
+[ext_resource type="PackedScene" uid="uid://cj7tmucguljoc" path="res://assets/skills/ice_column.tscn" id="3_inyih"]
+[ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://assets/objects/water.tscn" id="4_dbonb"]
+[ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="4_lcagw"]
+[ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="5_bf2sv"]
+[ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="6_vuyou"]
+[ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://assets/characters/puffball.tscn" id="7_gkyib"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="8_only8"]
+[ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="9_8y5a6"]
+[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="10_avco2"]
+[ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://assets/objects/spikes.tscn" id="13_u5urp"]
+[ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="14_45u1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5g0q"]
 size = Vector2(96, 32)
@@ -103,21 +103,27 @@ position = Vector2(46, 560)
 
 [node name="Platform" parent="Platforms" instance=ExtResource("14_45u1a")]
 position = Vector2(16, 224)
+type = 0
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("14_45u1a")]
-position = Vector2(80, 224)
+position = Vector2(48, 224)
+type = 2
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("14_45u1a")]
-position = Vector2(48, 224)
+position = Vector2(80, 224)
+type = 1
 
 [node name="Platform4" parent="Platforms" instance=ExtResource("14_45u1a")]
 position = Vector2(16, 416)
+type = 0
 
 [node name="Platform5" parent="Platforms" instance=ExtResource("14_45u1a")]
 position = Vector2(48, 416)
+type = 2
 
 [node name="Platform6" parent="Platforms" instance=ExtResource("14_45u1a")]
 position = Vector2(80, 416)
+type = 1
 
 [node name="Spikes" type="CanvasGroup" parent="."]
 
@@ -163,7 +169,7 @@ position = Vector2(880, 592)
 position = Vector2(480, 384)
 
 [node name="Player" parent="." instance=ExtResource("5_bf2sv")]
-position = Vector2(80, 544)
+position = Vector2(112, 544)
 
 [node name="puffball" parent="." instance=ExtResource("7_gkyib")]
 position = Vector2(560, 208)

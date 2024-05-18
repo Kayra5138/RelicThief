@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cfuymasi14n4t"]
 
-[ext_resource type="Script" path="res://realestmc.gd" id="1_7f7wx"]
+[ext_resource type="Script" path="res://assets/scripts/realestmc.gd" id="1_7f7wx"]
 [ext_resource type="Texture2D" uid="uid://drnavl5bpaxtw" path="res://textures/objects/minecart.png" id="2_0wosg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8gfi"]

@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var ice_texture = preload("res://ice_texture.tscn")
+var ice_texture = preload("res://assets/skills/ice_texture.tscn")
 
 var rising_time = 0
 @export var speed = 2

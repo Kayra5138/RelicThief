@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var can_dominate = true
 @export var can_spike = true
@@ -11,7 +12,7 @@ var facing = 1 #right: 1 - left: 0
 var skill = 5
 var FLOOR_NORMAL = Vector2.UP
 @onready var playerSprite = $PlayerSprite 
-const ice_spike_path = preload("res://icespike.tscn")
+const ice_spike_path = preload("res://assets/skills/icespike.tscn")
 var coyoteJumpTimer = 15
 var lockControls = false
 var minecartOffset = -32
@@ -19,6 +20,8 @@ const CLIMB_SPEED = 100
 enum {sMOVE, sCLIMB}
 var curState = sMOVE
 var throwing = false
+var is_dead = false
+var dominating = null
 
 func climbing_state():
 	playerSprite.animation = "jump"
@@ -38,22 +41,23 @@ func domination(delta):
 	move_and_slide()
 
 func _physics_process(delta):
+	if is_dead: return
 	match skill:
 		5: 
 			$TankSprite.animation = "5"
-			$TankLight.energy = 0.7
+			$TankLight.energy = 0.45
 		4: 
 			$TankSprite.animation = "4"
-			$TankLight.energy = 0.6
+			$TankLight.energy = 0.4
 		3: 
 			$TankSprite.animation = "3"
-			$TankLight.energy = 0.5
-		2: 
+			$TankLight.energy = 0.35
+		2:
 			$TankSprite.animation = "2"
-			$TankLight.energy = 0.4
+			$TankLight.energy = 0.3
 		1: 
 			$TankSprite.animation = "1"
-			$TankLight.energy = 0.3
+			$TankLight.energy = 0.25
 		0: 
 			$TankSprite.animation = "0"
 			$TankLight.energy = 0.2
@@ -86,8 +90,7 @@ func _physics_process(delta):
 	if (velocity.x > 0 and velocity.x < 10) or (velocity.x > -10 and velocity.x < 0):
 		velocity.x = 0
 	
-	if Input.is_action_just_pressed("restart"):
-		restart()
+	#if Input.is_action_just_pressed("restart"): restart()
 	
 	if throwing == false:
 		if Input.is_action_pressed("left"):
@@ -150,7 +153,6 @@ func shoot_ice_spike():
 		ice_spike.icespikevelocity.x = -1
 		ice_spike.scale.x = -1
 
-var dominating = null
 func dominate(cultist):
 	if dominating != null:
 		return
@@ -168,9 +170,6 @@ func stopDominate():
 func explode():
 	restart()
 
-func restart():
-	get_tree().reload_current_scene()
-
 func _on_hitbox_body_entered(body):
 	if body.has_meta("enemy") and body != dominating:
 		restart()
@@ -187,7 +186,6 @@ func ladder_check():
 		curState = sCLIMB
 	else:
 		curState = sMOVE
-
 
 func mouse_input(event):
 	if event is InputEventMouseButton:
@@ -210,3 +208,6 @@ func _on_animated_sprite_2d_animation_changed():
 	if playerSprite.animation != "throw":
 		throwing = false
 
+func restart(): # R TUŞU İLE RESTART DÜNYA SKRIPTİNDE DE VAR ONU KAPATMAYI UNUTMA
+	is_dead = true
+	

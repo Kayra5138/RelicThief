@@ -28,7 +28,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	else:
 		velocity.x = speed
-	if !$GroundCheck.is_colliding() or $WallCheck.is_colliding():
+	if !$GroundCheck.is_colliding() or ($WallCheck.get_collider() != null and !$WallCheck.get_collider() is Player):
 		flip()
 	move_and_slide()
 

@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-const explosionScene = preload("res://explosion.tscn")
+const explosionScene = preload("res://assets/characters/explosion.tscn")
 
 var lockMove = false
 var minecartOffset = -24
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")/2
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 4
 
 enum {SLEEP,SEARCH, PURSUE}
 var state = SLEEP
@@ -105,7 +105,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = not turnToPlayer(bodies)
 			if targetHere(bodies) != null:
 				agitation = agitationLimit
-				if charge > chargeLimit:
+				if charge > chargeLimit and is_on_floor():
 					var target = targetHere(bodies)
 					var vec:Vector2 = target.position - position
 					velocity = Vector2.from_angle(PI*110/180)*speed if vec.x > 0 else Vector2.from_angle(PI*70/180)*speed

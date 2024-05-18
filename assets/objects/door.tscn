@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctqaokas1u1ya"]
+[gd_scene load_steps=6 format=3 uid="uid://dbpe3nn7oukb0"]
 
 [ext_resource type="Texture2D" uid="uid://ctb3lbdbdrhql" path="res://textures/objects/door.png" id="1_er06o"]
-[ext_resource type="Script" path="res://door.gd" id="1_ok0kj"]
+[ext_resource type="Script" path="res://assets/scripts/door.gd" id="1_ok0kj"]
 [ext_resource type="Texture2D" uid="uid://dhvnqjjoo1tul" path="res://textures/objects/doorOpen.png" id="2_2dvoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ewl"]

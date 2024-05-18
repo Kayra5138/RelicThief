@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://nmic8dgsotbn"]
 
-[ext_resource type="Script" path="res://explosion.gd" id="1_bu2rc"]
+[ext_resource type="Script" path="res://assets/scripts/explosion.gd" id="1_6glcj"]
 [ext_resource type="Texture2D" uid="uid://cnkbopw1yrqm7" path="res://textures/characters/puffball/explosion.png" id="2_3gb83"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pc370"]
@@ -78,7 +78,7 @@ animations = [{
 radius = 63.0
 
 [node name="Explosion" type="Area2D"]
-script = ExtResource("1_bu2rc")
+script = ExtResource("1_6glcj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2

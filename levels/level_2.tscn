@@ -1,18 +1,18 @@
 [gd_scene load_steps=14 format=3 uid="uid://c7hl5h3d31oig"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_qe48s"]
-[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://parallaxbackground.tscn" id="2_sd2ql"]
-[ext_resource type="PackedScene" uid="uid://rs24nl1crjlg" path="res://ladder.tscn" id="5_a34n7"]
-[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://tilemap.tscn" id="5_vja0l"]
-[ext_resource type="PackedScene" uid="uid://152w1t2ii543" path="res://cave_door.tscn" id="6_13s4n"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://button.tscn" id="7_qav2y"]
-[ext_resource type="PackedScene" uid="uid://ctqaokas1u1ya" path="res://door.tscn" id="8_m3uei"]
-[ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://cultist_walking.tscn" id="9_j6f5m"]
-[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://cultist_idle.tscn" id="10_jdxim"]
-[ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://puffball.tscn" id="11_uwr4u"]
-[ext_resource type="PackedScene" uid="uid://ca31cw1jfv7ek" path="res://player.tscn" id="12_76p6f"]
-[ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://spikes.tscn" id="13_3gqnp"]
-[ext_resource type="PackedScene" uid="uid://c57agvoqhc2og" path="res://platform.tscn" id="13_a6ub7"]
+[ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_qe48s"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_sd2ql"]
+[ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="5_a34n7"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/terrain/tilemap.tscn" id="5_vja0l"]
+[ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="6_13s4n"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="7_qav2y"]
+[ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="8_m3uei"]
+[ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://assets/characters/cultist_walking.tscn" id="9_j6f5m"]
+[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="10_jdxim"]
+[ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://assets/characters/puffball.tscn" id="11_uwr4u"]
+[ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="12_76p6f"]
+[ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://assets/objects/spikes.tscn" id="13_3gqnp"]
+[ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="13_a6ub7"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qe48s")
@@ -108,11 +108,14 @@ position = Vector2(384, 528)
 
 [node name="Platform" parent="." instance=ExtResource("13_a6ub7")]
 position = Vector2(48, 256)
+type = 0
 
 [node name="Platform2" parent="." instance=ExtResource("13_a6ub7")]
 position = Vector2(80, 256)
+type = 2
 
 [node name="Platform3" parent="." instance=ExtResource("13_a6ub7")]
 position = Vector2(112, 256)
+type = 1
 
 [connection signal="ready" from="." to="." method="_on_ready"]
