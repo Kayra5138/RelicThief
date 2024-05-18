@@ -291,8 +291,38 @@ update_scale = false
 position = Vector2(32, 0)
 
 [node name="CarriedBoxCollision" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-16, -64, 16, -64, 16, -32, 7.5, -29, -15.8793, -28.9694, -16, -32)
 disabled = true
+
+[node name="boxPickupChecks" type="Node2D" parent="."]
+
+[node name="1" type="RayCast2D" parent="boxPickupChecks"]
+position = Vector2(-15, -30)
+rotation = 3.14159
+target_position = Vector2(0, 34)
+
+[node name="2" type="RayCast2D" parent="boxPickupChecks"]
+position = Vector2(0, -30)
+rotation = -3.14159
+target_position = Vector2(0, 34)
+
+[node name="3" type="RayCast2D" parent="boxPickupChecks"]
+position = Vector2(15, -30)
+rotation = -3.14159
+target_position = Vector2(0, 34)
+
+[node name="boxPutdownChecks" type="Node2D" parent="."]
+
+[node name="RayCast2D2" type="RayCast2D" parent="boxPutdownChecks"]
+position = Vector2(11.8, -5.36442e-06)
+scale = Vector2(0.9, 0.9)
+target_position = Vector2(40, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="boxPutdownChecks"]
+position = Vector2(12, 30)
+scale = Vector2(0.9, 0.9)
+target_position = Vector2(40, 0)
 
 [connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]

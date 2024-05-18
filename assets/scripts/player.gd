@@ -109,17 +109,29 @@ func _physics_process(delta):
 				playerSprite.play("walk")
 			facing = 1
 		if Input.is_action_just_pressed("interact") and is_on_floor():
-			match carrying:
-				null:
+			if carrying == null:
+				var pickup_colliding = false
+				for raycast in $boxPickupChecks.get_children():
+					if raycast.is_colliding():
+						pickup_colliding = true
+						break
+				if not pickup_colliding:
 					for tmp in Hitbox.get_overlapping_areas():
 						if tmp.is_in_group("pickup"):
 							carrying = tmp.get_parent()
 							break
 					if carrying:
+						print("asdasd")
 						carrying.being_carried = true
 						$CarriedBoxCollision.disabled = false
 						Remote.remote_path = carrying.get_path()
-				_:
+			else:
+				var putdown_colliding = false
+				for raycast in $boxPutdownChecks.get_children():
+					if raycast.is_colliding():
+						putdown_colliding = true
+						break
+				if not putdown_colliding:
 					Remote.remote_path = ""
 					$CarriedBoxCollision.disabled = true
 					carrying.position = putDownLoc.global_position
@@ -133,7 +145,6 @@ func _physics_process(delta):
 		playerSprite.animation = "jump"
 		if coyoteJumpTimer > 0:
 			coyoteJumpTimer += -1
-		
 	
 	if is_on_floor():
 		coyoteJumpTimer = 15
