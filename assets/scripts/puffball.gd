@@ -11,9 +11,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 4
 enum {SLEEP,SEARCH, PURSUE}
 var state = SLEEP
 var agitation = 0
-var agitationLimit = 50
+var agitationLimit = 8
 var charge = 0
-var chargeLimit = 50
+var chargeLimit = 5
+var agitation_delta_multiplier = 10
 
 var speed = -300
 
@@ -78,6 +79,7 @@ func _physics_process(delta):
 			move_and_slide()
 		return
 	var bodies = $Vision.get_overlapping_bodies()
+	var tmp_delta = agitation_delta_multiplier * delta
 	match state:
 		SLEEP:
 			$AnimatedSprite2D.animation = sleep
@@ -91,9 +93,9 @@ func _physics_process(delta):
 				state = PURSUE
 			else:
 				if targetHere(bodies) != null:
-					agitation += 1
+					agitation += tmp_delta
 				else:
-					agitation -= 1
+					agitation -= tmp_delta
 				if agitation <= 0:
 					agitation = 0
 					state = SLEEP
@@ -110,13 +112,13 @@ func _physics_process(delta):
 					var vec:Vector2 = target.position - position
 					velocity = Vector2.from_angle(PI*110/180)*speed if vec.x > 0 else Vector2.from_angle(PI*70/180)*speed
 					charge = 0
-				else:
-					charge += 1
+				elif is_on_floor():
+					charge += tmp_delta
 			else:
 				if charge > 0:
-					charge -= 1
+					charge -= tmp_delta
 				else:
-					agitation -= 1
+					agitation -= tmp_delta
 				if agitation < agitationLimit/2.0:
 					state = SEARCH
 					agitation = agitationLimit

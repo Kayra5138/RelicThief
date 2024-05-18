@@ -57,7 +57,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Platform" type="StaticBody2D"]
+[node name="Platform" type="StaticBody2D" groups=["strong"]]
 script = ExtResource("1_aq5wu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
