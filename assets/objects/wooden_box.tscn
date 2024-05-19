@@ -1,40 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvr7em1luh0o8"]
+[gd_scene load_steps=7 format=3 uid="uid://dvr7em1luh0o8"]
 
 [ext_resource type="Texture2D" uid="uid://cy0gx4gchlvsi" path="res://textures/objects/crate.png" id="1_27jx0"]
 [ext_resource type="Script" path="res://assets/scripts/wooden_box.gd" id="1_pc188"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hxgx"]
-size = Vector2(32, 32)
+size = Vector2(30, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul5th"]
-size = Vector2(32, 23)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lj6f"]
+size = Vector2(43, 23)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qsy15"]
-radius = 26.0192
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x6aj"]
+size = Vector2(30, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sx0us"]
+size = Vector2(45, 8)
 
 [node name="WoodenBox" type="CharacterBody2D"]
-collision_mask = 31
+collision_mask = 19
 platform_on_leave = 2
-platform_floor_layers = 4294967280
+platform_floor_layers = 4294967040
+safe_margin = 0.001
 script = ExtResource("1_pc188")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8hxgx")
-
-[node name="CarriedCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4.5)
-shape = SubResource("RectangleShape2D_ul5th")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_27jx0")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_8hxgx")
+
 [node name="PickupRadius" type="Area2D" parent="." groups=["pickup"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRadius"]
-shape = SubResource("CircleShape2D_qsy15")
+shape = SubResource("RectangleShape2D_8lj6f")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, 16)
-target_position = Vector2(0, 19.02)
+[node name="BoxTopCol" type="CharacterBody2D" parent="." groups=["strong"]]
+position = Vector2(0, -8)
 collision_mask = 16
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxTopCol"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_1x6aj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["strong"]]
+position = Vector2(0, -10)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_sx0us")

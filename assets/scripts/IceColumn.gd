@@ -1,6 +1,10 @@
 extends StaticBody2D
 
 var ice_texture = preload("res://assets/skills/ice_texture.tscn")
+@onready var onTop:Area2D = $onTop
+var nudge_speed = 300
+
+signal can_i_do
 
 var rising_time = 0
 @export var speed = 2
@@ -33,19 +37,21 @@ func _physics_process(delta):
 			$Area2D.scale.y /= scale.y/last_y_scale
 			last_y_scale = scale.y
 			state += 1
-	
+
+func do_skill():
+	rise = true
+	if first:
+		ice_text = ice_texture.instantiate()
+		ice_text.position = position
+		get_parent().add_child(ice_text)
+		first = false
 
 func mouse_input(event):
 	if state == len(lst):
 		return
 	if event is InputEventMouseButton and not rise:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			rise = true
-			if first:
-				ice_text = ice_texture.instantiate()
-				ice_text.position = position
-				get_parent().add_child(ice_text)
-				first = false
+			can_i_do.emit(self)
 
 func explode():
 	if ice_text != null:

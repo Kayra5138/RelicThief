@@ -70,9 +70,11 @@ interact={
 
 2d_physics/layer_1="Objects"
 2d_physics/layer_2="Player_head"
-2d_physics/layer_3="Walking_Cultist_Head"
-2d_physics/layer_4="Idle_cultist_head"
+2d_physics/layer_3="Layer 3"
+2d_physics/layer_4="Layer 4"
 2d_physics/layer_5="terrain"
+2d_physics/layer_6="Layer 6"
+2d_physics/layer_8="vision_block"
 
 [physics]
 

@@ -116,7 +116,6 @@ func _physics_process(delta):
 				elif is_on_floor():
 					charge += tmp_delta
 				elif velocity.x == 0:
-					print("woo")
 					velocity.x = -nudge*delta if vec.x > 0 else nudge*delta
 			else:
 				if charge > 0:
@@ -141,3 +140,7 @@ func releaseMovement():
 
 func explode():
 	queue_free()
+
+func _on_area_2d_body_entered(body):
+	pass
+	#exploding = true
