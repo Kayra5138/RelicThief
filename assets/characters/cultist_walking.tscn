@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjeqayij4shr4"]
+[gd_scene load_steps=7 format=3 uid="uid://cjeqayij4shr4"]
 
 [ext_resource type="Script" path="res://assets/scripts/cultist_walking.gd" id="1_2rhdr"]
 [ext_resource type="Texture2D" uid="uid://d2wpgfn5moccc" path="res://textures/characters/cultist/cultist.png" id="2_fjo6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhfrp"]
-size = Vector2(20, 62)
+size = Vector2(20, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pmdv0"]
 animations = [{
@@ -20,11 +20,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxmxs"]
 size = Vector2(30, 62.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmbvn"]
+size = Vector2(20, 3)
+
 [node name="CultistWalking" type="CharacterBody2D" groups=["cultist", "puffTarget"]]
+collision_mask = 11
+platform_on_leave = 2
+platform_floor_layers = 4294967280
 script = ExtResource("1_2rhdr")
 metadata/enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_yhfrp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -44,6 +51,17 @@ hit_from_inside = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_hxmxs")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, -28)
+collision_layer = 4
+collision_mask = 0
+platform_on_leave = 2
+platform_floor_layers = 4294967280
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_nmbvn")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]

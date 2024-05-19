@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvr7em1luh0o8"]
+[gd_scene load_steps=6 format=3 uid="uid://dvr7em1luh0o8"]
 
 [ext_resource type="Texture2D" uid="uid://cy0gx4gchlvsi" path="res://textures/objects/crate.png" id="1_27jx0"]
 [ext_resource type="Script" path="res://assets/scripts/wooden_box.gd" id="1_pc188"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxja7"]
-friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hxgx"]
 size = Vector2(32, 32)
@@ -15,11 +12,10 @@ size = Vector2(32, 23)
 [sub_resource type="CircleShape2D" id="CircleShape2D_qsy15"]
 radius = 26.0192
 
-[node name="WoodenBox" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_mxja7")
-center_of_mass_mode = 1
-can_sleep = false
-lock_rotation = true
+[node name="WoodenBox" type="CharacterBody2D"]
+collision_mask = 15
+platform_on_leave = 2
+platform_floor_layers = 4294967280
 script = ExtResource("1_pc188")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

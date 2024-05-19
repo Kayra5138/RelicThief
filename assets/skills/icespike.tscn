@@ -79,6 +79,7 @@ scale_min = 0.5
 color_ramp = SubResource("GradientTexture1D_aosor")
 
 [node name="IceSpike" type="CharacterBody2D" groups=["strong"]]
+collision_mask = 15
 script = ExtResource("1_80x3q")
 metadata/spike = true
 

@@ -66,6 +66,12 @@ interact={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="Player_head"
+2d_physics/layer_3="Walking_Cultist_Head"
+2d_physics/layer_4="Idle_cultist_head"
+
 [physics]
 
 2d/default_gravity=2000.0

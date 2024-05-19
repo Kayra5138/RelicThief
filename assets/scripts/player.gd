@@ -26,7 +26,7 @@ var dominating = null
 @onready var Hitbox:Area2D = $Hitbox
 @onready var Remote:RemoteTransform2D = $RemoteTransform2D
 @onready var putDownLoc:Node2D = $putDownLoc
-var carrying:RigidBody2D = null
+var carrying:CharacterBody2D = null
 
 func climbing_state():
 	playerSprite.animation = "jump"
@@ -124,6 +124,7 @@ func _physics_process(delta):
 						carrying.being_carried = true
 						$CarriedBoxCollision.disabled = false
 						$PlayerCollision.disabled = true
+						$TopCollision/CollisionShape2D.disabled = true
 						Remote.remote_path = carrying.get_path()
 			else:
 				var putdown_colliding = false
@@ -135,6 +136,7 @@ func _physics_process(delta):
 					Remote.remote_path = ""
 					$CarriedBoxCollision.disabled = true
 					$PlayerCollision.disabled = false
+					$TopCollision/CollisionShape2D.disabled = false
 					carrying.position = putDownLoc.global_position
 					carrying.being_carried = false
 					carrying = null

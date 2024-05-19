@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4b6ax6g8wx7w"]
+[gd_scene load_steps=7 format=3 uid="uid://c4b6ax6g8wx7w"]
 
 [ext_resource type="Script" path="res://assets/scripts/cultist_idle.gd" id="1_2q26w"]
 [ext_resource type="Texture2D" uid="uid://d2wpgfn5moccc" path="res://textures/characters/cultist/cultist.png" id="2_j7q04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duuep"]
-size = Vector2(20, 62)
+size = Vector2(20, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pmdv0"]
 animations = [{
@@ -18,14 +18,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxmxs"]
-size = Vector2(30, 65)
+size = Vector2(30, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu40t"]
+size = Vector2(20, 2)
 
 [node name="CultistIdle" type="CharacterBody2D" groups=["cultist", "puffTarget", "riding"]]
+collision_mask = 7
+platform_on_leave = 2
+platform_floor_layers = 4294967280
 script = ExtResource("1_2q26w")
 metadata/enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_duuep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -34,7 +40,7 @@ sprite_frames = SubResource("SpriteFrames_pmdv0")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-1, -0.5)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_hxmxs")
 
 [node name="EyeSight" type="CanvasGroup" parent="."]
@@ -55,6 +61,15 @@ target_position = Vector2(268, 16)
 position = Vector2(-16, 0)
 scale = Vector2(1, 8)
 target_position = Vector2(-64, 0)
+
+[node name="TopCol" type="CharacterBody2D" parent="."]
+position = Vector2(0, -28)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopCol"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_vu40t")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]
