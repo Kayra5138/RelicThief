@@ -24,9 +24,9 @@ size = Vector2(30, 62)
 size = Vector2(20, 2)
 
 [node name="CultistIdle" type="CharacterBody2D" groups=["cultist", "puffTarget", "riding"]]
-collision_mask = 7
+collision_mask = 23
 platform_on_leave = 2
-platform_floor_layers = 4294967280
+platform_floor_layers = 4294967264
 script = ExtResource("1_2q26w")
 metadata/enemy = true
 
@@ -48,24 +48,28 @@ shape = SubResource("RectangleShape2D_hxmxs")
 [node name="EyeSight1" type="RayCast2D" parent="EyeSight"]
 position = Vector2(0, -32)
 target_position = Vector2(272, -16)
+collision_mask = 17
 
 [node name="EyeSight2" type="RayCast2D" parent="EyeSight"]
 position = Vector2(0, -16)
 target_position = Vector2(288, 0)
+collision_mask = 17
 
 [node name="EyeSight3" type="RayCast2D" parent="EyeSight"]
 position = Vector2(4, 0)
 target_position = Vector2(268, 16)
+collision_mask = 17
 
 [node name="EyeSightBack" type="RayCast2D" parent="EyeSight"]
 position = Vector2(-16, 0)
 scale = Vector2(1, 8)
 target_position = Vector2(-64, 0)
+collision_mask = 17
 
 [node name="TopCol" type="CharacterBody2D" parent="."]
 position = Vector2(0, -28)
 collision_layer = 8
-collision_mask = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopCol"]
 position = Vector2(-1, -2)

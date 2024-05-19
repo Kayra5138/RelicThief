@@ -17,6 +17,7 @@ var chargeLimit = 5
 var agitation_delta_multiplier = 10
 
 var speed = -300
+var nudge = 300
 
 var exploding = false
 var explosionCharge = 0
@@ -107,13 +108,16 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = not turnToPlayer(bodies)
 			if targetHere(bodies) != null:
 				agitation = agitationLimit
+				var target = targetHere(bodies)
+				var vec:Vector2 = target.position - position
 				if charge > chargeLimit and is_on_floor():
-					var target = targetHere(bodies)
-					var vec:Vector2 = target.position - position
 					velocity = Vector2.from_angle(PI*110/180)*speed if vec.x > 0 else Vector2.from_angle(PI*70/180)*speed
 					charge = 0
 				elif is_on_floor():
 					charge += tmp_delta
+				elif velocity.x == 0:
+					print("woo")
+					velocity.x = -nudge*delta if vec.x > 0 else nudge*delta
 			else:
 				if charge > 0:
 					charge -= tmp_delta

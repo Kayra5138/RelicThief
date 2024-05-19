@@ -24,7 +24,7 @@ size = Vector2(30, 62.5)
 size = Vector2(20, 3)
 
 [node name="CultistWalking" type="CharacterBody2D" groups=["cultist", "puffTarget"]]
-collision_mask = 11
+collision_mask = 27
 platform_on_leave = 2
 platform_floor_layers = 4294967280
 script = ExtResource("1_2rhdr")
@@ -40,10 +40,12 @@ sprite_frames = SubResource("SpriteFrames_pmdv0")
 [node name="GroundCheck" type="RayCast2D" parent="."]
 position = Vector2(18, 12)
 target_position = Vector2(0, 20)
+collision_mask = 17
 
 [node name="WallCheck" type="RayCast2D" parent="."]
 position = Vector2(27, -30)
 target_position = Vector2(0, 61)
+collision_mask = 17
 hit_from_inside = true
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -52,14 +54,14 @@ hit_from_inside = true
 position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_hxmxs")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="TopCol" type="CharacterBody2D" parent="."]
 position = Vector2(0, -28)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 16
 platform_on_leave = 2
 platform_floor_layers = 4294967280
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopCol"]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_nmbvn")
 

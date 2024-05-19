@@ -19,7 +19,7 @@ func _physics_process(delta):
 
 
 func _on_hitbox_body_entered(body):
-	if body.has_meta("puffball"):
+	if body.has_meta("puffball") and !disappearing:
 		disappearing = 1
 		lifetime = 50
 		$AnimatedSprite2D.animation = "impact"

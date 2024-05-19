@@ -5,7 +5,7 @@ signal letGoPls
 
 @export var minecartOffset = -30.0
 @export var friction = 10
-@export var speed = 100.0
+@export var speed = 40 * 100
 const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = true
@@ -19,6 +19,7 @@ func _ready():
 func am_dom(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	velocity.x *= delta
 	move_and_slide()
 	velocity = velocity.move_toward(Vector2.ZERO,friction)
 	
@@ -29,19 +30,23 @@ func _physics_process(delta):
 		am_dom(delta)
 		return
 	playerSeen = false
-	if $EyeSight/EyeSight1.is_colliding() and $EyeSight/EyeSight1.get_collider().has_meta("Player"):
+	var seen1 = $EyeSight/EyeSight1
+	if $EyeSight/EyeSight1.is_colliding() and seen1.get_collider().has_meta("Player"):
 		playerSeen = true
-	if $EyeSight/EyeSight2.is_colliding() and $EyeSight/EyeSight2.get_collider().has_meta("Player"):
+	var seen2 = $EyeSight/EyeSight2
+	if $EyeSight/EyeSight2.is_colliding() and seen2.get_collider().has_meta("Player"):
 		playerSeen = true
-	if $EyeSight/EyeSight3.is_colliding() and $EyeSight/EyeSight3.get_collider().has_meta("Player"):
+	var seen3 = $EyeSight/EyeSight3
+	if $EyeSight/EyeSight3.is_colliding() and seen3.get_collider().has_meta("Player"):
 		playerSeen = true
-	if $EyeSight/EyeSightBack.is_colliding() and $EyeSight/EyeSightBack.get_collider().has_meta("Player"):
+	var seenback = $EyeSight/EyeSightBack
+	if $EyeSight/EyeSightBack.is_colliding() and seenback.get_collider().has_meta("Player"):
 		flip()
 		playerSeen = true
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	elif playerSeen:
-		velocity.x = speed
+		velocity.x = speed * delta
 	else:
 		velocity.x = 0
 	move_and_slide()
