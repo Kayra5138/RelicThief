@@ -200,7 +200,7 @@ position = Vector2(816, 448)
 position = Vector2(480, 392)
 
 [node name="WoodenBox" parent="." instance=ExtResource("13_mt6gr")]
-position = Vector2(80, 456)
+position = Vector2(80, 336)
 
 [node name="CultistIdle" parent="." instance=ExtResource("14_jmhm8")]
 position = Vector2(480, 448)
