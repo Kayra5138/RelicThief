@@ -66,7 +66,7 @@ func _physics_process(delta):
 		0: 
 			$TankSprite.animation = "0"
 			$TankLight.energy = 0.2
-	if dominating != null:
+	if dominating:
 		domination(delta)
 		return
 		
@@ -163,7 +163,7 @@ func _physics_process(delta):
 		coyoteJumpTimer = 0
 
 
-	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor():
+	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor() and not carrying:
 		skill -= 1
 		shoot_ice_spike()
 		
@@ -206,7 +206,7 @@ func explode():
 	restart()
 
 func _on_hitbox_body_entered(body):
-	if body.has_meta("enemy") and body != dominating:
+	if body.has_meta("enemy"):
 		restart()
 
 func lockMovement():
@@ -217,7 +217,7 @@ func releaseMovement():
 	lockControls = false
 
 func ladder_check():
-	if $LadderCheck.get_collider() is Ladder:
+	if $LadderCheck.get_collider() is Ladder and not carrying:
 		curState = sCLIMB
 	else:
 		curState = sMOVE
@@ -245,6 +245,7 @@ func _on_animated_sprite_2d_animation_changed():
 
 func restart(): # R TUŞU İLE RESTART DÜNYA SKRIPTİNDE DE VAR ONU KAPATMAYI UNUTMA
 	is_dead = true
-	if carrying:
-		carrying.explode()
+	var tmp = carrying
+	if tmp:
+		tmp.explode()
 	
