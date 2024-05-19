@@ -224,7 +224,7 @@ size = Vector2(18, 3)
 [node name="Player" type="CharacterBody2D" groups=["player", "puffTarget", "riding"]]
 modulate = Color(0.759095, 0.759095, 0.759095, 1)
 use_parent_material = true
-collision_mask = 13
+collision_mask = 29
 floor_constant_speed = true
 floor_block_on_wall = false
 platform_on_leave = 2
@@ -270,12 +270,12 @@ position = Vector2(24, 1)
 [node name="IceSpikeCollideCheck" type="RayCast2D" parent="."]
 position = Vector2(0, 1)
 target_position = Vector2(40, 0)
+collision_mask = 17
 
 [node name="IceSpikeCooldown" type="Timer" parent="."]
 one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-2, 1.71628)
@@ -308,7 +308,7 @@ update_rotation = false
 update_scale = false
 
 [node name="putDownLoc" type="Node2D" parent="."]
-position = Vector2(32, 0)
+position = Vector2(25, 0)
 
 [node name="CarriedBoxCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -321,42 +321,46 @@ disabled = true
 position = Vector2(-17, -30)
 rotation = 3.14159
 target_position = Vector2(0, 34)
+collision_mask = 17
 hit_from_inside = true
 
 [node name="2" type="RayCast2D" parent="boxPickupChecks"]
 position = Vector2(0, -30)
 rotation = -3.14159
 target_position = Vector2(0, 34)
+collision_mask = 17
 hit_from_inside = true
 
 [node name="3" type="RayCast2D" parent="boxPickupChecks"]
 position = Vector2(17, -30)
 rotation = -3.14159
 target_position = Vector2(0, 34)
+collision_mask = 17
 hit_from_inside = true
 
 [node name="boxPutdownChecks" type="Node2D" parent="."]
-visible = false
 
 [node name="RayCast2D2" type="RayCast2D" parent="boxPutdownChecks"]
-position = Vector2(16, 0)
+position = Vector2(13, 0)
 scale = Vector2(0.9, 0.9)
-target_position = Vector2(35, 0)
+target_position = Vector2(31, 0)
+collision_mask = 17
 hit_from_inside = true
 
 [node name="RayCast2D" type="RayCast2D" parent="boxPutdownChecks"]
-position = Vector2(16, 30)
+position = Vector2(13, 30)
 scale = Vector2(0.9, 0.9)
-target_position = Vector2(35, 0)
+target_position = Vector2(31, 0)
+collision_mask = 17
 hit_from_inside = true
 
 [node name="TopCollision" type="CharacterBody2D" parent="."]
 position = Vector2(0, -30)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 16
 motion_mode = 1
 platform_on_leave = 2
-platform_floor_layers = 4294967294
+platform_floor_layers = 4294967264
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopCollision"]
 position = Vector2(0, 3.5)
