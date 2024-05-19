@@ -136,11 +136,11 @@ func lockMovement():
 	lockMove = true
 
 func releaseMovement():
-	lockMove = false		
+	lockMove = false
 
 func explode():
 	queue_free()
 
 func _on_area_2d_body_entered(body):
-	pass
-	#exploding = true
+	if body != self:
+		exploding = true

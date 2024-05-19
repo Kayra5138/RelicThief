@@ -66,10 +66,10 @@ position = Vector2(880, 368)
 position = Vector2(208, 544)
 
 [node name="puffball" parent="." instance=ExtResource("11_6qbg0")]
-position = Vector2(208, 336)
+position = Vector2(208, 208)
 
 [node name="Player" parent="." instance=ExtResource("12_oqlij")]
-position = Vector2(208, 232)
+position = Vector2(208, 320)
 
 [node name="Spikes" parent="." instance=ExtResource("13_dg20b")]
 position = Vector2(928, 512)
@@ -108,9 +108,9 @@ layer_0/tile_data = PackedInt32Array(-65504, 589824, 1, 32, 851968, 1, 65568, 58
 position = Vector2(208, 448)
 
 [node name="WoodenBox4" parent="." instance=ExtResource("11_egcdv")]
-position = Vector2(208, 312)
+position = Vector2(208, 272)
 
 [node name="WoodenBox5" parent="." instance=ExtResource("11_egcdv")]
-position = Vector2(208, 280)
+position = Vector2(208, 240)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
