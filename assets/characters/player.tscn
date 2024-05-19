@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ctj1spwblps66"]
+[gd_scene load_steps=32 format=3 uid="uid://ctj1spwblps66"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4l0mpnd8y3ed" path="res://textures/characters/player/throw.png" id="4_02tpv"]
 [ext_resource type="Texture2D" uid="uid://doasmp3ocm4tn" path="res://textures/characters/player/walking.png" id="4_cyirp"]
 [ext_resource type="Texture2D" uid="uid://c2qvwpqqw3htk" path="res://textures/characters/player/tank.png" id="6_yrmxm"]
+[ext_resource type="Shader" path="res://assets/shaders/color_tint.gdshader" id="7_lpeor"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v2ct"]
 atlas = ExtResource("6_yrmxm")
@@ -107,6 +108,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkqls"]
+shader = ExtResource("7_lpeor")
+shader_parameter/color = Color(1, 0, 0.733333, 1)
+shader_parameter/tint_factor = 1.0
+shader_parameter/fade = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2vyb"]
 atlas = ExtResource("4_02tpv")
 region = Rect2(0, 0, 64, 64)
@@ -182,7 +189,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ox8u1"]
-size = Vector2(20.6293, 60)
+size = Vector2(18, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn1vm"]
 size = Vector2(28, 61.4326)
@@ -208,9 +215,16 @@ _data = {
 "Death": SubResource("Animation_ct2ne")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm0cb"]
+size = Vector2(18, 96)
+
 [node name="Player" type="CharacterBody2D" groups=["player", "puffTarget", "riding"]]
 modulate = Color(0.759095, 0.759095, 0.759095, 1)
+use_parent_material = true
 floor_constant_speed = true
+floor_block_on_wall = false
+platform_on_leave = 2
+platform_floor_layers = 4294901760
 script = ExtResource("1_ikhbi")
 metadata/Player = true
 metadata/puffTarget = true
@@ -236,14 +250,14 @@ texture = SubResource("GradientTexture2D_2tvje")
 sprite_frames = SubResource("SpriteFrames_n2dc4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, 0)
+material = SubResource("ShaderMaterial_vkqls")
 sprite_frames = SubResource("SpriteFrames_8y6ks")
 animation = &"walk"
 autoplay = "idle"
 speed_scale = 2.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.314651, 2)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ox8u1")
 
 [node name="IceSpikePosition" type="Marker2D" parent="."]
@@ -256,6 +270,7 @@ target_position = Vector2(40, 0)
 one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-2, 1.71628)
@@ -290,39 +305,45 @@ update_scale = false
 [node name="putDownLoc" type="Node2D" parent="."]
 position = Vector2(32, 0)
 
-[node name="CarriedBoxCollision" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(-16, -64, 16, -64, 16, -32, 7.5, -29, -15.8793, -28.9694, -16, -32)
+[node name="CarriedBoxCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_pm0cb")
 disabled = true
 
 [node name="boxPickupChecks" type="Node2D" parent="."]
 
 [node name="1" type="RayCast2D" parent="boxPickupChecks"]
-position = Vector2(-15, -30)
+position = Vector2(-17, -30)
 rotation = 3.14159
 target_position = Vector2(0, 34)
+hit_from_inside = true
 
 [node name="2" type="RayCast2D" parent="boxPickupChecks"]
 position = Vector2(0, -30)
 rotation = -3.14159
 target_position = Vector2(0, 34)
+hit_from_inside = true
 
 [node name="3" type="RayCast2D" parent="boxPickupChecks"]
-position = Vector2(15, -30)
+position = Vector2(17, -30)
 rotation = -3.14159
 target_position = Vector2(0, 34)
+hit_from_inside = true
 
 [node name="boxPutdownChecks" type="Node2D" parent="."]
+visible = false
 
 [node name="RayCast2D2" type="RayCast2D" parent="boxPutdownChecks"]
-position = Vector2(11.8, -5.36442e-06)
+position = Vector2(16, 0)
 scale = Vector2(0.9, 0.9)
-target_position = Vector2(40, 0)
+target_position = Vector2(35, 0)
+hit_from_inside = true
 
 [node name="RayCast2D" type="RayCast2D" parent="boxPutdownChecks"]
-position = Vector2(12, 30)
+position = Vector2(16, 30)
 scale = Vector2(0.9, 0.9)
-target_position = Vector2(40, 0)
+target_position = Vector2(35, 0)
+hit_from_inside = true
 
 [connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]

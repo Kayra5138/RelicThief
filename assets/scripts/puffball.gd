@@ -6,7 +6,7 @@ var lockMove = false
 var minecartOffset = -24
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 4
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 2.5
 
 enum {SLEEP,SEARCH, PURSUE}
 var state = SLEEP
@@ -63,7 +63,7 @@ func turnToPlayer(bodies):
 func _physics_process(delta):
 	var reddening_factor = 1/explosionLimit
 	if is_on_floor():
-		velocity = Vector2.ZERO
+		velocity.x = 0
 	else:
 		velocity.y += delta* gravity
 	if exploding:

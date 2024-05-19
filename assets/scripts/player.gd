@@ -121,9 +121,9 @@ func _physics_process(delta):
 							carrying = tmp.get_parent()
 							break
 					if carrying:
-						print("asdasd")
 						carrying.being_carried = true
 						$CarriedBoxCollision.disabled = false
+						$PlayerCollision.disabled = true
 						Remote.remote_path = carrying.get_path()
 			else:
 				var putdown_colliding = false
@@ -134,6 +134,7 @@ func _physics_process(delta):
 				if not putdown_colliding:
 					Remote.remote_path = ""
 					$CarriedBoxCollision.disabled = true
+					$PlayerCollision.disabled = false
 					carrying.position = putDownLoc.global_position
 					carrying.being_carried = false
 					carrying = null

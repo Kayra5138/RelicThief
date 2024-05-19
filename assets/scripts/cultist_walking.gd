@@ -9,6 +9,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = true
 var locked = false
 var dominated = false
+var turn_counter = 5
+var turn_counter_limit = 5
 
 @export var friction = 10
 
@@ -24,15 +26,21 @@ func _physics_process(delta):
 	if dominated:
 		am_dom(delta)
 		return
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	else:
-		velocity.x = speed
 	if !$GroundCheck.is_colliding() or ($WallCheck.get_collider() != null and !$WallCheck.get_collider() is Player):
 		flip()
+		turn_counter += 10 * delta
+		velocity.x = 0
+	elif is_on_floor():
+		velocity.x = speed
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
 	move_and_slide()
 
 func flip():
+	if turn_counter < turn_counter_limit:
+		return
+	turn_counter = 0
 	facing = !facing
 	scale.x = -abs(scale.x)
 	if facing:
