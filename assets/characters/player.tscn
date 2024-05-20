@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ctj1spwblps66"]
+[gd_scene load_steps=34 format=3 uid="uid://ctj1spwblps66"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
@@ -218,6 +218,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm0cb"]
 size = Vector2(18, 95)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t377p"]
+size = Vector2(18, 3)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crlur"]
 size = Vector2(18, 3)
 
@@ -308,47 +311,52 @@ update_rotation = false
 update_scale = false
 
 [node name="putDownLoc" type="Node2D" parent="."]
-position = Vector2(25, 0)
+position = Vector2(24, -16)
 
 [node name="CarriedBoxCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15.5)
 shape = SubResource("RectangleShape2D_pm0cb")
 disabled = true
 
+[node name="ClimbingLadderCol" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26.5)
+shape = SubResource("RectangleShape2D_t377p")
+disabled = true
+
 [node name="boxPickupChecks" type="Node2D" parent="."]
 
 [node name="1" type="RayCast2D" parent="boxPickupChecks"]
-position = Vector2(-17, -30)
+position = Vector2(-9, -32)
 rotation = 3.14159
-target_position = Vector2(0, 33)
+target_position = Vector2(0, 31)
 collision_mask = 17
 hit_from_inside = true
 
 [node name="2" type="RayCast2D" parent="boxPickupChecks"]
-position = Vector2(0, -30)
+position = Vector2(0, -32)
 rotation = -3.14159
-target_position = Vector2(0, 33)
+target_position = Vector2(0, 31)
 collision_mask = 17
 hit_from_inside = true
 
 [node name="3" type="RayCast2D" parent="boxPickupChecks"]
-position = Vector2(17, -30)
+position = Vector2(9, -32)
 rotation = -3.14159
-target_position = Vector2(0, 33)
+target_position = Vector2(0, 31)
 collision_mask = 17
 hit_from_inside = true
 
 [node name="boxPutdownChecks" type="Node2D" parent="."]
 
 [node name="RayCast2D2" type="RayCast2D" parent="boxPutdownChecks"]
-position = Vector2(13, 0)
+position = Vector2(13, -31)
 scale = Vector2(0.9, 0.9)
 target_position = Vector2(31, 0)
 collision_mask = 17
 hit_from_inside = true
 
 [node name="RayCast2D" type="RayCast2D" parent="boxPutdownChecks"]
-position = Vector2(13, 30)
+position = Vector2(13, 0)
 scale = Vector2(0.9, 0.9)
 target_position = Vector2(31, 0)
 collision_mask = 17
@@ -365,6 +373,7 @@ platform_floor_layers = 4294967040
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopCollision"]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_crlur")
+one_way_collision = true
 
 [connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]

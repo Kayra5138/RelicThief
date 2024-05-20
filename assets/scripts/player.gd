@@ -9,13 +9,13 @@ class_name Player
 @export_range(0.0 , 1.0) var acceleration = 0.25
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing = 1 #right: 1 - left: 0
-var skill = 5
+@export var skill = 5
 var FLOOR_NORMAL = Vector2.UP
 @onready var playerSprite = $PlayerSprite 
 const ice_spike_path = preload("res://assets/skills/icespike.tscn")
 var coyoteJumpTimer = 15
 var lockControls = false
-var minecartOffset = -32
+var minecartOffset = -35
 const CLIMB_SPEED = 100
 enum {sMOVE, sCLIMB}
 var curState = sMOVE
@@ -27,6 +27,9 @@ var dominating = null
 @onready var Remote:RemoteTransform2D = $RemoteTransform2D
 @onready var putDownLoc:Node2D = $putDownLoc
 var carrying:CharacterBody2D = null
+
+@onready var topCol:CollisionShape2D = $TopCollision/CollisionShape2D
+@onready var ladderCol:CollisionShape2D = $ClimbingLadderCol
 
 func climbing_state():
 	playerSprite.animation = "jump"
@@ -219,8 +222,12 @@ func releaseMovement():
 func ladder_check():
 	if $LadderCheck.get_collider() is Ladder and not carrying:
 		curState = sCLIMB
+		topCol.set_deferred("disabled",true)
+		ladderCol.set_deferred("disabled",false)
 	else:
 		curState = sMOVE
+		topCol.set_deferred("disabled",false)
+		ladderCol.set_deferred("disabled",true)
 
 func mouse_input(event):
 	if event is InputEventMouseButton:

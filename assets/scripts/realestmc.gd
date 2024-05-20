@@ -5,6 +5,7 @@ var curState = waitingA
 
 var riding = null
 @onready var ogPos = $PathFollow2D/minecart/RemoteTransform2D.position.y
+@onready var myCol:CollisionShape2D = $PathFollow2D/minecart/CollisionShape2D
 
 @export var speed = 1.0
 @export var reversed = false
@@ -21,19 +22,21 @@ func _ready():
 		curState = waitingB
 
 func entered(body):
-	if not body.is_in_group("riding"):
+	if not body.is_in_group("riding") or riding != null:
 		return
 	$PathFollow2D/minecart/RemoteTransform2D.position.y = ogPos + body.minecartOffset
 	$PathFollow2D/minecart/RemoteTransform2D.remote_path = body.get_path()
 	match curState:
 		waitingA:
 			anime.play("goB")
+			myCol.set_deferred("disabled",true)
 			curState = goingB
 			body.lockMovement()
 			$PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
 			riding = body
 		waitingB:
 			anime.play("goA")
+			myCol.set_deferred("disabled",true)
 			curState = goingA
 			body.lockMovement()
 			if body.has_meta("Player") or body.is_in_group("cultist"): $PathFollow2D/minecart/RemoteTransform2D.scale.x = -1
@@ -41,7 +44,7 @@ func entered(body):
 			riding = body
 
 func exited(body):
-	if not body.is_in_group("riding"):
+	if not body.is_in_group("riding") or (riding != null and riding != body):
 		return
 	match curState:
 		finishedA:
@@ -65,6 +68,7 @@ func animeEnded(_ok):
 				curState = waitingA
 			finishedB:
 				curState = waitingB
+	myCol.set_deferred("disabled",false)
 	$PathFollow2D/minecart/RemoteTransform2D.remote_path = ""
 	$PathFollow2D/minecart/RemoteTransform2D.position.y = ogPos
 

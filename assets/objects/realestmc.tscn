@@ -7,7 +7,7 @@
 size = Vector2(62, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d81la"]
-size = Vector2(41, 3)
+size = Vector2(25, 3)
 
 [sub_resource type="Animation" id="Animation_chxid"]
 length = 0.001
