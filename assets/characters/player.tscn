@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=34 format=3 uid="uid://ctj1spwblps66"]
+
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
@@ -7,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://doasmp3ocm4tn" path="res://textures/characters/player/walking.png" id="4_cyirp"]
 [ext_resource type="Texture2D" uid="uid://c2qvwpqqw3htk" path="res://textures/characters/player/tank.png" id="6_yrmxm"]
 [ext_resource type="Shader" path="res://assets/shaders/color_tint.gdshader" id="7_lpeor"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhnfn"]
+shader = ExtResource("7_lpeor")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v2ct"]
 atlas = ExtResource("6_yrmxm")
@@ -93,6 +101,12 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgjdp"]
+shader = ExtResource("7_lpeor")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q676h"]
 atlas = ExtResource("6_yrmxm")
 region = Rect2(0, 0, 64, 64)
@@ -108,10 +122,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkqls"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgenu"]
 shader = ExtResource("7_lpeor")
-shader_parameter/color = Color(1, 0, 0.733333, 1)
-shader_parameter/tint_factor = 1.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2vyb"]
@@ -237,6 +251,7 @@ metadata/Player = true
 metadata/puffTarget = true
 
 [node name="TankSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rhnfn")
 sprite_frames = SubResource("SpriteFrames_c64tv")
 animation = &"5"
 
@@ -254,10 +269,11 @@ shadow_filter_smooth = 1.0
 texture = SubResource("GradientTexture2D_2tvje")
 
 [node name="ChainsSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pgjdp")
 sprite_frames = SubResource("SpriteFrames_n2dc4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_vkqls")
+material = SubResource("ShaderMaterial_lgenu")
 sprite_frames = SubResource("SpriteFrames_8y6ks")
 animation = &"walk"
 autoplay = "idle"

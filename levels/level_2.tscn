@@ -30,72 +30,88 @@ layer_0/tile_data = PackedInt32Array(-65504, 589824, 1, 32, 851968, 1, 65568, 58
 [node name="caveDoor" parent="." instance=ExtResource("6_13s4n")]
 position = Vector2(976, 208)
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="Ladders" type="CanvasGroup" parent="."]
 
-[node name="Ladder" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 272)
 
-[node name="Ladder2" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder2" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 304)
 
-[node name="Ladder3" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder3" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 336)
 
-[node name="Ladder4" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder4" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 368)
 
-[node name="Ladder5" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder5" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 400)
 
-[node name="Ladder6" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder6" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 432)
 
-[node name="Ladder7" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder7" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 464)
 
-[node name="Ladder8" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder8" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 496)
 
-[node name="Ladder9" parent="CanvasGroup" instance=ExtResource("5_a34n7")]
+[node name="Ladder9" parent="Ladders" instance=ExtResource("5_a34n7")]
 position = Vector2(80, 528)
 
-[node name="Door" parent="." instance=ExtResource("8_m3uei")]
+[node name="Doors" type="CanvasGroup" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(368, 272)
 
-[node name="Door2" parent="." instance=ExtResource("8_m3uei")]
+[node name="Door2" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(400, 272)
 
-[node name="Door3" parent="." instance=ExtResource("8_m3uei")]
+[node name="Door3" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(432, 272)
 
-[node name="Door4" parent="." instance=ExtResource("8_m3uei")]
+[node name="Door4" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(464, 272)
 
-[node name="Door5" parent="." instance=ExtResource("8_m3uei")]
+[node name="Door5" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(592, 272)
 
-[node name="Door6" parent="." instance=ExtResource("8_m3uei")]
+[node name="Door6" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(624, 272)
 
-[node name="Door7" parent="." instance=ExtResource("8_m3uei")]
+[node name="Door7" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(656, 272)
 
-[node name="Door8" parent="." instance=ExtResource("8_m3uei")]
+[node name="Door8" parent="Doors" instance=ExtResource("8_m3uei")]
 position = Vector2(688, 272)
+
+[node name="Platforms" type="CanvasGroup" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("13_a6ub7")]
+position = Vector2(48, 256)
+type = 0
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("13_a6ub7")]
+position = Vector2(80, 256)
+type = 2
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("13_a6ub7")]
+position = Vector2(112, 256)
+type = 1
 
 [node name="Button" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("7_qav2y")]
 position = Vector2(768, 416)
-list_of_doors = [NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3"), NodePath("../Door4")]
+list_of_doors = [NodePath("../Doors/Door"), NodePath("../Doors/Door2"), NodePath("../Doors/Door3"), NodePath("../Doors/Door4")]
 
 [node name="Button2" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("7_qav2y")]
 position = Vector2(896, 416)
-list_of_doors = [NodePath("../Door5"), NodePath("../Door6"), NodePath("../Door7"), NodePath("../Door8")]
+list_of_doors = [NodePath("../Doors/Door5"), NodePath("../Doors/Door6"), NodePath("../Doors/Door7"), NodePath("../Doors/Door8")]
 
 [node name="CultistWalking" parent="." instance=ExtResource("9_j6f5m")]
 position = Vector2(848, 416)
 
 [node name="Player" parent="." instance=ExtResource("12_76p6f")]
-position = Vector2(32, 512)
+position = Vector2(384, 512)
 
 [node name="Spikes" parent="." instance=ExtResource("13_3gqnp")]
 position = Vector2(640, 480)
@@ -104,18 +120,6 @@ position = Vector2(640, 480)
 position = Vector2(528, 224)
 
 [node name="puffball" parent="." instance=ExtResource("11_uwr4u")]
-position = Vector2(384, 528)
-
-[node name="Platform" parent="." instance=ExtResource("13_a6ub7")]
-position = Vector2(48, 256)
-type = 0
-
-[node name="Platform2" parent="." instance=ExtResource("13_a6ub7")]
-position = Vector2(80, 256)
-type = 2
-
-[node name="Platform3" parent="." instance=ExtResource("13_a6ub7")]
-position = Vector2(112, 256)
-type = 1
+position = Vector2(192, 528)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
