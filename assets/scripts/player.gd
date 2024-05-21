@@ -8,7 +8,7 @@ class_name Player
 @export_range(0.0, 1.0) var friction = 0.25
 @export_range(0.0 , 1.0) var acceleration = 0.25
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var facing = 1 #right: 1 - left: 0
+var facing = 0 #right: 1 - left: 0
 @export var skill = 5
 var FLOOR_NORMAL = Vector2.UP
 @onready var playerSprite = $PlayerSprite 
@@ -83,6 +83,9 @@ func _physics_process(delta):
 			transform.x.x = -1
 		if facing == 1:
 			transform.x.x = 1
+		if carrying: #This is what keeps the box straight inside minecart ¯\_(ツ)_/¯
+			carrying.transform.x = Vector2(1,0)
+			carrying.transform.y = Vector2(0,-1) if facing==0 else Vector2(0,1)
 		return
 	velocity.y += gravity * delta
 	var dir = Input.get_axis("left", "right")
@@ -125,6 +128,7 @@ func _physics_process(delta):
 							break
 					if carrying:
 						carrying.being_carried = true
+						carrying.transform.x.x = 1
 						$CarriedBoxCollision.disabled = false
 						$PlayerCollision.disabled = true
 						$TopCollision/CollisionShape2D.disabled = true
@@ -165,22 +169,21 @@ func _physics_process(delta):
 		velocity.y = jump_speed
 		coyoteJumpTimer = 0
 
-
 	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor() and not carrying:
 		skill -= 1
 		shoot_ice_spike()
 		
-	
 	if Input.is_action_just_pressed("down"):
 		position.y += 1
 		skill = 5 #DEBUG
-
 	if facing == 0:
-		transform.x.x = -1
+		transform.x.x = -1 # This makes the box rotate indefinitely... why tho
 	if facing == 1:
 		transform.x.x = 1
-		
-	
+	if carrying: # This corrects the rotation ¯\_(ツ)_/¯
+		carrying.transform.x = Vector2(1,0)
+		carrying.transform.y = Vector2(0,1)
+
 func shoot_ice_spike():
 	throwing = true
 	var ice_spike = ice_spike_path.instantiate()
@@ -218,6 +221,9 @@ func lockMovement():
 
 func releaseMovement():
 	lockControls = false
+	if carrying:
+		carrying.transform.x = Vector2(1,0)
+		carrying.transform.y = Vector2(0,1)
 
 func ladder_check():
 	if $LadderCheck.get_collider() is Ladder and not carrying:

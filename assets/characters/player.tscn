@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=34 format=3 uid="uid://ctj1spwblps66"]
-
+[gd_scene load_steps=36 format=3 uid="uid://ctj1spwblps66"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
@@ -323,7 +321,6 @@ libraries = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 position = Vector2(0, -48)
-update_rotation = false
 update_scale = false
 
 [node name="putDownLoc" type="Node2D" parent="."]
