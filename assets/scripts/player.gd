@@ -30,6 +30,7 @@ var carrying:CharacterBody2D = null
 
 @onready var topCol:CollisionShape2D = $TopCollision/CollisionShape2D
 @onready var ladderCol:CollisionShape2D = $ClimbingLadderCol
+@onready var pick_center:Node2D = $Box_Picking_Center
 
 func climbing_state():
 	playerSprite.animation = "jump"
@@ -122,11 +123,18 @@ func _physics_process(delta):
 						pickup_colliding = true
 						break
 				if not pickup_colliding:
+					var min_box_dist = INF
+					var tmp_box = null
 					for tmp in Hitbox.get_overlapping_areas():
 						if tmp.is_in_group("pickup"):
-							carrying = tmp.get_parent()
-							break
-					if carrying:
+							var vec = -pick_center.global_position + tmp.global_position
+							vec.x *= -1 if facing == 0 else 1
+							if vec.x < 0 or vec.length() >= min_box_dist:
+								continue
+							min_box_dist = vec.length()
+							tmp_box = tmp.get_parent()
+					if tmp_box:
+						carrying = tmp_box
 						carrying.being_carried = true
 						carrying.transform.x.x = 1
 						$CarriedBoxCollision.disabled = false
