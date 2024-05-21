@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ctj1spwblps66"]
+[gd_scene load_steps=35 format=3 uid="uid://ctj1spwblps66"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
@@ -230,9 +230,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm0cb"]
 size = Vector2(18, 95)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t377p"]
-size = Vector2(18, 3)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crlur"]
 size = Vector2(18, 3)
 
@@ -329,11 +326,6 @@ position = Vector2(24, -16)
 [node name="CarriedBoxCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15.5)
 shape = SubResource("RectangleShape2D_pm0cb")
-disabled = true
-
-[node name="ClimbingLadderCol" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26.5)
-shape = SubResource("RectangleShape2D_t377p")
 disabled = true
 
 [node name="boxPickupChecks" type="Node2D" parent="."]

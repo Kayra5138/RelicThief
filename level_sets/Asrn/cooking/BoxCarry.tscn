@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://er8j0uchyoet"]
+[gd_scene load_steps=13 format=3 uid="uid://cdbrvy30xy7dn"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_yx073"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_idrby"]

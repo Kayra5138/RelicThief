@@ -29,7 +29,6 @@ var dominating = null
 var carrying:CharacterBody2D = null
 
 @onready var topCol:CollisionShape2D = $TopCollision/CollisionShape2D
-@onready var ladderCol:CollisionShape2D = $ClimbingLadderCol
 @onready var pick_center:Node2D = $Box_Picking_Center
 
 func climbing_state():
@@ -237,11 +236,9 @@ func ladder_check():
 	if $LadderCheck.get_collider() is Ladder and not carrying:
 		curState = sCLIMB
 		topCol.set_deferred("disabled",true)
-		ladderCol.set_deferred("disabled",false)
 	else:
 		curState = sMOVE
 		topCol.set_deferred("disabled",false)
-		ladderCol.set_deferred("disabled",true)
 
 func mouse_input(event):
 	if event is InputEventMouseButton:
