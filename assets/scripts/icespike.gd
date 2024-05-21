@@ -4,7 +4,7 @@ var direction = 1
 var icespikevelocity = Vector2(direction,0)
 var speed = 500
 var disappearing = 0
-var lifetime = 50
+var lifetime = 100
 func _physics_process(delta):
 	if disappearing:
 		$GPUParticles2D.emitting = false

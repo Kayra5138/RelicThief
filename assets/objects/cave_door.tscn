@@ -30,6 +30,7 @@ texture = ExtResource("1_qwkkd")
 one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 scale = Vector2(10, 10)
 color = Color(0.768627, 0.803922, 1, 1)
 energy = 0.2
@@ -40,6 +41,7 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_c62uk")
 
 [node name="PointLight2DShadows" type="PointLight2D" parent="."]
+visible = false
 scale = Vector2(10, 10)
 color = Color(0.768627, 0.803922, 1, 1)
 energy = 0.2

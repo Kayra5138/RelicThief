@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://assets/scripts/wooden_box.gd" id="1_pc188"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hxgx"]
-size = Vector2(30, 24)
+size = Vector2(28, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lj6f"]
 size = Vector2(43, 23)
