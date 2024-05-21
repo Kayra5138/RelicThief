@@ -175,6 +175,7 @@ type = 1
 position = Vector2(720, 256)
 curve = SubResource("Curve2D_rt1bn")
 speed = 2.0
+reversed = true
 
 [node name="caveDoor" parent="." instance=ExtResource("6_1ywkw")]
 position = Vector2(48, 208)

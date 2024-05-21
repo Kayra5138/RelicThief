@@ -3,6 +3,7 @@ extends Node2D
 @onready var player = get_tree().get_first_node_in_group("player")
 
 func _ready():
+	Engine.max_fps = 60
 	for cultist in get_tree().get_nodes_in_group("cultist"):
 		cultist.connect("dominateMe",wantsDomination)
 		cultist.connect("letGoPls", letGoBuddy)

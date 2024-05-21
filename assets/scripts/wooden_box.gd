@@ -8,6 +8,8 @@ var lockMove = false
 var minecartOffset = -20
 
 func _physics_process(delta):
+	transform.x = Vector2(1,0)
+	transform.y = Vector2(0,1)
 	if lockMove:
 		return
 	if being_carried:
