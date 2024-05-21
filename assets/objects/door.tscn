@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbpe3nn7oukb0"]
+[gd_scene load_steps=7 format=3 uid="uid://dbpe3nn7oukb0"]
 
 [ext_resource type="Texture2D" uid="uid://ctb3lbdbdrhql" path="res://textures/objects/door.png" id="1_er06o"]
 [ext_resource type="Script" path="res://assets/scripts/door.gd" id="1_ok0kj"]
@@ -26,7 +26,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsbhg"]
+size = Vector2(32, 32)
+
 [node name="Door" type="StaticBody2D" groups=["strong"]]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_ok0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -36,3 +41,11 @@ shape = SubResource("RectangleShape2D_r8ewl")
 sprite_frames = SubResource("SpriteFrames_1atcu")
 animation = &"open"
 autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vsbhg")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
