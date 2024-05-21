@@ -36,7 +36,7 @@ transform = Transform2D(1, 0, 0, 1, -64, -128)
 position = Vector2(968, 176)
 
 [node name="Player" parent="." instance=ExtResource("4_svbcn")]
-position = Vector2(608, 320)
+position = Vector2(842, 280)
 skill = 0
 
 [node name="TileMap" parent="." instance=ExtResource("5_yth62")]
@@ -51,6 +51,6 @@ reversed = true
 position = Vector2(368, 528)
 
 [node name="WoodenBox" parent="." instance=ExtResource("7_nkj44")]
-position = Vector2(560, 400)
+position = Vector2(800, 301)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
