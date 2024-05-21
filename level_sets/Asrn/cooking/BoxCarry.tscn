@@ -47,7 +47,7 @@ position = Vector2(112, 400)
 position = Vector2(568, 112)
 
 [node name="Player" parent="." instance=ExtResource("4_agypc")]
-position = Vector2(48, 384)
+position = Vector2(384, 352)
 skill = 1
 
 [node name="Ladders" type="Node2D" parent="."]
