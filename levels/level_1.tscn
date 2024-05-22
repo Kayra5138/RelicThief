@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_qbkj0"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_88amo"]
-[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/terrain/tilemap.tscn" id="5_svunb"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="5_svunb"]
 [ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="6_1ywkw"]
 [ext_resource type="Texture2D" uid="uid://n1kjnn3vv1x3" path="res://textures/objects/track.png" id="6_mlwkm"]
 [ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://assets/characters/cultist_walking.tscn" id="9_83sqa"]
