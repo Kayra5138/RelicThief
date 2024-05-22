@@ -20,5 +20,5 @@ func fln():
 		$CollisionShape2D.set_deferred("disabled", true);
 		$AnimatedSprite2D.animation = "open";
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	fln()
