@@ -8,14 +8,14 @@ class_name Player
 @export_range(0.0, 1.0) var friction = 0.25
 @export_range(0.0 , 1.0) var acceleration = 0.25
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var facing = 1 #right: 1 - left: 0
-var skill = 5
+var facing = 0 #right: 1 - left: 0
+@export var skill = 5
 var FLOOR_NORMAL = Vector2.UP
 @onready var playerSprite = $PlayerSprite 
 const ice_spike_path = preload("res://assets/skills/icespike.tscn")
 var coyoteJumpTimer = 15
 var lockControls = false
-var minecartOffset = -32
+var minecartOffset = -35
 const CLIMB_SPEED = 100
 enum {sMOVE, sCLIMB}
 var curState = sMOVE
@@ -27,6 +27,9 @@ var dominating = null
 @onready var Remote:RemoteTransform2D = $RemoteTransform2D
 @onready var putDownLoc:Node2D = $putDownLoc
 var carrying:CharacterBody2D = null
+
+@onready var topCol:CollisionShape2D = $TopCollision/CollisionShape2D
+@onready var pick_center:Node2D = $Box_Picking_Center
 
 func climbing_state():
 	playerSprite.animation = "jump"
@@ -80,6 +83,9 @@ func _physics_process(delta):
 			transform.x.x = -1
 		if facing == 1:
 			transform.x.x = 1
+		if carrying: #This is what keeps the box straight inside minecart ¯\_(ツ)_/¯
+			carrying.transform.x = Vector2(1,0)
+			carrying.transform.y = Vector2(0,-1) if facing==0 else Vector2(0,1)
 		return
 	velocity.y += gravity * delta
 	var dir = Input.get_axis("left", "right")
@@ -116,12 +122,20 @@ func _physics_process(delta):
 						pickup_colliding = true
 						break
 				if not pickup_colliding:
+					var min_box_dist = INF
+					var tmp_box = null
 					for tmp in Hitbox.get_overlapping_areas():
 						if tmp.is_in_group("pickup"):
-							carrying = tmp.get_parent()
-							break
-					if carrying:
+							var vec = -pick_center.global_position + tmp.global_position
+							vec.x *= -1 if facing == 0 else 1
+							if vec.x < 0 or vec.length() >= min_box_dist:
+								continue
+							min_box_dist = vec.length()
+							tmp_box = tmp.get_parent()
+					if tmp_box:
+						carrying = tmp_box
 						carrying.being_carried = true
+						carrying.transform.x.x = 1
 						$CarriedBoxCollision.disabled = false
 						$PlayerCollision.disabled = true
 						$TopCollision/CollisionShape2D.disabled = true
@@ -162,22 +176,21 @@ func _physics_process(delta):
 		velocity.y = jump_speed
 		coyoteJumpTimer = 0
 
-
 	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor() and not carrying:
 		skill -= 1
 		shoot_ice_spike()
 		
-	
 	if Input.is_action_just_pressed("down"):
 		position.y += 1
 		skill = 5 #DEBUG
-
 	if facing == 0:
-		transform.x.x = -1
+		transform.x.x = -1 # This makes the box rotate indefinitely... why tho
 	if facing == 1:
 		transform.x.x = 1
-		
-	
+	if carrying: # This corrects the rotation ¯\_(ツ)_/¯
+		carrying.transform.x = Vector2(1,0)
+		carrying.transform.y = Vector2(0,1)
+
 func shoot_ice_spike():
 	throwing = true
 	var ice_spike = ice_spike_path.instantiate()
@@ -215,12 +228,17 @@ func lockMovement():
 
 func releaseMovement():
 	lockControls = false
+	if carrying:
+		carrying.transform.x = Vector2(1,0)
+		carrying.transform.y = Vector2(0,1)
 
 func ladder_check():
 	if $LadderCheck.get_collider() is Ladder and not carrying:
 		curState = sCLIMB
+		topCol.set_deferred("disabled",true)
 	else:
 		curState = sMOVE
+		topCol.set_deferred("disabled",false)
 
 func mouse_input(event):
 	if event is InputEventMouseButton:

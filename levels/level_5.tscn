@@ -22,194 +22,211 @@ script = ExtResource("1_ijhvn")
 offset = Vector2(-64, -128)
 transform = Transform2D(1, 0, 0, 1, -64, -128)
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="Ladders" type="CanvasGroup" parent="."]
 
-[node name="Ladder" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 528)
 
-[node name="Ladder2" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder2" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 496)
 
-[node name="Ladder3" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder3" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 464)
 
-[node name="Ladder4" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder4" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 432)
 
-[node name="Ladder5" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder5" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 400)
 
-[node name="Ladder6" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder6" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 368)
 
-[node name="Ladder7" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder7" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 528)
 
-[node name="Ladder8" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder8" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 496)
 
-[node name="Ladder9" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder9" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 464)
 
-[node name="Ladder10" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder10" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 432)
 
-[node name="Ladder11" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder11" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 400)
 
-[node name="Ladder12" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder12" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 368)
 
-[node name="Ladder25" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder25" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 368)
 
-[node name="Ladder26" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder26" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 336)
 
-[node name="Ladder27" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder27" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 304)
 
-[node name="Ladder28" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder28" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 272)
 
-[node name="Ladder29" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder29" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 240)
 
-[node name="Ladder30" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder30" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 208)
 
-[node name="Ladder43" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder43" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 176)
 
-[node name="Ladder44" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder44" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 144)
 
-[node name="Ladder45" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder45" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 112)
 
-[node name="Ladder46" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder46" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 80)
 
-[node name="Ladder13" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder13" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 528)
 
-[node name="Ladder14" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder14" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 496)
 
-[node name="Ladder15" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder15" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 464)
 
-[node name="Ladder16" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder16" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 432)
 
-[node name="Ladder17" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder17" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 400)
 
-[node name="Ladder18" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder18" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 368)
 
-[node name="Ladder19" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder19" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 528)
 
-[node name="Ladder20" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder20" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 496)
 
-[node name="Ladder21" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder21" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 464)
 
-[node name="Ladder22" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder22" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 432)
 
-[node name="Ladder23" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder23" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 400)
 
-[node name="Ladder24" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder24" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 368)
 
-[node name="Ladder31" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder31" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 528)
 
-[node name="Ladder32" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder32" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 496)
 
-[node name="Ladder33" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder33" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 464)
 
-[node name="Ladder34" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder34" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 432)
 
-[node name="Ladder35" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder35" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 400)
 
-[node name="Ladder36" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder36" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 368)
 
-[node name="Ladder37" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder37" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 336)
 
-[node name="Ladder38" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder38" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 304)
 
-[node name="Ladder39" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder39" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 272)
 
-[node name="Ladder40" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder40" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 240)
 
-[node name="Ladder41" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder41" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 208)
 
-[node name="Ladder42" parent="CanvasGroup" instance=ExtResource("6_fmduy")]
+[node name="Ladder42" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 176)
 
 [node name="caveDoor" parent="." instance=ExtResource("7_4drf5")]
 position = Vector2(632, 80)
 
-[node name="Button" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+[node name="Buttons" type="CanvasGroup" parent="."]
+
+[node name="Button" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
 position = Vector2(288, 512)
-list_of_doors = [NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3")]
+list_of_doors = [NodePath("../../Doors/Door"), NodePath("../../Doors/Door2"), NodePath("../../Doors/Door3")]
 
-[node name="Button3" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+[node name="Button3" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
 position = Vector2(576, 512)
-list_of_doors = [NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3")]
+list_of_doors = [NodePath("../../Doors/Door"), NodePath("../../Doors/Door2"), NodePath("../../Doors/Door3")]
 
-[node name="Door" parent="." instance=ExtResource("9_hrl52")]
+[node name="Button2" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+position = Vector2(800, 512)
+list_of_doors = [NodePath("../../Doors/Door4"), NodePath("../../Doors/Door5"), NodePath("../../Doors/Door6")]
+
+[node name="Button4" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+position = Vector2(896, 96)
+rotation = 3.14159
+list_of_doors = [NodePath("../../Doors/Door7"), NodePath("../../Doors/Door8"), NodePath("../../Doors/Door9"), NodePath("../../Doors/Door10"), NodePath("../../Doors/Door11"), NodePath("../../Doors/Door12"), NodePath("../../Doors/Door13")]
+
+[node name="Doors" type="CanvasGroup" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(432, 464)
 
-[node name="Door2" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door2" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(432, 496)
 
-[node name="Door3" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door3" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(432, 528)
 
-[node name="Door7" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door7" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(336, 48)
 
-[node name="Door8" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door8" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(336, 80)
 
-[node name="Door9" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door9" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(336, 112)
 
-[node name="Door4" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door4" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(720, 464)
 
-[node name="Door5" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door5" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(720, 496)
 
-[node name="Door6" parent="." instance=ExtResource("9_hrl52")]
+[node name="Door6" parent="Doors" instance=ExtResource("9_hrl52")]
 position = Vector2(720, 528)
 
-[node name="CultistWalking" parent="." instance=ExtResource("10_rr4ch")]
-position = Vector2(528, 512)
-speed = 60.0
+[node name="Door10" parent="Doors" instance=ExtResource("9_hrl52")]
+position = Vector2(432, 144)
+
+[node name="Door11" parent="Doors" instance=ExtResource("9_hrl52")]
+position = Vector2(464, 144)
+
+[node name="Door12" parent="Doors" instance=ExtResource("9_hrl52")]
+position = Vector2(496, 144)
+
+[node name="Door13" parent="Doors" instance=ExtResource("9_hrl52")]
+position = Vector2(528, 144)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 288)
-
-[node name="Button2" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
-position = Vector2(800, 512)
-list_of_doors = [NodePath("../Door4"), NodePath("../Door5"), NodePath("../Door6")]
 
 [node name="IceColumn" parent="." node_paths=PackedStringArray("lst", "col") instance=ExtResource("3_y7dg2")]
 position = Vector2(896, 576)
@@ -222,27 +239,13 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_dplbe")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(896, 96)
-
-[node name="Button4" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
-position = Vector2(896, 64)
-rotation = 3.14159
-list_of_doors = [NodePath("../Door7"), NodePath("../Door8"), NodePath("../Door9"), NodePath("../Door10"), NodePath("../Door11"), NodePath("../Door12"), NodePath("../Door13")]
-
-[node name="Door10" parent="." instance=ExtResource("9_hrl52")]
-position = Vector2(432, 144)
-
-[node name="Door11" parent="." instance=ExtResource("9_hrl52")]
-position = Vector2(464, 144)
-
-[node name="Door12" parent="." instance=ExtResource("9_hrl52")]
-position = Vector2(496, 144)
-
-[node name="Door13" parent="." instance=ExtResource("9_hrl52")]
-position = Vector2(528, 144)
+position = Vector2(896, 128)
 
 [node name="Player" parent="." instance=ExtResource("11_3vt63")]
 position = Vector2(560, 216)
+
+[node name="CultistIdle" parent="." instance=ExtResource("10_rr4ch")]
+position = Vector2(528, 512)
 
 [node name="Water" parent="." instance=ExtResource("4_qh1di")]
 position = Vector2(880, 560)

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d2wpgfn5moccc" path="res://textures/characters/cultist/cultist.png" id="2_j7q04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duuep"]
-size = Vector2(20, 56)
+size = Vector2(20, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pmdv0"]
 animations = [{
@@ -18,10 +18,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxmxs"]
-size = Vector2(30, 62)
+size = Vector2(30, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vu40t"]
-size = Vector2(20, 2)
+size = Vector2(20, 3)
 
 [node name="CultistIdle" type="CharacterBody2D" groups=["cultist", "puffTarget", "riding"]]
 collision_mask = 19
@@ -31,7 +31,7 @@ script = ExtResource("1_2q26w")
 metadata/enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 3)
+position = Vector2(-1, 3.5)
 shape = SubResource("RectangleShape2D_duuep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -72,7 +72,7 @@ collision_mask = 16
 metadata/enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopCol"]
-position = Vector2(-1, -2)
+position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_vu40t")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

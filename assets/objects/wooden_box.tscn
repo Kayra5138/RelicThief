@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://assets/scripts/wooden_box.gd" id="1_pc188"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hxgx"]
-size = Vector2(30, 24)
+size = Vector2(28, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lj6f"]
 size = Vector2(43, 23)
@@ -15,7 +15,8 @@ size = Vector2(30, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sx0us"]
 size = Vector2(45, 8)
 
-[node name="WoodenBox" type="CharacterBody2D"]
+[node name="WoodenBox" type="CharacterBody2D" groups=["riding"]]
+collision_layer = 9
 collision_mask = 19
 platform_on_leave = 2
 platform_floor_layers = 4294967040
@@ -52,3 +53,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_sx0us")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-13, -16, -9, -16, -9, -13, -13, -13)
