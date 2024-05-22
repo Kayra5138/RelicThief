@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6csre2p74inm"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_epomu"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_bycqg"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_epomu")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 128.0
+offset_right = 640.0
+offset_bottom = 256.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 448.0
+text = "Quit"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_bycqg")]
+offset = Vector2(-62.5, -250)
+transform = Transform2D(1, 0, 0, 1, -62.5, -250)
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

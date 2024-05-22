@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://bymm6cnihyn65"]
+
+[ext_resource type="Script" path="res://levels_menu.gd" id="1_md1xw"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_t2yjm"]
+
+[node name="Levels" type="Node2D"]
+script = ExtResource("1_md1xw")
+
+[node name="Level 1" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 128.0
+offset_right = 288.0
+offset_bottom = 256.0
+text = "1"
+
+[node name="Level 2" type="Button" parent="."]
+offset_left = 352.0
+offset_top = 128.0
+offset_right = 480.0
+offset_bottom = 256.0
+text = "2
+"
+
+[node name="Level 3" type="Button" parent="."]
+offset_left = 544.0
+offset_top = 128.0
+offset_right = 672.0
+offset_bottom = 256.0
+text = "3"
+
+[node name="Level 4" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 128.0
+offset_right = 864.0
+offset_bottom = 256.0
+text = "4
+"
+
+[node name="Level 5" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 320.0
+offset_right = 288.0
+offset_bottom = 448.0
+text = "5"
+
+[node name="Level 6" type="Button" parent="."]
+offset_left = 352.0
+offset_top = 320.0
+offset_right = 480.0
+offset_bottom = 448.0
+text = "6
+"
+
+[node name="Level 7" type="Button" parent="."]
+offset_left = 544.0
+offset_top = 320.0
+offset_right = 672.0
+offset_bottom = 448.0
+text = "7"
+
+[node name="Level 8" type="Button" parent="."]
+offset_left = 736.0
+offset_top = 320.0
+offset_right = 864.0
+offset_bottom = 448.0
+text = "8
+"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_t2yjm")]
+offset = Vector2(-62.5, -250)
+transform = Transform2D(1, 0, 0, 1, -62.5, -250)
+
+[connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Level 3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Level 4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Level 5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="Level 6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="Level 7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="Level 8" to="." method="_on_level_8_pressed"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_c1gxw"]
 [ext_resource type="PackedScene" uid="uid://cj7tmucguljoc" path="res://assets/skills/ice_column.tscn" id="3_y7dg2"]
 [ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://assets/objects/water.tscn" id="4_qh1di"]
-[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/terrain/tilemap.tscn" id="5_7w16e"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="5_7w16e"]
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="6_fmduy"]
 [ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="7_4drf5"]
 [ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="8_ingjl"]
