@@ -67,17 +67,10 @@ script = ExtResource("2_6bbk0")
 offset = Vector2(-62.5, -250)
 transform = Transform2D(1, 0, 0, 1, -62.5, -250)
 
-[connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 1" to="Level 1" method="_on_pressed"]
-[connection signal="pressed" from="Level 2" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 2" to="Level 2" method="_on_pressed"]
-[connection signal="pressed" from="Level 3" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 3" to="Level 3" method="_on_pressed"]
-[connection signal="pressed" from="Level 4" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 4" to="Level 4" method="_on_pressed"]
-[connection signal="pressed" from="Level 5" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 5" to="Level 5" method="_on_pressed"]
-[connection signal="pressed" from="Level 6" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 6" to="Level 6" method="_on_pressed"]
-[connection signal="pressed" from="Level 7" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 7" to="Level 7" method="_on_pressed"]
