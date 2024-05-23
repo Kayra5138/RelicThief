@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var shadow:Sprite2D = $BoxShadow
+@onready var default_shadow_pos = shadow.position
+@onready var shadow_casts:Node2D = $shadow_casts
+
 @export var can_dominate = true
 @export var can_spike = true
 @export var speed = 140
@@ -48,6 +52,14 @@ func domination(delta):
 	velocity.x = lerp(velocity.x, 0.0, friction)
 	move_and_slide()
 
+func putDownColliding() -> bool:
+	var putdown_colliding = false
+	for raycast in $boxPutdownChecks.get_children():
+		if raycast.is_colliding():
+			putdown_colliding = true
+			break
+	return putdown_colliding
+
 func _physics_process(delta):
 	if is_dead: return
 	match skill:
@@ -87,6 +99,19 @@ func _physics_process(delta):
 			carrying.transform.x = Vector2(1,0)
 			carrying.transform.y = Vector2(0,-1) if facing==0 else Vector2(0,1)
 		return
+	
+	#Box Shadow Calculation
+	if carrying and is_on_floor() and not putDownColliding():
+		shadow.visible = true
+		var highest = default_shadow_pos.y
+		for ray:RayCast2D in shadow_casts.get_children():
+			if ray.is_colliding():
+				var relative_coord = (ray.get_collision_point() - position).y - 16
+				if relative_coord < highest:
+					highest = relative_coord
+		shadow.position.y = highest
+	else:
+		shadow.visible = false
 	velocity.y += gravity * delta
 	var dir = Input.get_axis("left", "right")
 	if throwing == false:
