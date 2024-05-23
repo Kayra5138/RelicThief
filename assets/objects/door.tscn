@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsbhg"]
-size = Vector2(32, 32)
+size = Vector2(26, 26)
 
 [node name="Door" type="StaticBody2D" groups=["strong"]]
 collision_layer = 16

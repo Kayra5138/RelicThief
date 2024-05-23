@@ -131,6 +131,6 @@ position = Vector2(496, 352)
 list_of_doors = [NodePath("../../Doors/Door9"), NodePath("../../Doors/Door10")]
 
 [node name="CultistWalking" parent="." instance=ExtResource("12_37gau")]
-position = Vector2(776, 256)
+position = Vector2(784, 256)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
