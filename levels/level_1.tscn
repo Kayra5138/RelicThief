@@ -26,6 +26,7 @@ script = ExtResource("1_qbkj0")
 position = Vector2(512, 288)
 
 [node name="DarkenScene" type="DirectionalLight2D" parent="."]
+visible = false
 color = Color(1, 0.890196, 0.780392, 1)
 energy = 0.3
 blend_mode = 1
@@ -38,8 +39,7 @@ offset = Vector2(-64, -128)
 transform = Transform2D(1, 0, 0, 1, -64, -128)
 
 [node name="Torch" parent="." instance=ExtResource("11_kuc7j")]
-visible = false
-position = Vector2(344, 440)
+position = Vector2(768, 208)
 
 [node name="Tracks" type="CanvasGroup" parent="."]
 
