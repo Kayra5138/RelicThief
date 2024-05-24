@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal dominateMe
 signal letGoPls
 
+@export var minecartOffset = -30.0
 @export var speed = 100.0
 const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -14,6 +15,13 @@ var turn_counter = turn_counter_limit
 
 @export var friction = 10
 
+func lockMovement():
+	locked = true
+
+func releaseMovement():
+	locked = false
+	turn_counter = 0
+
 func am_dom(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -23,8 +31,12 @@ func am_dom(delta):
 func _physics_process(delta):
 	if locked:
 		return
+	if facing:
+		speed = abs(speed)
+	else:
+		speed = -abs(speed)
 	if dominated:
-		turn_counter = turn_counter_limit
+		turn_counter = 0
 		am_dom(delta)
 		return
 	if !$GroundCheck.is_colliding() or ($WallCheck.get_collider() != null and !$WallCheck.get_collider() is Player):
@@ -38,7 +50,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func flip(bypass):
+func flip(bypass=true):
 	if not bypass and turn_counter < turn_counter_limit:
 		return
 	turn_counter = 0

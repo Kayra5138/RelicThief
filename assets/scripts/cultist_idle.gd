@@ -26,6 +26,10 @@ func am_dom(delta):
 func _physics_process(delta):
 	if locked:
 		return
+	if facing:
+		speed = abs(speed)
+	else:
+		speed = -abs(speed)
 	if dominated:
 		am_dom(delta)
 		return
@@ -42,7 +46,6 @@ func _physics_process(delta):
 	var seenback = $EyeSight/EyeSightBack
 	if $EyeSight/EyeSightBack.is_colliding() and seenback.get_collider().has_meta("Player"):
 		flip()
-		playerSeen = true
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	elif playerSeen:
@@ -95,7 +98,7 @@ func releaseMovement():
 
 var dominated = false
 func mouse_input(event):
-	if dominated:
+	if dominated or locked:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

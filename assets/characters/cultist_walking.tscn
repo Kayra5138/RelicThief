@@ -23,7 +23,7 @@ size = Vector2(30, 62.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmbvn"]
 size = Vector2(20, 3)
 
-[node name="CultistWalking" type="CharacterBody2D" groups=["cultist", "puffTarget"]]
+[node name="CultistWalking" type="CharacterBody2D" groups=["cultist", "puffTarget", "riding"]]
 collision_mask = 19
 platform_on_leave = 2
 platform_floor_layers = 4294967040

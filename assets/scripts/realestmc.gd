@@ -3,6 +3,8 @@ extends Path2D
 enum{waitingA,finishedA,goingB,waitingB,finishedB,goingA}
 var curState = waitingA
 
+
+
 var riding = null
 @onready var ogPos = $PathFollow2D/minecart/RemoteTransform2D.position.y
 @onready var myCol:CollisionShape2D = $PathFollow2D/minecart/CollisionShape2D
@@ -32,15 +34,26 @@ func entered(body):
 			myCol.set_deferred("disabled",true)
 			curState = goingB
 			body.lockMovement()
-			$PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
+			if body.is_in_group("cultist"):
+				if not body.facing:
+					body.flip()
+				$PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
+			else:
+				$PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
 			riding = body
 		waitingB:
 			anime.play("goA")
 			myCol.set_deferred("disabled",true)
 			curState = goingA
 			body.lockMovement()
-			if body.has_meta("Player") or body.is_in_group("cultist"): $PathFollow2D/minecart/RemoteTransform2D.scale.x = -1
-			else: $PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
+			if body.has_meta("Player"):
+				$PathFollow2D/minecart/RemoteTransform2D.scale.x = -1
+			elif body.is_in_group("cultist"):
+				if body.facing:
+					body.facing = false
+				$PathFollow2D/minecart/RemoteTransform2D.scale.x = -1
+			else:
+				$PathFollow2D/minecart/RemoteTransform2D.scale.x = 1
 			riding = body
 
 func exited(body):
@@ -56,8 +69,15 @@ func animeEnded(_ok):
 	match curState:
 		goingA:
 			curState = finishedA
+			if riding != null:
+				if riding.is_in_group("cultist") and riding.facing:
+					riding.flip()
 		goingB:
+			if riding != null:
+				if riding.is_in_group("cultist") and not riding.facing:
+					riding.flip()
 			curState = finishedB
+
 	if riding != null:
 		riding.releaseMovement()
 		riding.velocity = Vector2.ZERO
