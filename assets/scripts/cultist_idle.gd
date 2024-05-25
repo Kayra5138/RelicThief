@@ -34,17 +34,17 @@ func _physics_process(delta):
 		am_dom(delta)
 		return
 	playerSeen = false
-	var seen1 = $EyeSight/EyeSight1
-	if $EyeSight/EyeSight1.is_colliding() and seen1.get_collider().has_meta("Player"):
+	var seen1col = $EyeSight/EyeSight1.get_collider()
+	if seen1col != null and seen1col.has_meta("Player"):
 		playerSeen = true
-	var seen2 = $EyeSight/EyeSight2
-	if $EyeSight/EyeSight2.is_colliding() and seen2.get_collider().has_meta("Player"):
+	var seen2col = $EyeSight/EyeSight2.get_collider()
+	if seen2col != null and seen2col.has_meta("Player"):
 		playerSeen = true
-	var seen3 = $EyeSight/EyeSight3
-	if $EyeSight/EyeSight3.is_colliding() and seen3.get_collider().has_meta("Player"):
+	var seen3col = $EyeSight/EyeSight3.get_collider()
+	if seen3col != null and seen3col.has_meta("Player"):
 		playerSeen = true
-	var seenback = $EyeSight/EyeSightBack
-	if $EyeSight/EyeSightBack.is_colliding() and seenback.get_collider().has_meta("Player"):
+	var seenbackcol = $EyeSight/EyeSightBack.get_collider()
+	if seenbackcol != null and seenbackcol.has_meta("Player"):
 		flip()
 	if not is_on_floor():
 		velocity.y += gravity * delta
