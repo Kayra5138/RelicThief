@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ctj1spwblps66"]
+[gd_scene load_steps=37 format=3 uid="uid://ctj1spwblps66"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
@@ -12,7 +12,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rhnfn"]
 shader = ExtResource("7_lpeor")
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/tint_factor = 0.0
+shader_parameter/tint_factor = 1.0
 shader_parameter/fade = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v2ct"]
@@ -207,32 +207,95 @@ size = Vector2(18, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn1vm"]
 size = Vector2(28, 62.4326)
 
-[sub_resource type="Animation" id="Animation_ct2ne"]
-resource_name = "Death"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.341509),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyovr"]
-_data = {
-"Death": SubResource("Animation_ct2ne")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm0cb"]
 size = Vector2(18, 95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crlur"]
 size = Vector2(18, 3)
+
+[sub_resource type="Animation" id="Animation_ct2ne"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankSprite:material:shader_parameter/tint_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChainsSprite:material:shader_parameter/tint_factor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:material:shader_parameter/tint_factor")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_nlhdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankSprite:material:shader_parameter/tint_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChainsSprite:material:shader_parameter/tint_factor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:material:shader_parameter/tint_factor")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyovr"]
+_data = {
+"Death": SubResource("Animation_ct2ne"),
+"RESET": SubResource("Animation_nlhdq")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["player", "puffTarget", "riding"]]
 modulate = Color(0.759095, 0.759095, 0.759095, 1)
@@ -310,12 +373,6 @@ energy = 0.3
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
-libraries = {
-"": SubResource("AnimationLibrary_uyovr")
-}
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 position = Vector2(0, -48)
@@ -409,7 +466,13 @@ position = Vector2(10, -16)
 target_position = Vector2(0, 55)
 collision_mask = 17
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uyovr")
+}
+
 [connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

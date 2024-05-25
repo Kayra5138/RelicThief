@@ -35,6 +35,11 @@ var carrying:CharacterBody2D = null
 @onready var topCol:CollisionShape2D = $TopCollision/CollisionShape2D
 @onready var pick_center:Node2D = $Box_Picking_Center
 
+func _ready():
+	playerSprite.material.set_shader_parameter("tint_factor", 0)
+	$TankSprite.material.set_shader_parameter("tint_factor", 0)
+	$ChainsSprite.material.set_shader_parameter("tint_factor", 0)
+
 func climbing_state():
 	playerSprite.animation = "jump"
 	var input = Vector2.ZERO
@@ -286,9 +291,15 @@ func _on_animated_sprite_2d_animation_changed():
 	if playerSprite.animation != "throw":
 		throwing = false
 
-func restart(): # R TUŞU İLE RESTART DÜNYA SKRIPTİNDE DE VAR ONU KAPATMAYI UNUTMA
+func restart():
 	is_dead = true
 	var tmp = carrying
 	if tmp:
 		tmp.explode()
+	playerSprite.animation = "jump"
+	$AnimationPlayer.play("Death")
 	
+
+func _on_animation_player_animation_finished(anim):
+	if anim == "Death":
+		get_parent().reload()

@@ -40,7 +40,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 6.0,
 "texture": SubResource("AtlasTexture_2e7yd")
 }, {
 "duration": 2.0,
@@ -52,7 +52,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_6kwbo")
 }],
-"loop": true,
+"loop": false,
 "name": &"impact",
 "speed": 8.0
 }]

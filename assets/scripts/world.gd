@@ -23,4 +23,11 @@ func letGoBuddy():
 		
 func _input(event : InputEvent):
 	if event.is_action_pressed("restart"):
+		reload()
+		
+func _on_animation_player_animation_finished(anim):
+	if anim == "restart":
 		get_tree().reload_current_scene()
+
+func reload():
+	$AnimationPlayer.play("restart")
