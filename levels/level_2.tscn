@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7hl5h3d31oig"]
+[gd_scene load_steps=15 format=3 uid="uid://c7hl5h3d31oig"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_qe48s"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_sd2ql"]
@@ -12,6 +12,26 @@
 [ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="12_76p6f"]
 [ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://assets/objects/spikes.tscn" id="13_3gqnp"]
 [ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="13_a6ub7"]
+
+[sub_resource type="Animation" id="Animation_04yek"]
+resource_name = "restart"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkenScene:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 2.82842),
+"update": 0,
+"values": [0.0, 1.0, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00j0a"]
+_data = {
+"restart": SubResource("Animation_04yek")
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qe48s")
@@ -118,4 +138,18 @@ position = Vector2(528, 224)
 [node name="Player" parent="." instance=ExtResource("12_76p6f")]
 position = Vector2(256, 512)
 
+[node name="DarkenScene" type="DirectionalLight2D" parent="."]
+color = Color(0.623529, 1, 0.87451, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_00j0a")
+}
+
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
