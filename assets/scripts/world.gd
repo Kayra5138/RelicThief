@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player:Player = get_tree().get_first_node_in_group("player")
+
+var no_blood = false
 
 func _ready():
 	Engine.max_fps = 60
@@ -9,6 +11,14 @@ func _ready():
 		cultist.connect("letGoPls", letGoBuddy)
 	for skill_object in get_tree().get_nodes_in_group("skill_object"): #Ice Columns are skill objects
 		skill_object.connect("can_i_do",checkIfPlayerCan)
+	for ui_skill:Node2D in get_tree().get_nodes_in_group("ui_skill"):
+		match ui_skill.name.split(".")[0]:
+			"InfSkill":
+				player.skill = INF
+			"NoBlood":
+				no_blood = true
+			"NoSpike":
+				player.no_spike = true
 
 func checkIfPlayerCan(skill_object):
 	if not player.dominating and not player.carrying and player.skill > 0:
@@ -16,6 +26,8 @@ func checkIfPlayerCan(skill_object):
 		player.skill -= 1
 
 func wantsDomination(cultist):
+	if no_blood:
+		return
 	player.dominate(cultist)
 
 func letGoBuddy():

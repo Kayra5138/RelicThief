@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n1kjnn3vv1x3"
-path="res://.godot/imported/track.png-78a303e690c09fd63e0503da4546bbc9.ctex"
+uid="uid://cjdagahdsc777"
+path="res://.godot/imported/sprite_1.png-3e812304fc8f545fab3ae3a00ddecba4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/track.png"
-dest_files=["res://.godot/imported/track.png-78a303e690c09fd63e0503da4546bbc9.ctex"]
+source_file="res://textures/ui/sprite_1.png"
+dest_files=["res://.godot/imported/sprite_1.png-3e812304fc8f545fab3ae3a00ddecba4.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

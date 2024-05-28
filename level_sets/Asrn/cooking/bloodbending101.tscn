@@ -1,0 +1,221 @@
+[gd_scene load_steps=19 format=3 uid="uid://c4gqd6u2xgv58"]
+
+[ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_woxtr"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_xcwlx"]
+[ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="3_wiedf"]
+[ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="4_a6k6g"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="5_elmrb"]
+[ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://assets/characters/cultist_walking.tscn" id="6_woyot"]
+[ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="7_a2dig"]
+[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="7_kwjgs"]
+[ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="8_2dixb"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="9_4k4ab"]
+[ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="10_qgc6a"]
+[ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://assets/objects/spikes.tscn" id="12_tgin8"]
+[ext_resource type="PackedScene" uid="uid://cv6btmmc8s1lj" path="res://assets/ui/inf_skill.tscn" id="13_4jsdm"]
+[ext_resource type="PackedScene" uid="uid://cfuymasi14n4t" path="res://assets/objects/realestmc.tscn" id="14_ri8aj"]
+[ext_resource type="PackedScene" uid="uid://oo5mwr6716re" path="res://assets/terrain/trackline.tscn" id="15_hbvos"]
+
+[sub_resource type="Animation" id="Animation_04yek"]
+resource_name = "restart"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkenScene:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 2.82842),
+"update": 0,
+"values": [0.0, 1.0, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00j0a"]
+_data = {
+"restart": SubResource("Animation_04yek")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_rcyqk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 256, -32, 0, 0, 0, 0, 288, -32)
+}
+point_count = 4
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_woxtr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 288)
+
+[node name="DarkenScene" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.890196, 0.780392, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_xcwlx")]
+offset = Vector2(-64, -128)
+transform = Transform2D(1, 0, 0, 1, -64, -128)
+
+[node name="caveDoor" parent="." instance=ExtResource("3_wiedf")]
+position = Vector2(976, 176)
+
+[node name="Player" parent="." instance=ExtResource("4_a6k6g")]
+position = Vector2(584, 512)
+
+[node name="TileMap" parent="." instance=ExtResource("5_elmrb")]
+layer_0/tile_data = PackedInt32Array(-65504, 589824, 1, 32, 851968, 1, 65568, 589824, 1, 131104, 589824, 1, 196640, 589824, 1, 262176, 589824, 1, 327712, 589824, 1, 393248, 589824, 1, 458784, 589824, 1, 524320, 589824, 1, 589856, 589824, 1, 655392, 589824, 1, 720928, 589824, 1, 786464, 589824, 1, 852000, 589824, 1, 917536, 589824, 1, 983072, 589824, 1, 1048608, 589824, 1, 1114144, 589824, 1, 1179680, 589824, 1, 1179679, 589824, 1, 1179678, 589824, 1, 1179677, 589824, 1, 1179676, 589824, 1, 1179675, 589824, 1, 1179674, 589824, 1, 1179673, 589824, 1, 1179672, 589824, 1, 1179671, 589824, 1, 1179670, 589824, 1, 1179669, 589824, 1, 1179668, 589824, 1, 1179667, 589824, 1, 1179666, 589824, 1, 1179665, 589824, 1, 1179664, 589824, 1, 1179663, 589824, 1, 1179662, 589824, 1, 1179661, 589824, 1, 1179660, 589824, 1, 1179659, 589824, 1, 1179658, 589824, 1, 1179657, 589824, 1, 1179656, 589824, 1, 1179655, 589824, 1, 1179654, 589824, 1, 1179653, 589824, 1, 1179652, 589824, 1, 1179651, 589824, 1, 1179650, 589824, 1, 1179649, 589824, 1, 1179648, 589824, 1, 1245183, 589824, 1, 1179647, 589824, 1, 1114111, 589824, 1, 1048575, 589824, 1, 983039, 589824, 1, 917503, 589824, 1, 851967, 589824, 1, 786431, 589824, 1, 720895, 589824, 1, 655359, 589824, 1, 589823, 589824, 1, 524287, 589824, 1, 458751, 589824, 1, 393215, 589824, 1, 327679, 589824, 1, 262143, 589824, 1, 196607, 589824, 1, 131071, 589824, 1, 65535, 589824, 1, -1, 589824, 1, -65536, 589824, 1, -65535, 589824, 1, -65534, 589824, 1, -65533, 589824, 1, -65532, 589824, 1, -65531, 589824, 1, -65530, 589824, 1, -65529, 589824, 1, -65528, 589824, 1, -65527, 589824, 1, -65526, 589824, 1, -65525, 589824, 1, -65524, 589824, 1, -65523, 589824, 1, -65522, 589824, 1, -65521, 589824, 1, -65520, 589824, 1, -65519, 589824, 1, -65518, 589824, 1, -65517, 589824, 1, -65516, 589824, 1, -65515, 589824, 1, -65514, 589824, 1, -65513, 589824, 1, -65512, 589824, 1, -65511, 589824, 1, -65510, 589824, 1, -65509, 589824, 1, -65508, 589824, 1, -65507, 589824, 1, -65506, 589824, 1, -65505, 589824, 1, 1114112, 851968, 1, 1114113, 851968, 1, 1114114, 851968, 1, 1114115, 851968, 1, 1114116, 851968, 1, 1114117, 851968, 1, 1114118, 851968, 1, 1114127, 851968, 1, 1114128, 851968, 1, 1114129, 851968, 1, 1114126, 851968, 1, 1114125, 851968, 1, 1114124, 851968, 1, 1114120, 851968, 1, 1114119, 851968, 1, 1114121, 851968, 1, 1114122, 851968, 1, 1114123, 851968, 1, 1114130, 851968, 1, 1114131, 851968, 1, 1114132, 851968, 1, 1114133, 851968, 1, 1114134, 851968, 1, 589827, 589824, 1, 589828, 589824, 1, 655364, 589824, 1, 655363, 1245184, 5, 589826, 589824, 1, 851990, 589824, 1, 851989, 589824, 1, 851988, 589824, 1, 851987, 589824, 1, 851986, 589824, 1, 786450, 589824, 1, 786449, 589824, 1, 786451, 589824, 1, 786452, 589824, 1, 786453, 589824, 1, 851992, 589824, 1, 851993, 589824, 1, 851994, 589824, 1, 851995, 589824, 1, 851996, 589824, 1, 851997, 589824, 1, 851998, 589824, 1, 851991, 589824, 1, 786457, 589824, 1, 786458, 589824, 1, 786459, 589824, 1, 786460, 589824, 1, 786461, 589824, 1, 786462, 589824, 1, 786463, 589824, 1, 851999, 589824, 1, 131091, 589824, 1, 65559, 589824, 1, 65558, 589824, 1, 65557, 589824, 1, 65556, 589824, 1, 65555, 589824, 1, 18, 589824, 1, 17, 589824, 1, 16, 589824, 1, 15, 589824, 1, 19, 589824, 1, 20, 589824, 1, 65560, 589824, 1, 65561, 589824, 1, 65562, 589824, 1, 65563, 589824, 1, 65564, 589824, 1, 26, 589824, 1, 25, 589824, 1, 24, 589824, 1, 23, 589824, 1, 22, 589824, 1, 21, 589824, 1, 27, 589824, 1, 28, 589824, 1, 29, 589824, 1, 30, 589824, 1, 31, 589824, 1, 65567, 589824, 1, 65566, 589824, 1, 65565, 589824, 1, 131072, 589824, 1, 65536, 589824, 1, 1, 589824, 1, 2, 589824, 1, 3, 589824, 1, 4, 589824, 1, 5, 589824, 1, 6, 589824, 1, 0, 589824, 1, 1114143, 589824, 1, 7, 589824, 1, 786448, 589824, 1, 851985, 589824, 1, 14, 589824, 1, 786456, 589824, 1, 786454, 589824, 1, 1114135, 851968, 1, 1114136, 589824, 1, 1114137, 589824, 1, 1114138, 589824, 1, 1114139, 589824, 1, 1114140, 589824, 1, 1114141, 589824, 1, 1114142, 589824, 1, 851972, 589824, 1, 851968, 589824, 1, 851969, 589824, 1, 851970, 589824, 1, 851973, 589824, 1, 851974, 589824, 1, 851975, 589824, 1, 851976, 589824, 1, 851977, 589824, 1, 851978, 589824, 1, 851979, 589824, 1, 851980, 589824, 1, 851981, 589824, 1, 851982, 589824, 1, 851983, 589824, 1, 851984, 589824, 1, 262144, 589824, 1, 262145, 589824, 1, 262146, 589824, 1, 262147, 589824, 1, 262148, 589824, 1, 262149, 589824, 1, 262150, 589824, 1, 262151, 589824, 1, 262152, 589824, 1, 262153, 589824, 1, 262154, 589824, 1, 262155, 589824, 1, 262156, 589824, 1, 262157, 589824, 1, 262158, 589824, 1, 262159, 589824, 1, 262160, 589824, 1, 262161, 589824, 1, 262162, 589824, 1, 262163, 589824, 1, 196627, 589824, 1, 720900, 589824, 1, 786436, 589824, 1, 196608, 589824, 1, 8, 589824, 1, 9, 589824, 1, 10, 589824, 1, 11, 589824, 1, 12, 589824, 1, 13, 589824, 1, 589839, 589824, 1, 655375, 589824, 1, 720911, 589824, 1, 786447, 589824, 1, 589840, 589824, 1, 655376, 589824, 1, 720912, 589824, 1, 458783, 589824, 1, 458782, 589824, 1, 458781, 589824, 1, 524317, 589824, 1, 589853, 589824, 1, 655389, 589824, 1, 720925, 589824, 1, 720926, 589824, 1, 655390, 589824, 1, 589854, 589824, 1, 524318, 589824, 1, 524319, 589824, 1, 589855, 589824, 1, 655391, 589824, 1, 720927, 589824, 1, 458780, 589824, 1, 524316, 589824, 1, 589852, 589824, 1, 655388, 589824, 1, 720924, 589824, 1, 524315, 589824, 1, 589851, 589824, 1, 655387, 589824, 1, 720923, 589824, 1, 524314, 589824, 1, 589850, 589824, 1, 655386, 589824, 1, 720922, 589824, 1, 786455, 589824, 1, 589841, 589824, 1, 589842, 589824, 1, 655377, 589824, 1, 720913, 589824, 1, 720914, 589824, 1, 655378, 589824, 1, 393232, 589824, 1, 327696, 589824, 1, 655379, 589824, 1, 720915, 589824, 1, 720916, 589824, 1, 589843, 589824, 1, 655380, 589824, 1, 720917, 589824, 1)
+
+[node name="DarkenScene2" type="DirectionalLight2D" parent="."]
+color = Color(0.623529, 1, 0.87451, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_00j0a")
+}
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="CultistWalking3" parent="Enemies" instance=ExtResource("6_woyot")]
+position = Vector2(920, 192)
+
+[node name="CultistIdle" parent="Enemies" instance=ExtResource("7_kwjgs")]
+position = Vector2(480, 96)
+
+[node name="CultistIdle2" parent="Enemies" instance=ExtResource("7_kwjgs")]
+position = Vector2(168, 96)
+
+[node name="CultistWalking" parent="Enemies" instance=ExtResource("6_woyot")]
+position = Vector2(32, 512)
+
+[node name="CultistWalking2" parent="Enemies" instance=ExtResource("6_woyot")]
+position = Vector2(768, 512)
+speed = 170.0
+flipped = true
+
+[node name="doors" type="Node2D" parent="."]
+
+[node name="Door" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(200, 240)
+
+[node name="Door2" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(200, 272)
+
+[node name="Door3" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(240, 304)
+
+[node name="Door4" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(272, 304)
+
+[node name="Door5" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(336, 216)
+
+[node name="Door6" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(336, 248)
+
+[node name="Door7" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(368, 304)
+
+[node name="Door8" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(400, 304)
+
+[node name="Door9" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(440, 240)
+
+[node name="Door10" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(440, 272)
+
+[node name="doormiddle" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(304, 216)
+
+[node name="doormiddle2" parent="doors" instance=ExtResource("10_qgc6a")]
+position = Vector2(304, 248)
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(112, 96)
+list_of_doors = [NodePath("../../doors/Door"), NodePath("../../doors/Door2")]
+
+[node name="Button2" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(216, 96)
+list_of_doors = [NodePath("../../doors/Door3"), NodePath("../../doors/Door4")]
+
+[node name="Button3" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(320, 96)
+list_of_doors = [NodePath("../../doors/Door5"), NodePath("../../doors/Door6"), NodePath("../../doors/doormiddle"), NodePath("../../doors/doormiddle2")]
+
+[node name="Button4" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(424, 96)
+list_of_doors = [NodePath("../../doors/Door7"), NodePath("../../doors/Door8")]
+
+[node name="Button5" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(528, 96)
+list_of_doors = [NodePath("../../doors/Door9"), NodePath("../../doors/Door10")]
+
+[node name="other" type="Node2D" parent="."]
+
+[node name="Spikes" parent="other" instance=ExtResource("12_tgin8")]
+position = Vector2(192, 384)
+
+[node name="Spikes2" parent="other" instance=ExtResource("12_tgin8")]
+position = Vector2(384, 384)
+
+[node name="Spikes3" parent="other" instance=ExtResource("12_tgin8")]
+position = Vector2(320, 384)
+
+[node name="Spikes4" parent="other" instance=ExtResource("12_tgin8")]
+position = Vector2(256, 384)
+
+[node name="Spikes5" parent="other" instance=ExtResource("12_tgin8")]
+position = Vector2(448, 384)
+
+[node name="Ladder4" parent="other" instance=ExtResource("7_a2dig")]
+position = Vector2(32, 304)
+
+[node name="Ladder5" parent="other" instance=ExtResource("7_a2dig")]
+position = Vector2(32, 336)
+
+[node name="Ladder6" parent="other" instance=ExtResource("7_a2dig")]
+position = Vector2(32, 368)
+
+[node name="Ladder" parent="other" instance=ExtResource("7_a2dig")]
+position = Vector2(112, 432)
+
+[node name="Ladder2" parent="other" instance=ExtResource("7_a2dig")]
+position = Vector2(112, 464)
+
+[node name="Ladder3" parent="other" instance=ExtResource("7_a2dig")]
+position = Vector2(112, 496)
+
+[node name="Platform" parent="other" instance=ExtResource("8_2dixb")]
+position = Vector2(112, 416)
+
+[node name="Platform2" parent="other" instance=ExtResource("8_2dixb")]
+position = Vector2(16, 288)
+
+[node name="Platform3" parent="other" instance=ExtResource("8_2dixb")]
+position = Vector2(48, 288)
+
+[node name="InfSkill" parent="." instance=ExtResource("13_4jsdm")]
+position = Vector2(992, 32)
+
+[node name="realestmc" parent="." instance=ExtResource("14_ri8aj")]
+position = Vector2(576, 288)
+curve = SubResource("Curve2D_rcyqk")
+reversed = true
+
+[node name="TrackLine" parent="." instance=ExtResource("15_hbvos")]
+position = Vector2(576, 240)
+points = PackedVector2Array(-24, 48, 64, 48, 256, 16, 288, 16, 304, 16)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
