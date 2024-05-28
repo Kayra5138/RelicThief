@@ -53,7 +53,10 @@ func domination(delta):
 		dominating.move_left()
 	elif Input.is_action_pressed("right"):
 		dominating.move_right()
-	velocity.y += gravity * delta
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	#Setting max speed
+	velocity.y = min(velocity.y, 700)
 	velocity.x = lerp(velocity.x, 0.0, friction)
 	move_and_slide()
 

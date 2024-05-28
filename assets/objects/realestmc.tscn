@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfuymasi14n4t"]
+[gd_scene load_steps=10 format=3 uid="uid://cfuymasi14n4t"]
 
 [ext_resource type="Script" path="res://assets/scripts/realestmc.gd" id="1_7f7wx"]
 [ext_resource type="Texture2D" uid="uid://drnavl5bpaxtw" path="res://textures/objects/minecart.png" id="2_0wosg"]
@@ -8,6 +8,9 @@ size = Vector2(62, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d81la"]
 size = Vector2(25, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2glm"]
+size = Vector2(64, 8)
 
 [sub_resource type="Animation" id="Animation_chxid"]
 length = 0.001
@@ -64,6 +67,7 @@ _data = {
 }
 
 [node name="realestmc" type="Path2D" groups=["strong"]]
+position = Vector2(0, 1)
 script = ExtResource("1_7f7wx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
@@ -92,6 +96,14 @@ shape = SubResource("RectangleShape2D_d81la")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D/minecart"]
 position = Vector2(0, -5)
+
+[node name="VisionBlock" type="StaticBody2D" parent="PathFollow2D/minecart"]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/minecart/VisionBlock"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_y2glm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

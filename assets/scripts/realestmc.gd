@@ -24,7 +24,7 @@ func _ready():
 		curState = waitingB
 
 func entered(body):
-	if not body.is_in_group("riding") or riding != null:
+	if not body.is_in_group("riding") or riding != null or curState == goingA or curState == goingB:
 		return
 	$PathFollow2D/minecart/RemoteTransform2D.position.y = ogPos + body.minecartOffset
 	$PathFollow2D/minecart/RemoteTransform2D.remote_path = body.get_path()
