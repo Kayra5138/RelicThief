@@ -98,7 +98,7 @@ func _physics_process(delta):
 		climbing_state()
 		return
 	if lockControls:
-		playerSprite.animation = "idle"
+		playerSprite.animation = "idle" if not carrying else "carrying idle"
 		if facing == 0:
 			transform.x.x = -1
 		if facing == 1:
@@ -138,14 +138,16 @@ func _physics_process(delta):
 	
 	if throwing == false:
 		if Input.is_action_pressed("left"):
-			if is_on_floor(): 
-				playerSprite.animation = "walk"
-				playerSprite.play("walk")
+			if is_on_floor():
+				var tmp = "walk" if not carrying else "carrying walk"
+				playerSprite.animation = tmp
+				playerSprite.play(tmp)
 			facing = 0
 		if Input.is_action_pressed("right"):
 			if is_on_floor(): 
-				playerSprite.animation = "walk"
-				playerSprite.play("walk")
+				var tmp = "walk" if not carrying else "carrying walk"
+				playerSprite.animation = tmp
+				playerSprite.play(tmp)
 			facing = 1
 		if Input.is_action_just_pressed("interact") and is_on_floor():
 			if carrying == null:
@@ -166,6 +168,7 @@ func _physics_process(delta):
 							min_box_dist = vec.length()
 							tmp_box = tmp.get_parent()
 					if tmp_box:
+						#Carrylemeye karr verdim
 						carrying = tmp_box
 						carrying.being_carried = true
 						carrying.transform.x.x = 1
@@ -180,6 +183,7 @@ func _physics_process(delta):
 						putdown_colliding = true
 						break
 				if not putdown_colliding:
+					#Carry bitirmeye karar verdm
 					Remote.remote_path = ""
 					$CarriedBoxCollision.disabled = true
 					$PlayerCollision.disabled = false
@@ -189,7 +193,7 @@ func _physics_process(delta):
 					carrying = null
 			
 	if (Input.is_action_just_released("right") or Input.is_action_just_released("left")):
-		playerSprite.animation = "idle"
+		playerSprite.animation = "idle" if not carrying else "carrying idle"
 	
 	if !is_on_floor():
 		playerSprite.animation = "jump"
@@ -202,8 +206,9 @@ func _physics_process(delta):
 			if throwing == true:
 				playerSprite.animation = "throw"
 			else:
-				playerSprite.animation = "idle"
-				playerSprite.play("idle")
+				var tmp = "idle" if not carrying else "carrying idle"
+				playerSprite.animation = tmp
+				playerSprite.play(tmp)
 
 	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("up")) and (is_on_floor() or coyoteJumpTimer>0):
 		velocity.y = jump_speed
@@ -256,7 +261,7 @@ func _on_hitbox_body_entered(body):
 		restart()
 
 func lockMovement():
-	playerSprite.animation = "idle"
+	playerSprite.animation = "idle" if not carrying else "carrying idle"
 	lockControls = true
 
 func releaseMovement():

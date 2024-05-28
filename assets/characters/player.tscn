@@ -197,7 +197,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"carrying walk",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -380,7 +380,7 @@ sprite_frames = SubResource("SpriteFrames_n2dc4")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_lgenu")
 sprite_frames = SubResource("SpriteFrames_8y6ks")
-animation = &"carrying idle"
+animation = &"carrying walk"
 autoplay = "idle"
 speed_scale = 2.0
 
