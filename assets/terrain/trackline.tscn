@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://oo5mwr6716re"]
+
+[ext_resource type="Texture2D" uid="uid://n1kjnn3vv1x3" path="res://textures/objects/track.png" id="1_fll4f"]
+
+[node name="TrackLine" type="Line2D"]
+show_behind_parent = true
+texture_repeat = 2
+points = PackedVector2Array(96, 24)
+width = 25.0
+texture = ExtResource("1_fll4f")
+texture_mode = 1
+antialiased = true

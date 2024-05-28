@@ -66,5 +66,13 @@ libraries = {
 "": SubResource("AnimationLibrary_00j0a")
 }
 
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Other" type="Node2D" parent="."]
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

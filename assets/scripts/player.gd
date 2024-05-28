@@ -35,6 +35,8 @@ var carrying:CharacterBody2D = null
 @onready var topCol:CollisionShape2D = $TopCollision/CollisionShape2D
 @onready var pick_center:Node2D = $Box_Picking_Center
 
+var no_spike = false
+
 func _ready():
 	playerSprite.material.set_shader_parameter("tint_factor", 0)
 	$TankSprite.material.set_shader_parameter("tint_factor", 0)
@@ -209,7 +211,8 @@ func _physics_process(delta):
 		velocity.y = jump_speed
 		coyoteJumpTimer = 0
 
-	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 and !$IceSpikeCollideCheck.is_colliding() and is_on_floor() and not carrying:
+	if Input.is_action_pressed("shoot") and $IceSpikeCooldown.is_stopped() and skill > 0 \
+	and !$IceSpikeCollideCheck.is_colliding() and is_on_floor() and not carrying and not no_spike:
 		skill -= 1
 		shoot_ice_spike()
 		
