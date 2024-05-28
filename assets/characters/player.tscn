@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://ctj1spwblps66"]
+[gd_scene load_steps=43 format=3 uid="uid://ctj1spwblps66"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ikhbi"]
 [ext_resource type="Texture2D" uid="uid://dw42y8qlvybbi" path="res://textures/characters/player/idle.png" id="2_urc0t"]
 [ext_resource type="Texture2D" uid="uid://chyuvv41h6ygs" path="res://textures/characters/player/jump.png" id="3_o4nuv"]
 [ext_resource type="Texture2D" uid="uid://4l0mpnd8y3ed" path="res://textures/characters/player/throw.png" id="4_02tpv"]
 [ext_resource type="Texture2D" uid="uid://doasmp3ocm4tn" path="res://textures/characters/player/walking.png" id="4_cyirp"]
+[ext_resource type="Texture2D" uid="uid://mh4dspkvi5lx" path="res://textures/characters/player/carrying.png" id="4_jqkwp"]
 [ext_resource type="Texture2D" uid="uid://c2qvwpqqw3htk" path="res://textures/characters/player/tank.png" id="6_yrmxm"]
 [ext_resource type="Shader" path="res://assets/shaders/color_tint.gdshader" id="7_lpeor"]
 [ext_resource type="Texture2D" uid="uid://cy0gx4gchlvsi" path="res://textures/objects/crate.png" id="8_jfvq3"]
@@ -127,6 +128,26 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7rds"]
+atlas = ExtResource("4_jqkwp")
+region = Rect2(64, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc8sx"]
+atlas = ExtResource("4_jqkwp")
+region = Rect2(0, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gxsv"]
+atlas = ExtResource("4_jqkwp")
+region = Rect2(64, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnf6x"]
+atlas = ExtResource("4_jqkwp")
+region = Rect2(128, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c60nx"]
+atlas = ExtResource("4_jqkwp")
+region = Rect2(192, 0, 64, 72)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2vyb"]
 atlas = ExtResource("4_02tpv")
 region = Rect2(0, 0, 64, 64)
@@ -153,6 +174,31 @@ region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8y6ks"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7rds")
+}],
+"loop": true,
+"name": &"carrying idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc8sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gxsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnf6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c60nx")
+}],
+"loop": true,
+"name": &"carrying walk",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_urc0t")
@@ -334,7 +380,7 @@ sprite_frames = SubResource("SpriteFrames_n2dc4")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_lgenu")
 sprite_frames = SubResource("SpriteFrames_8y6ks")
-animation = &"walk"
+animation = &"carrying idle"
 autoplay = "idle"
 speed_scale = 2.0
 
