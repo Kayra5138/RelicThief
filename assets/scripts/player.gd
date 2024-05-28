@@ -196,7 +196,7 @@ func _physics_process(delta):
 		playerSprite.animation = "idle" if not carrying else "carrying idle"
 	
 	if !is_on_floor():
-		playerSprite.animation = "jump"
+		playerSprite.animation = "jump" if not carrying else "carrying jump"
 		if coyoteJumpTimer > 0:
 			coyoteJumpTimer += -1
 	
