@@ -7,13 +7,18 @@ signal letGoPls
 @export var speed = 100.0
 const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var flipped = false
 var facing = true
 var locked = false
 var dominated = false
 var turn_counter_limit = 5
-var turn_counter = turn_counter_limit
+var turn_counter = 0
 
 @export var friction = 10
+
+func _ready():
+	if flipped:
+		flip()
 
 func lockMovement():
 	locked = true
