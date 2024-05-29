@@ -22,6 +22,8 @@ func _ready():
 			"NoSpike":
 				player.no_spike = true
 	cave_door.connect("next_level",fln)
+	player.connect("returnToMenu",return_menu)
+	
 func checkIfPlayerCan(skill_object):
 	if not player.dominating and not player.carrying and player.skill > 0:
 		skill_object.do_skill()
@@ -44,6 +46,9 @@ func _on_darken_scene_animation_animation_finished(anim):
 		get_tree().reload_current_scene()
 	if anim == "next":
 		cave_door.go_next_level()
+
+func return_menu():
+	get_tree().change_scene_to_file("res://levels_menu.tscn")
 
 func fln():
 	$DarkenSceneAnimation.play("next")

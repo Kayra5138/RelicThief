@@ -28,9 +28,6 @@ transform = Transform2D(1, 0, 0, 1, -64, -128)
 
 [node name="Ladders" type="CanvasGroup" parent="."]
 
-[node name="Ladder" parent="Ladders" instance=ExtResource("6_fmduy")]
-position = Vector2(32, 528)
-
 [node name="Ladder2" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 496)
 
@@ -42,9 +39,6 @@ position = Vector2(32, 432)
 
 [node name="Ladder5" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(32, 400)
-
-[node name="Ladder7" parent="Ladders" instance=ExtResource("6_fmduy")]
-position = Vector2(384, 528)
 
 [node name="Ladder8" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 496)
@@ -58,9 +52,6 @@ position = Vector2(384, 432)
 [node name="Ladder11" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(384, 400)
 
-[node name="Ladder25" parent="Ladders" instance=ExtResource("6_fmduy")]
-position = Vector2(224, 368)
-
 [node name="Ladder26" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 336)
 
@@ -70,9 +61,6 @@ position = Vector2(224, 304)
 [node name="Ladder28" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(224, 272)
 
-[node name="Ladder29" parent="Ladders" instance=ExtResource("6_fmduy")]
-position = Vector2(288, 240)
-
 [node name="Ladder30" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(288, 208)
 
@@ -81,9 +69,6 @@ position = Vector2(288, 176)
 
 [node name="Ladder43" parent="Ladders/Ladder43" instance=ExtResource("6_fmduy")]
 position = Vector2(0, -32)
-
-[node name="Ladder13" parent="Ladders" instance=ExtResource("6_fmduy")]
-position = Vector2(480, 528)
 
 [node name="Ladder14" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 496)
@@ -97,9 +82,6 @@ position = Vector2(480, 432)
 [node name="Ladder17" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(480, 400)
 
-[node name="Ladder19" parent="Ladders" instance=ExtResource("6_fmduy")]
-position = Vector2(672, 528)
-
 [node name="Ladder20" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 496)
 
@@ -111,9 +93,6 @@ position = Vector2(672, 432)
 
 [node name="Ladder23" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(672, 400)
-
-[node name="Ladder31" parent="Ladders" instance=ExtResource("6_fmduy")]
-position = Vector2(992, 528)
 
 [node name="Ladder32" parent="Ladders" instance=ExtResource("6_fmduy")]
 position = Vector2(992, 496)

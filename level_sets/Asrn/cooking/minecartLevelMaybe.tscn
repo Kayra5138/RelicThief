@@ -1,0 +1,278 @@
+[gd_scene load_steps=20 format=3 uid="uid://6kx1tgjn06d3"]
+
+[ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_oicqd"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_py6i3"]
+[ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="3_knk64"]
+[ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="4_mxrtv"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="5_cddp5"]
+[ext_resource type="PackedScene" uid="uid://kun5uq04uqtm" path="res://assets/ui/darken_scene_animation.tscn" id="6_mbwql"]
+[ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="7_otykh"]
+[ext_resource type="PackedScene" uid="uid://cfuymasi14n4t" path="res://assets/objects/realestmc.tscn" id="7_vjb8a"]
+[ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://assets/characters/cultist_walking.tscn" id="8_t4e1b"]
+[ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="8_wd3ol"]
+[ext_resource type="PackedScene" uid="uid://oo5mwr6716re" path="res://assets/terrain/trackline.tscn" id="9_rhilt"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="12_yu7f7"]
+[ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="13_n3cuy"]
+[ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="14_5gagr"]
+[ext_resource type="PackedScene" uid="uid://dx0vnb8s77py0" path="res://assets/ui/no_blood.tscn" id="15_paas5"]
+[ext_resource type="PackedScene" uid="uid://v3xcxbcpaaf" path="res://assets/ui/no_spike.tscn" id="16_r52fo"]
+[ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://assets/objects/spikes.tscn" id="17_44mrt"]
+
+[sub_resource type="Curve2D" id="Curve2D_l2gn0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 192, -1)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_u13m1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 0)
+}
+point_count = 2
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_oicqd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 288)
+
+[node name="DarkenScene" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.890196, 0.780392, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_py6i3")]
+offset = Vector2(-64, -128)
+transform = Transform2D(1, 0, 0, 1, -64, -128)
+
+[node name="caveDoor" parent="." instance=ExtResource("3_knk64")]
+position = Vector2(984, 112)
+
+[node name="Player" parent="." instance=ExtResource("4_mxrtv")]
+position = Vector2(112, 416)
+
+[node name="TileMap" parent="." instance=ExtResource("5_cddp5")]
+layer_0/tile_data = PackedInt32Array(-65504, 589824, 1, 32, 851968, 1, 65568, 589824, 1, 131104, 589824, 1, 196640, 589824, 1, 262176, 589824, 1, 327712, 589824, 1, 393248, 589824, 1, 458784, 589824, 1, 524320, 589824, 1, 589856, 589824, 1, 655392, 589824, 1, 720928, 589824, 1, 786464, 589824, 1, 852000, 589824, 1, 917536, 589824, 1, 983072, 589824, 1, 1048608, 589824, 1, 1114144, 589824, 1, 1179680, 589824, 1, 1179679, 589824, 1, 1179678, 589824, 1, 1179677, 589824, 1, 1179676, 589824, 1, 1179675, 589824, 1, 1179674, 589824, 1, 1179673, 589824, 1, 1179672, 589824, 1, 1179671, 589824, 1, 1179670, 589824, 1, 1179669, 589824, 1, 1179668, 589824, 1, 1179667, 589824, 1, 1179666, 589824, 1, 1179665, 589824, 1, 1179664, 589824, 1, 1179663, 589824, 1, 1179662, 589824, 1, 1179661, 589824, 1, 1179660, 589824, 1, 1179659, 589824, 1, 1179658, 589824, 1, 1179657, 589824, 1, 1179656, 589824, 1, 1179655, 589824, 1, 1179654, 589824, 1, 1179653, 589824, 1, 1179652, 589824, 1, 1179651, 589824, 1, 1179650, 589824, 1, 1179649, 589824, 1, 1179648, 589824, 1, 1245183, 589824, 1, 1179647, 589824, 1, 1114111, 589824, 1, 1048575, 589824, 1, 983039, 589824, 1, 917503, 589824, 1, 851967, 589824, 1, 786431, 589824, 1, 720895, 589824, 1, 655359, 589824, 1, 589823, 589824, 1, 524287, 589824, 1, 458751, 589824, 1, 393215, 589824, 1, 327679, 589824, 1, 262143, 589824, 1, 196607, 589824, 1, 131071, 589824, 1, 65535, 589824, 1, -1, 589824, 1, -65536, 589824, 1, -65535, 589824, 1, -65534, 589824, 1, -65533, 589824, 1, -65532, 589824, 1, -65531, 589824, 1, -65530, 589824, 1, -65529, 589824, 1, -65528, 589824, 1, -65527, 589824, 1, -65526, 589824, 1, -65525, 589824, 1, -65524, 589824, 1, -65523, 589824, 1, -65522, 589824, 1, -65521, 589824, 1, -65520, 589824, 1, -65519, 589824, 1, -65518, 589824, 1, -65517, 589824, 1, -65516, 589824, 1, -65515, 589824, 1, -65514, 589824, 1, -65513, 589824, 1, -65512, 589824, 1, -65511, 589824, 1, -65510, 589824, 1, -65509, 589824, 1, -65508, 589824, 1, -65507, 589824, 1, -65506, 589824, 1, -65505, 589824, 1, 1114112, 851968, 1, 1114113, 851968, 1, 1114114, 851968, 1, 1114115, 851968, 1, 1114116, 851968, 1, 1114117, 851968, 1, 1114118, 851968, 1, 1048590, 589824, 1, 1048591, 589824, 1, 1114127, 851968, 1, 1114128, 851968, 1, 1114129, 851968, 1, 1114126, 851968, 1, 1114125, 851968, 1, 1114124, 851968, 1, 1048581, 589824, 1, 1048580, 589824, 1, 983054, 589824, 1, 1114120, 851968, 1, 1114119, 851968, 1, 1114121, 851968, 1, 1114122, 851968, 1, 1114123, 851968, 1, 1114130, 851968, 1, 1114131, 851968, 1, 1114132, 851968, 1, 1114133, 851968, 1, 1114134, 851968, 1, 983071, 589824, 1, 983070, 589824, 1, 917534, 589824, 1, 917533, 589824, 1, 917532, 589824, 1, 917531, 589824, 1, 917530, 589824, 1, 917529, 589824, 1, 851997, 589824, 1, 917535, 589824, 1, 851998, 589824, 1, 786461, 589824, 1, 786462, 589824, 1, 786463, 589824, 1, 851999, 589824, 1, 196635, 589824, 1, 196634, 589824, 1, 196632, 589824, 1, 196631, 589824, 1, 131095, 589824, 1, 131094, 589824, 1, 131093, 589824, 1, 131092, 589824, 1, 131091, 589824, 1, 131096, 589824, 1, 131099, 589824, 1, 65559, 589824, 1, 65558, 589824, 1, 65557, 589824, 1, 65556, 589824, 1, 65555, 589824, 1, 65554, 589824, 1, 18, 589824, 1, 17, 589824, 1, 16, 589824, 1, 19, 589824, 1, 20, 589824, 1, 65560, 589824, 1, 65563, 589824, 1, 24, 589824, 1, 23, 589824, 1, 22, 589824, 1, 21, 589824, 1, 27, 589824, 1, 2, 589824, 1, 3, 589824, 1, 1114143, 589824, 1, 983069, 589824, 1, 1048607, 589824, 1, 327711, 589824, 1, 196630, 589824, 1, 131090, 589824, 1, 65553, 589824, 1, 1114135, 851968, 1, 1114136, 589824, 1, 1114137, 589824, 1, 1114138, 589824, 1, 1114139, 589824, 1, 1114140, 589824, 1, 1114141, 589824, 1, 1114142, 589824, 1, 917509, 589824, 1, 983045, 589824, 1, 983044, 589824, 1, 917508, 589824, 1, 917507, 589824, 1, 983043, 589824, 1, 1048579, 589824, 1, 1048578, 589824, 1, 983042, 589824, 1, 983041, 589824, 1, 917505, 589824, 1, 917504, 589824, 1, 917506, 589824, 1, 1048577, 589824, 1, 1048576, 589824, 1, 983040, 589824, 1, 917518, 589824, 1, 983055, 589824, 1, 917519, 589824, 1, 917520, 589824, 1, 983056, 589824, 1, 1048592, 589824, 1, 983065, 589824, 1, 1048601, 589824, 1, 1048602, 589824, 1, 983066, 589824, 1, 983067, 589824, 1, 1048603, 589824, 1, 1048605, 589824, 1, 1048604, 589824, 1, 983068, 589824, 1, 1048606, 589824, 1, 393241, 589824, 1, 393242, 589824, 1, 393243, 589824, 1, 393244, 589824, 1, 393245, 589824, 1, 393246, 589824, 1, 393247, 589824, 1, 327709, 589824, 1, 327710, 589824, 1, 393240, 589824, 1, 393239, 589824, 1, 393238, 589824, 1, 393237, 589824, 1, 393236, 589824, 1, 393235, 589824, 1, 393234, 589824, 1, 393233, 589824, 1, 393232, 589824, 1, 393231, 589824, 1, 393230, 589824, 1, 393229, 589824, 1, 393228, 589824, 1, 393227, 589824, 1, 393226, 589824, 1, 393225, 589824, 1, 393224, 589824, 1, 393223, 589824, 1, 393222, 589824, 1, 393221, 589824, 1, 393220, 589824, 1, 393219, 589824, 1, 393218, 589824, 1, 327682, 589824, 1, 262146, 589824, 1, 196610, 589824, 1, 196611, 589824, 1, 262147, 589824, 1, 327683, 589824, 1, 131089, 589824, 1, 131088, 589824, 1, 65552, 589824, 1, 196629, 1441792, 5, 720926, 589824, 1, 720927, 589824, 1, 655391, 589824, 1, 589855, 589824, 1, 524319, 589824, 1, 458783, 589824, 1, 458782, 589824, 1, 524318, 589824, 1, 458781, 589824, 1, 458780, 589824, 1, 327690, 589824, 1, 6, 589824, 1, 65542, 589824, 1, 131078, 1441792, 5, 131079, 1507328, 5, 65543, 589824, 1, 7, 589824, 1, 262154, 589824, 1, 196618, 589824, 1, 196622, 589824, 1, 262158, 589824, 1, 327694, 589824, 1, 1, 589824, 1, 0, 589824, 1, 4, 589824, 1, 5, 589824, 1, 65548, 589824, 1, 12, 589824, 1, 196620, 589824, 1, 131084, 589824, 1, 8, 589824, 1, 9, 589824, 1, 10, 589824, 1, 11, 589824, 1, 13, 589824, 1, 14, 589824, 1, 15, 589824, 1)
+
+[node name="DarkenScene2" type="DirectionalLight2D" parent="."]
+color = Color(0.623529, 1, 0.87451, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+
+[node name="DarkenSceneAnimation" parent="." instance=ExtResource("6_mbwql")]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Other" type="Node2D" parent="."]
+
+[node name="Ladder" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(504, 400)
+
+[node name="Ladder2" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(504, 368)
+
+[node name="Ladder3" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(504, 336)
+
+[node name="Ladder7" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 400)
+
+[node name="Ladder8" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 368)
+
+[node name="Ladder9" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 336)
+
+[node name="Ladder10" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 304)
+
+[node name="Ladder11" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 272)
+
+[node name="Ladder12" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 240)
+
+[node name="Ladder18" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(496, 144)
+
+[node name="Ladder19" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(496, 112)
+
+[node name="Ladder13" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 208)
+
+[node name="Ladder14" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 176)
+
+[node name="Ladder15" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 144)
+
+[node name="Ladder16" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(32, 112)
+
+[node name="Ladder4" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(824, 400)
+
+[node name="Ladder5" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(824, 368)
+
+[node name="Ladder6" parent="Other" instance=ExtResource("7_otykh")]
+position = Vector2(824, 336)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(504, 320)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(536, 320)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(568, 320)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(600, 320)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(632, 320)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(664, 320)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(696, 320)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(728, 320)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(760, 320)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(792, 320)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("8_wd3ol")]
+position = Vector2(824, 320)
+
+[node name="realestmc" parent="." instance=ExtResource("7_vjb8a")]
+position = Vector2(224, 458)
+curve = SubResource("Curve2D_l2gn0")
+speed = 6.0
+
+[node name="realestmc2" parent="." instance=ExtResource("7_vjb8a")]
+position = Vector2(576, 457)
+curve = SubResource("Curve2D_u13m1")
+speed = 6.0
+reversed = true
+
+[node name="CultistWalking" parent="." instance=ExtResource("8_t4e1b")]
+position = Vector2(880, 414)
+speed = 150.0
+flipped = true
+
+[node name="TrackLine" parent="." instance=ExtResource("9_rhilt")]
+position = Vector2(216, 416)
+points = PackedVector2Array(-24, 40, 232, 40)
+
+[node name="TrackLine2" parent="." instance=ExtResource("9_rhilt")]
+position = Vector2(576, 417)
+points = PackedVector2Array(-32, 40, 224, 40)
+
+[node name="Button" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("12_yu7f7")]
+modulate = Color(1, 0.392157, 0.392157, 1)
+position = Vector2(496, 416)
+list_of_doors = [NodePath("../Door2")]
+
+[node name="ButtonDown" type="Sprite2D" parent="."]
+position = Vector2(496, 416)
+texture = ExtResource("13_n3cuy")
+
+[node name="Door" parent="." instance=ExtResource("14_5gagr")]
+modulate = Color(0.392157, 1, 0.392157, 1)
+position = Vector2(848, 80)
+
+[node name="CultistWalking2" parent="." instance=ExtResource("8_t4e1b")]
+position = Vector2(848, 32)
+
+[node name="Door2" parent="." instance=ExtResource("14_5gagr")]
+modulate = Color(1, 0.392157, 0.392157, 1)
+position = Vector2(816, 112)
+
+[node name="Platform" parent="." instance=ExtResource("8_wd3ol")]
+position = Vector2(16, 96)
+
+[node name="Platform2" parent="." instance=ExtResource("8_wd3ol")]
+position = Vector2(48, 96)
+
+[node name="Button2" parent="." node_paths=PackedStringArray("list_of_doors") instance=ExtResource("12_yu7f7")]
+modulate = Color(0.392157, 1, 0.392157, 1)
+position = Vector2(96, 64)
+list_of_doors = [NodePath("../Door")]
+
+[node name="ButtonDown2" type="Sprite2D" parent="."]
+position = Vector2(96, 64)
+texture = ExtResource("13_n3cuy")
+
+[node name="NoBlood" parent="." instance=ExtResource("15_paas5")]
+position = Vector2(680, 32)
+
+[node name="NoSpike" parent="." instance=ExtResource("16_r52fo")]
+position = Vector2(616, 32)
+
+[node name="Platform3" parent="." instance=ExtResource("8_wd3ol")]
+position = Vector2(304, 160)
+
+[node name="Platform4" parent="." instance=ExtResource("8_wd3ol")]
+position = Vector2(304, 96)
+
+[node name="Platform6" parent="." instance=ExtResource("8_wd3ol")]
+position = Vector2(496, 96)
+
+[node name="Ladder21" parent="." instance=ExtResource("7_otykh")]
+position = Vector2(432, 144)
+
+[node name="Ladder22" parent="." instance=ExtResource("7_otykh")]
+position = Vector2(432, 112)
+
+[node name="Platform7" parent="." instance=ExtResource("8_wd3ol")]
+position = Vector2(432, 96)
+
+[node name="Platform5" parent="." instance=ExtResource("8_wd3ol")]
+position = Vector2(304, 128)
+
+[node name="Spikes" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(224, 512)
+
+[node name="Spikes2" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(288, 512)
+
+[node name="Spikes3" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(352, 512)
+
+[node name="Spikes4" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(416, 512)
+
+[node name="Spikes5" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(576, 512)
+
+[node name="Spikes6" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(640, 512)
+
+[node name="Spikes7" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(704, 512)
+
+[node name="Spikes8" parent="." instance=ExtResource("17_44mrt")]
+position = Vector2(768, 512)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="animation_finished" from="DarkenSceneAnimation" to="." method="_on_darken_scene_animation_animation_finished"]

@@ -1,0 +1,187 @@
+[gd_scene load_steps=20 format=3 uid="uid://b6apjyekq8bx6"]
+
+[ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_m72ad"]
+[ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_vfs1a"]
+[ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="3_mpo2w"]
+[ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="4_vmo3y"]
+[ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://assets/objects/water.tscn" id="5_rkjjt"]
+[ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="6_xf2e2"]
+[ext_resource type="PackedScene" uid="uid://kun5uq04uqtm" path="res://assets/ui/darken_scene_animation.tscn" id="7_5xgys"]
+[ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="8_0jsm2"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="9_uc0c8"]
+[ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="10_5wxrl"]
+[ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="11_tm4jq"]
+[ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://assets/characters/puffball.tscn" id="12_v0hbb"]
+[ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://assets/characters/cultist_walking.tscn" id="13_woe5x"]
+[ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="14_dk0eu"]
+[ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="15_ogun3"]
+[ext_resource type="PackedScene" uid="uid://cj7tmucguljoc" path="res://assets/skills/ice_column.tscn" id="16_rpfof"]
+[ext_resource type="PackedScene" uid="uid://dvr7em1luh0o8" path="res://assets/objects/wooden_box.tscn" id="17_bk31l"]
+[ext_resource type="PackedScene" uid="uid://v3xcxbcpaaf" path="res://assets/ui/no_spike.tscn" id="18_y6621"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjkgg"]
+size = Vector2(128, 34)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_m72ad")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 288)
+
+[node name="DarkenScene" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.890196, 0.780392, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_vfs1a")]
+offset = Vector2(-64, -128)
+transform = Transform2D(1, 0, 0, 1, -64, -128)
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("8_0jsm2")]
+position = Vector2(720, 80)
+
+[node name="Door2" parent="Doors" instance=ExtResource("8_0jsm2")]
+position = Vector2(688, 80)
+
+[node name="Door3" parent="Doors" instance=ExtResource("8_0jsm2")]
+position = Vector2(656, 80)
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_uc0c8")]
+position = Vector2(800, 320)
+rotation = -3.14159
+list_of_doors = [NodePath("../../Doors/Door"), NodePath("../../Doors/Door2"), NodePath("../../Doors/Door3")]
+
+[node name="ButtonDown" type="Sprite2D" parent="Buttons"]
+position = Vector2(800, 320)
+rotation = -3.14159
+texture = ExtResource("10_5wxrl")
+
+[node name="Other" type="Node2D" parent="."]
+
+[node name="Ladder" parent="Other" instance=ExtResource("14_dk0eu")]
+position = Vector2(496, 272)
+
+[node name="Ladder2" parent="Other" instance=ExtResource("14_dk0eu")]
+position = Vector2(496, 304)
+
+[node name="Ladder3" parent="Other" instance=ExtResource("14_dk0eu")]
+position = Vector2(496, 336)
+
+[node name="caveDoor" parent="." instance=ExtResource("3_mpo2w")]
+position = Vector2(560, 496)
+
+[node name="Player" parent="." instance=ExtResource("4_vmo3y")]
+position = Vector2(192, 512)
+
+[node name="Water" parent="." instance=ExtResource("5_rkjjt")]
+position = Vector2(176, 560)
+
+[node name="Water3" parent="." instance=ExtResource("5_rkjjt")]
+position = Vector2(144, 560)
+
+[node name="Water4" parent="." instance=ExtResource("5_rkjjt")]
+position = Vector2(240, 560)
+
+[node name="Water2" parent="." instance=ExtResource("5_rkjjt")]
+position = Vector2(208, 560)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(240, 544)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(208, 544)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(176, 544)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(144, 544)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(496, 256)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(944, 256)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(944, 440)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(976, 440)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(1008, 440)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(976, 256)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("15_ogun3")]
+position = Vector2(1008, 256)
+
+[node name="IceColumn" parent="." node_paths=PackedStringArray("lst", "col") instance=ExtResource("16_rpfof")]
+position = Vector2(192, 593)
+lst = [NodePath("../IceP1")]
+col = NodePath("CollisionShape2D2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="IceColumn"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_rjkgg")
+
+[node name="TileMap" parent="." instance=ExtResource("6_xf2e2")]
+layer_0/tile_data = PackedInt32Array(-65504, 589824, 1, 32, 851968, 1, 65568, 589824, 1, 131104, 589824, 1, 196640, 589824, 1, 262176, 589824, 1, 327712, 589824, 1, 393248, 589824, 1, 458784, 589824, 1, 524320, 589824, 1, 589856, 589824, 1, 655392, 589824, 1, 720928, 589824, 1, 786464, 589824, 1, 852000, 589824, 1, 917536, 589824, 1, 983072, 589824, 1, 1048608, 589824, 1, 1114144, 589824, 1, 1179680, 589824, 1, 1179679, 589824, 1, 1179678, 589824, 1, 1179677, 589824, 1, 1179676, 589824, 1, 1179675, 589824, 1, 1179674, 589824, 1, 1179673, 589824, 1, 1179672, 589824, 1, 1179671, 589824, 1, 1179670, 589824, 1, 1179669, 589824, 1, 1179668, 589824, 1, 1179667, 589824, 1, 1179666, 589824, 1, 1179665, 589824, 1, 1179664, 589824, 1, 1179663, 589824, 1, 1179662, 589824, 1, 1179661, 589824, 1, 1179660, 589824, 1, 1179659, 589824, 1, 1179658, 589824, 1, 1179657, 589824, 1, 1179656, 589824, 1, 1179655, 589824, 1, 1179654, 589824, 1, 1179653, 589824, 1, 1179652, 589824, 1, 1179651, 589824, 1, 1179650, 589824, 1, 1179649, 589824, 1, 1179648, 589824, 1, 1245183, 589824, 1, 1179647, 589824, 1, 1114111, 589824, 1, 1048575, 589824, 1, 983039, 589824, 1, 917503, 589824, 1, 851967, 589824, 1, 786431, 589824, 1, 720895, 589824, 1, 655359, 589824, 1, 589823, 589824, 1, 524287, 589824, 1, 458751, 589824, 1, 393215, 589824, 1, 327679, 589824, 1, 262143, 589824, 1, 196607, 589824, 1, 131071, 589824, 1, 65535, 589824, 1, -1, 589824, 1, -65536, 589824, 1, -65535, 589824, 1, -65534, 589824, 1, -65533, 589824, 1, -65532, 589824, 1, -65531, 589824, 1, -65530, 589824, 1, -65529, 589824, 1, -65528, 589824, 1, -65527, 589824, 1, -65526, 589824, 1, -65525, 589824, 1, -65524, 589824, 1, -65523, 589824, 1, -65522, 589824, 1, -65521, 589824, 1, -65520, 589824, 1, -65519, 589824, 1, -65518, 589824, 1, -65517, 589824, 1, -65516, 589824, 1, -65515, 589824, 1, -65514, 589824, 1, -65513, 589824, 1, -65512, 589824, 1, -65511, 589824, 1, -65510, 589824, 1, -65509, 589824, 1, -65508, 589824, 1, -65507, 589824, 1, -65506, 589824, 1, -65505, 589824, 1, 1114112, 851968, 1, 1114113, 851968, 1, 1114114, 851968, 1, 1114115, 851968, 1, 1114116, 1507328, 4, 1048584, 589824, 1, 983048, 589824, 1, 983049, 589824, 1, 983050, 589824, 1, 1048586, 589824, 1, 1048587, 589824, 1, 1048588, 589824, 1, 1048589, 589824, 1, 1048590, 589824, 1, 1048591, 589824, 1, 1114127, 851968, 1, 1114128, 851968, 1, 1114129, 851968, 1, 1114126, 851968, 1, 1114125, 851968, 1, 1114124, 851968, 1, 1048585, 589824, 1, 983047, 1441792, 5, 983051, 589824, 1, 983052, 589824, 1, 983053, 589824, 1, 983054, 589824, 1, 1114120, 851968, 1, 1114119, 1441792, 4, 1114121, 851968, 1, 1114122, 851968, 1, 1114123, 851968, 1, 1114130, 851968, 1, 1114131, 851968, 1, 1114132, 851968, 1, 1114133, 851968, 1, 1114134, 851968, 1, 655360, 589824, 1, 655361, 589824, 1, 655362, 589824, 1, 589827, 589824, 1, 589832, 589824, 1, 589833, 589824, 1, 655363, 589824, 1, 589825, 589824, 1, 589824, 589824, 1, 524290, 589824, 1, 524291, 589824, 1, 524292, 589824, 1, 524295, 589824, 1, 524296, 589824, 1, 524297, 589824, 1, 524298, 589824, 1, 524299, 589824, 1, 589826, 589824, 1, 524288, 589824, 1, 524289, 589824, 1, 524300, 589824, 1, 524301, 589824, 1, 851990, 589824, 1, 851989, 589824, 1, 851988, 589824, 1, 851987, 589824, 1, 851986, 589824, 1, 786450, 589824, 1, 786449, 589824, 1, 786451, 589824, 1, 786452, 589824, 1, 786453, 589824, 1, 851992, 589824, 1, 851993, 589824, 1, 851994, 589824, 1, 851995, 589824, 1, 851996, 589824, 1, 851991, 589824, 1, 786457, 589824, 1, 786458, 589824, 1, 786459, 589824, 1, 786460, 589824, 1, 131095, 589824, 1, 131091, 589824, 1, 65559, 589824, 1, 65555, 589824, 1, 65554, 589824, 1, 18, 589824, 1, 17, 589824, 1, 16, 589824, 1, 15, 1441792, 5, 19, 589824, 1, 65560, 589824, 1, 65561, 589824, 1, 65562, 589824, 1, 65563, 589824, 1, 65564, 589824, 1, 26, 589824, 1, 25, 589824, 1, 24, 589824, 1, 23, 589824, 1, 27, 589824, 1, 28, 589824, 1, 29, 589824, 1, 30, 589824, 1, 31, 589824, 1, 65567, 589824, 1, 65566, 589824, 1, 65565, 589824, 1, 131072, 589824, 1, 65536, 589824, 1, 1, 589824, 1, 2, 589824, 1, 3, 589824, 1, 4, 589824, 1, 5, 589824, 1, 6, 589824, 1, 0, 589824, 1, 1114143, 589824, 1, 7, 589824, 1, 720896, 589824, 1, 786448, 589824, 1, 851985, 589824, 1, 131090, 589824, 1, 65553, 589824, 1, 786456, 589824, 1, 786454, 589824, 1, 1114135, 851968, 1, 1114136, 589824, 1, 1114137, 589824, 1, 1114138, 589824, 1, 1114139, 589824, 1, 1114140, 589824, 1, 1114141, 589824, 1, 1114142, 589824, 1, 786436, 589824, 1, 786435, 589824, 1, 786434, 589824, 1, 786433, 589824, 1, 786432, 851968, 1, 720897, 589824, 1, 720898, 589824, 1, 917513, 589824, 1, 851977, 589824, 1, 786441, 589824, 1, 720905, 589824, 1, 655369, 589824, 1, 196617, 589824, 1, 786439, 589824, 1, 786440, 589824, 1, 720899, 589824, 1, 655368, 589824, 1, 720904, 589824, 1, 917512, 589824, 1, 851976, 589824, 1, 1048576, 589824, 1, 983040, 589824, 1, 917504, 589824, 1, 851969, 589824, 1, 851968, 589824, 1, 917505, 589824, 1, 983041, 589824, 1, 1048577, 589824, 1, 851970, 589824, 1, 851971, 589824, 1, 917507, 589824, 1, 917506, 589824, 1, 983042, 589824, 1, 1048578, 589824, 1, 1048579, 589824, 1, 983043, 589824, 1, 917508, 589824, 1, 851972, 589824, 1, 917511, 589824, 1, 851975, 589824, 1, 458752, 589824, 1, 393216, 589824, 1, 327680, 589824, 1, 262144, 589824, 1, 196608, 589824, 1, 131081, 589824, 1, 131080, 589824, 1, 65544, 589824, 1, 8, 589824, 1, 196616, 1441792, 5, 65543, 1441792, 5, 262153, 589824, 1, 9, 851968, 1, 65545, 851968, 1, 786442, 589824, 1, 851978, 589824, 1, 917514, 589824, 1, 917515, 589824, 1, 851979, 589824, 1, 786443, 589824, 1, 786444, 589824, 1, 851980, 589824, 1, 917516, 589824, 1, 917517, 589824, 1, 851981, 589824, 1, 786445, 589824, 1, 786446, 589824, 1, 851982, 589824, 1, 917518, 589824, 1, 983055, 589824, 1, 917519, 589824, 1, 851983, 589824, 1, 786447, 589824, 1, 524304, 589824, 1, 524305, 589824, 1, 524306, 589824, 1, 524307, 589824, 1, 786455, 589824, 1, 720923, 589824, 1, 655387, 589824, 1, 589851, 589824, 1, 524315, 589824, 1, 524311, 589824, 1, 524310, 589824, 1, 524309, 589824, 1, 524308, 589824, 1, 458775, 589824, 1, 458776, 589824, 1, 458777, 589824, 1, 458778, 589824, 1, 458779, 589824, 1, 393239, 589824, 1, 393240, 589824, 1, 393241, 589824, 1, 393242, 589824, 1, 393243, 589824, 1, 327703, 589824, 1, 327704, 589824, 1, 327705, 589824, 1, 327706, 589824, 1, 327707, 589824, 1, 524312, 589824, 1, 524313, 589824, 1, 524314, 589824, 1, 720924, 589824, 1, 655388, 589824, 1, 589852, 589824, 1, 524316, 589824, 1, 458780, 589824, 1, 393244, 589824, 1, 327708, 1507328, 4, 851984, 589824, 1, 65546, 589824, 1, 131089, 1441792, 5, 12, 589824, 1, 11, 589824, 1, 10, 589824, 1, 131082, 1507328, 5, 65547, 1507328, 5, 13, 1507328, 5, 65552, 1441792, 5)
+
+[node name="DarkenScene2" type="DirectionalLight2D" parent="."]
+color = Color(0.623529, 1, 0.87451, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
+
+[node name="DarkenSceneAnimation" parent="." instance=ExtResource("7_5xgys")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="CultistIdle" parent="Enemies" instance=ExtResource("11_tm4jq")]
+position = Vector2(144, 352)
+flipped = false
+
+[node name="CultistIdle2" parent="Enemies" instance=ExtResource("11_tm4jq")]
+position = Vector2(240, 352)
+
+[node name="puffball" parent="Enemies" instance=ExtResource("12_v0hbb")]
+position = Vector2(80, 240)
+
+[node name="CultistWalking" parent="Enemies" instance=ExtResource("13_woe5x")]
+position = Vector2(352, 352)
+
+[node name="CultistIdle3" parent="Enemies" instance=ExtResource("11_tm4jq")]
+position = Vector2(704, 512)
+flipped = false
+
+[node name="IceP1" type="Node2D" parent="."]
+position = Vector2(192, 240)
+
+[node name="WoodenBox" parent="." instance=ExtResource("17_bk31l")]
+position = Vector2(718, 48)
+
+[node name="WoodenBox2" parent="." instance=ExtResource("17_bk31l")]
+position = Vector2(718, 16)
+
+[node name="WoodenBox3" parent="." instance=ExtResource("17_bk31l")]
+position = Vector2(686, 48)
+
+[node name="NoSpike" parent="." instance=ExtResource("18_y6621")]
+position = Vector2(984, 32)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="animation_finished" from="DarkenSceneAnimation" to="." method="_on_darken_scene_animation_animation_finished"]

@@ -16,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://v3xcxbcpaaf" path="res://assets/ui/no_spike.tscn" id="14_1hjlb"]
 [ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="15_vkbts"]
 
-[sub_resource type="Animation" id="Animation_04yek"]
-resource_name = "restart"
+[sub_resource type="Animation" id="Animation_xwdtv"]
+resource_name = "next"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,8 +31,8 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 5.0]
 }
 
-[sub_resource type="Animation" id="Animation_xwdtv"]
-resource_name = "next"
+[sub_resource type="Animation" id="Animation_04yek"]
+resource_name = "restart"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7hl5h3d31oig"]
+[gd_scene load_steps=16 format=3 uid="uid://c7hl5h3d31oig"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_qe48s"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_sd2ql"]
@@ -11,29 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="12_76p6f"]
 [ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://assets/objects/spikes.tscn" id="13_3gqnp"]
 [ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="13_a6ub7"]
+[ext_resource type="PackedScene" uid="uid://kun5uq04uqtm" path="res://assets/ui/darken_scene_animation.tscn" id="13_ejktf"]
 [ext_resource type="PackedScene" uid="uid://dx0vnb8s77py0" path="res://assets/ui/no_blood.tscn" id="13_fys0o"]
 [ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="14_adt6j"]
 [ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="14_bedvy"]
-
-[sub_resource type="Animation" id="Animation_04yek"]
-resource_name = "restart"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DarkenScene:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 2.82842),
-"update": 0,
-"values": [0.0, 1.0, 5.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_00j0a"]
-_data = {
-"restart": SubResource("Animation_04yek")
-}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qe48s")
@@ -157,6 +138,8 @@ position = Vector2(824, 416)
 [node name="CultistWalking2" parent="." instance=ExtResource("10_jdxim")]
 position = Vector2(528, 224)
 
+[node name="DarkenSceneAnimation" parent="." instance=ExtResource("13_ejktf")]
+
 [node name="Player" parent="." instance=ExtResource("12_76p6f")]
 position = Vector2(256, 512)
 
@@ -168,13 +151,8 @@ range_layer_min = -512
 range_layer_max = 512
 shadow_filter = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_00j0a")
-}
-
 [node name="NoBlood" parent="." instance=ExtResource("13_fys0o")]
 position = Vector2(992, 32)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="DarkenSceneAnimation" to="." method="_on_darken_scene_animation_animation_finished"]

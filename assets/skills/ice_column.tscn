@@ -10,7 +10,6 @@ size = Vector2(46, 1)
 
 [node name="IceColumn" type="StaticBody2D" groups=["skill_object"]]
 texture_repeat = 2
-collision_layer = 16
 collision_mask = 0
 input_pickable = true
 script = ExtResource("1_qm6t3")

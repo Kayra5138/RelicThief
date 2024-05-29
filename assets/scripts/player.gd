@@ -12,7 +12,7 @@ class_name Player
 @export_range(0.0, 1.0) var friction = 0.25
 @export_range(0.0 , 1.0) var acceleration = 0.25
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var facing = 0 #right: 1 - left: 0
+var facing = 1 #right: 1 - left: 0
 @export var skill = 5
 var FLOOR_NORMAL = Vector2.UP
 @onready var playerSprite = $PlayerSprite 
@@ -72,7 +72,11 @@ func putDownColliding() -> bool:
 			break
 	return putdown_colliding
 
+signal returnToMenu
+
 func _physics_process(delta):
+	if Input.is_action_just_pressed("returnToMenu"):
+		returnToMenu.emit()
 	if is_dead: return
 	match skill:
 		5: 

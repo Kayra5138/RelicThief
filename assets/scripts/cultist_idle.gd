@@ -13,8 +13,11 @@ var playerSeen = false
 var collider
 var locked = false
 
+@export var flipped = true
+
 func _ready():
-	flip()
+	if flipped:
+		flip()
 
 func am_dom(delta):
 	if not is_on_floor():

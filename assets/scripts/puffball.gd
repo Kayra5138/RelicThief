@@ -17,7 +17,7 @@ var chargeLimit = 5
 var agitation_delta_multiplier = 10
 
 var speed = -300
-var nudge = 300
+var nudge = 600
 
 var exploding = false
 var explosionCharge = 0

@@ -8,59 +8,99 @@
 script = ExtResource("1_md1xw")
 
 [node name="Level 1" type="Button" parent="."]
-offset_left = 128.0
-offset_top = 128.0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 160.0
 text = "1"
 script = ExtResource("2_6bbk0")
 
 [node name="Level 2" type="Button" parent="."]
-offset_left = 320.0
-offset_top = 128.0
-offset_right = 448.0
-offset_bottom = 256.0
+offset_left = 256.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 160.0
 text = "2"
 script = ExtResource("2_6bbk0")
 
 [node name="Level 3" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 128.0
-offset_right = 640.0
-offset_bottom = 256.0
+offset_left = 448.0
+offset_top = 32.0
+offset_right = 576.0
+offset_bottom = 160.0
 text = "3"
 script = ExtResource("2_6bbk0")
 
 [node name="Level 4" type="Button" parent="."]
-offset_left = 704.0
-offset_top = 128.0
-offset_right = 832.0
-offset_bottom = 256.0
+offset_left = 640.0
+offset_top = 32.0
+offset_right = 768.0
+offset_bottom = 160.0
 text = "4"
 script = ExtResource("2_6bbk0")
 
 [node name="Level 5" type="Button" parent="."]
-offset_left = 128.0
-offset_top = 320.0
-offset_right = 256.0
-offset_bottom = 448.0
+offset_left = 832.0
+offset_top = 32.0
+offset_right = 960.0
+offset_bottom = 160.0
 text = "5"
 script = ExtResource("2_6bbk0")
 
 [node name="Level 6" type="Button" parent="."]
-offset_left = 320.0
-offset_top = 320.0
-offset_right = 448.0
-offset_bottom = 448.0
+offset_left = 64.0
+offset_top = 224.0
+offset_right = 192.0
+offset_bottom = 352.0
 text = "6"
 script = ExtResource("2_6bbk0")
 
 [node name="Level 7" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 320.0
-offset_right = 640.0
-offset_bottom = 448.0
+offset_left = 256.0
+offset_top = 224.0
+offset_right = 384.0
+offset_bottom = 352.0
 text = "7"
+script = ExtResource("2_6bbk0")
+
+[node name="Level 8" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 224.0
+offset_right = 576.0
+offset_bottom = 352.0
+text = "8"
+script = ExtResource("2_6bbk0")
+
+[node name="Level 9" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 224.0
+offset_right = 768.0
+offset_bottom = 352.0
+text = "9"
+script = ExtResource("2_6bbk0")
+
+[node name="Level 10" type="Button" parent="."]
+offset_left = 832.0
+offset_top = 224.0
+offset_right = 960.0
+offset_bottom = 352.0
+text = "10"
+script = ExtResource("2_6bbk0")
+
+[node name="Level 11" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 416.0
+offset_right = 192.0
+offset_bottom = 544.0
+text = "11"
+script = ExtResource("2_6bbk0")
+
+[node name="Level 12" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 416.0
+offset_right = 384.0
+offset_bottom = 544.0
+text = "12"
 script = ExtResource("2_6bbk0")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_t2yjm")]
@@ -74,3 +114,8 @@ transform = Transform2D(1, 0, 0, 1, -62.5, -250)
 [connection signal="pressed" from="Level 5" to="Level 5" method="_on_pressed"]
 [connection signal="pressed" from="Level 6" to="Level 6" method="_on_pressed"]
 [connection signal="pressed" from="Level 7" to="Level 7" method="_on_pressed"]
+[connection signal="pressed" from="Level 8" to="Level 8" method="_on_pressed"]
+[connection signal="pressed" from="Level 9" to="Level 9" method="_on_pressed"]
+[connection signal="pressed" from="Level 10" to="Level 10" method="_on_pressed"]
+[connection signal="pressed" from="Level 11" to="Level 11" method="_on_pressed"]
+[connection signal="pressed" from="Level 12" to="Level 12" method="_on_pressed"]
