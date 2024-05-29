@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var list_of_doors:Array[StaticBody2D]
+@export var list_of_doors:Array[Door]
 
 var pressed = false
 var pressedrn = false

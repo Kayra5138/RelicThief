@@ -43,7 +43,7 @@ target_position = Vector2(0, 20)
 collision_mask = 145
 
 [node name="WallCheck" type="RayCast2D" parent="."]
-position = Vector2(27, -30)
+position = Vector2(21, -30)
 target_position = Vector2(0, 61)
 collision_mask = 17
 hit_from_inside = true

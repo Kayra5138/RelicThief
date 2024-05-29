@@ -1,5 +1,5 @@
 extends StaticBody2D
-
+class_name Door
 @onready var area: Area2D = $Area2D
 
 var tmp = []
@@ -21,4 +21,8 @@ func fln():
 		$AnimatedSprite2D.animation = "open";
 
 func _on_area_2d_body_exited(_body):
+	fln()
+
+
+func _on_area_2d_body_entered(body):
 	fln()

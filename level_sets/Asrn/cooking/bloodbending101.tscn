@@ -98,7 +98,7 @@ position = Vector2(32, 512)
 
 [node name="CultistWalking2" parent="Enemies" instance=ExtResource("6_woyot")]
 position = Vector2(768, 512)
-speed = 170.0
+speed = 120.0
 flipped = true
 
 [node name="doors" type="Node2D" parent="."]
