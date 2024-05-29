@@ -16,7 +16,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
-[node name="caveDoor" type="Area2D" groups=["strong"]]
+[node name="caveDoor" type="Area2D" groups=["exit", "strong"]]
 script = ExtResource("1_tbkdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,9 +25,6 @@ shape = SubResource("RectangleShape2D_c57gu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qwkkd")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -54,4 +51,3 @@ shadow_filter_smooth = 1.0
 texture = SubResource("GradientTexture2D_c62uk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

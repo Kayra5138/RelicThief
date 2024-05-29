@@ -4,6 +4,8 @@ extends Node2D
 
 var no_blood = false
 
+@onready var cave_door = get_tree().get_first_node_in_group("exit")
+
 func _ready():
 	Engine.max_fps = 60
 	for cultist in get_tree().get_nodes_in_group("cultist"):
@@ -19,7 +21,7 @@ func _ready():
 				no_blood = true
 			"NoSpike":
 				player.no_spike = true
-
+	cave_door.connect("next_level",fln)
 func checkIfPlayerCan(skill_object):
 	if not player.dominating and not player.carrying and player.skill > 0:
 		skill_object.do_skill()
@@ -40,6 +42,11 @@ func _input(event : InputEvent):
 func _on_animation_player_animation_finished(anim):
 	if anim == "restart":
 		get_tree().reload_current_scene()
+	if anim == "next":
+		cave_door.go_next_level()
+
+func fln():
+	$AnimationPlayer.play("next")
 
 func reload():
 	$AnimationPlayer.play("restart")
