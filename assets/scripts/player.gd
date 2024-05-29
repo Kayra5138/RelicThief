@@ -102,6 +102,7 @@ func _physics_process(delta):
 		climbing_state()
 		return
 	if lockControls:
+		shadow.visible = false
 		playerSprite.animation = "idle" if not carrying else "carrying idle"
 		if facing == 0:
 			transform.x.x = -1
@@ -225,7 +226,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("down"):
 		position.y += 1
-		skill = 5 #DEBUG
+		# skill = 5 #DEBUG
 	if facing == 0:
 		transform.x.x = -1 # This makes the box rotate indefinitely... why tho
 	if facing == 1:

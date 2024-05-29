@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://babm65apehjmu"]
+[gd_scene load_steps=18 format=3 uid="uid://babm65apehjmu"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_ijhvn"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_c1gxw"]
@@ -7,11 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="5_7w16e"]
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="6_fmduy"]
 [ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="7_4drf5"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/buttons/brownButton.tscn" id="8_ingjl"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="8_ingjl"]
 [ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="9_hrl52"]
 [ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="10_rr4ch"]
 [ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="11_3vt63"]
 [ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="12_6vw8n"]
+[ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="13_iybth"]
+[ext_resource type="PackedScene" uid="uid://dx0vnb8s77py0" path="res://assets/ui/no_blood.tscn" id="14_ajqq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dplbe"]
 size = Vector2(64, 32)
@@ -162,61 +164,95 @@ position = Vector2(632, 80)
 [node name="Buttons" type="CanvasGroup" parent="."]
 
 [node name="Button" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(288, 512)
 list_of_doors = [NodePath("../../Doors/Door"), NodePath("../../Doors/Door2"), NodePath("../../Doors/Door3")]
 
 [node name="Button3" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(576, 512)
 list_of_doors = [NodePath("../../Doors/Door"), NodePath("../../Doors/Door2"), NodePath("../../Doors/Door3")]
 
 [node name="Button2" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(800, 512)
 list_of_doors = [NodePath("../../Doors/Door4"), NodePath("../../Doors/Door5"), NodePath("../../Doors/Door6")]
 
 [node name="Button4" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("8_ingjl")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(896, 96)
 rotation = 3.14159
 list_of_doors = [NodePath("../../Doors/Door7"), NodePath("../../Doors/Door8"), NodePath("../../Doors/Door9"), NodePath("../../Doors/Door10"), NodePath("../../Doors/Door11"), NodePath("../../Doors/Door12"), NodePath("../../Doors/Door13")]
 
+[node name="ButtonDown" type="Sprite2D" parent="Buttons"]
+position = Vector2(288, 512)
+texture = ExtResource("13_iybth")
+
+[node name="ButtonDown2" type="Sprite2D" parent="Buttons"]
+position = Vector2(576, 512)
+texture = ExtResource("13_iybth")
+
+[node name="ButtonDown3" type="Sprite2D" parent="Buttons"]
+position = Vector2(800, 512)
+texture = ExtResource("13_iybth")
+
+[node name="ButtonDown4" type="Sprite2D" parent="Buttons"]
+position = Vector2(896, 96)
+rotation = -3.14159
+texture = ExtResource("13_iybth")
+
 [node name="Doors" type="CanvasGroup" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(432, 464)
 
 [node name="Door2" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(432, 496)
 
 [node name="Door3" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(432, 528)
 
 [node name="Door7" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(336, 48)
 
 [node name="Door8" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(336, 80)
 
 [node name="Door9" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(336, 112)
 
 [node name="Door4" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(720, 464)
 
 [node name="Door5" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(720, 496)
 
 [node name="Door6" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(720, 528)
 
 [node name="Door10" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(432, 144)
 
 [node name="Door11" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(464, 144)
 
 [node name="Door12" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(496, 144)
 
 [node name="Door13" parent="Doors" instance=ExtResource("9_hrl52")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(528, 144)
 
 [node name="Platforms" type="CanvasGroup" parent="."]
@@ -320,6 +356,9 @@ shadow_filter = 1
 libraries = {
 "": SubResource("AnimationLibrary_00j0a")
 }
+
+[node name="NoBlood" parent="." instance=ExtResource("14_ajqq0")]
+position = Vector2(992, 32)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

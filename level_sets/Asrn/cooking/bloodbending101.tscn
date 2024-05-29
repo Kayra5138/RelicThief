@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4gqd6u2xgv58"]
+[gd_scene load_steps=20 format=3 uid="uid://c4gqd6u2xgv58"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_woxtr"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_xcwlx"]
@@ -9,12 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="7_a2dig"]
 [ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="7_kwjgs"]
 [ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="8_2dixb"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/buttons/brownButton.tscn" id="9_4k4ab"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="9_4k4ab"]
 [ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="10_qgc6a"]
 [ext_resource type="PackedScene" uid="uid://3pod5nlnh8pc" path="res://assets/objects/spikes.tscn" id="12_tgin8"]
 [ext_resource type="PackedScene" uid="uid://cv6btmmc8s1lj" path="res://assets/ui/inf_skill.tscn" id="13_4jsdm"]
 [ext_resource type="PackedScene" uid="uid://cfuymasi14n4t" path="res://assets/objects/realestmc.tscn" id="14_ri8aj"]
 [ext_resource type="PackedScene" uid="uid://oo5mwr6716re" path="res://assets/terrain/trackline.tscn" id="15_hbvos"]
+[ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="16_58jdr"]
 
 [sub_resource type="Animation" id="Animation_04yek"]
 resource_name = "restart"
@@ -63,6 +64,48 @@ transform = Transform2D(1, 0, 0, 1, -64, -128)
 [node name="caveDoor" parent="." instance=ExtResource("3_wiedf")]
 position = Vector2(976, 176)
 
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(112, 96)
+list_of_doors = [NodePath("../../doors/Door"), NodePath("../../doors/Door2")]
+
+[node name="Button2" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(216, 96)
+list_of_doors = [NodePath("../../doors/Door3"), NodePath("../../doors/Door4")]
+
+[node name="Button3" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(320, 96)
+list_of_doors = [NodePath("../../doors/Door5"), NodePath("../../doors/Door6"), NodePath("../../doors/doormiddle"), NodePath("../../doors/doormiddle2")]
+
+[node name="Button4" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(424, 96)
+list_of_doors = [NodePath("../../doors/Door7"), NodePath("../../doors/Door8")]
+
+[node name="Button5" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
+position = Vector2(528, 96)
+list_of_doors = [NodePath("../../doors/Door9"), NodePath("../../doors/Door10")]
+
+[node name="ButtonDown" type="Sprite2D" parent="Buttons"]
+position = Vector2(112, 96)
+texture = ExtResource("16_58jdr")
+
+[node name="ButtonDown2" type="Sprite2D" parent="Buttons"]
+position = Vector2(216, 96)
+texture = ExtResource("16_58jdr")
+
+[node name="ButtonDown3" type="Sprite2D" parent="Buttons"]
+position = Vector2(320, 96)
+texture = ExtResource("16_58jdr")
+
+[node name="ButtonDown4" type="Sprite2D" parent="Buttons"]
+position = Vector2(424, 96)
+texture = ExtResource("16_58jdr")
+
+[node name="ButtonDown5" type="Sprite2D" parent="Buttons"]
+position = Vector2(528, 96)
+texture = ExtResource("16_58jdr")
+
 [node name="Player" parent="." instance=ExtResource("4_a6k6g")]
 position = Vector2(584, 512)
 
@@ -88,7 +131,7 @@ libraries = {
 position = Vector2(920, 192)
 
 [node name="CultistIdle" parent="Enemies" instance=ExtResource("7_kwjgs")]
-position = Vector2(480, 96)
+position = Vector2(472, 96)
 
 [node name="CultistIdle2" parent="Enemies" instance=ExtResource("7_kwjgs")]
 position = Vector2(168, 96)
@@ -138,28 +181,6 @@ position = Vector2(304, 216)
 
 [node name="doormiddle2" parent="doors" instance=ExtResource("10_qgc6a")]
 position = Vector2(304, 248)
-
-[node name="Buttons" type="Node2D" parent="."]
-
-[node name="Button" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
-position = Vector2(112, 96)
-list_of_doors = [NodePath("../../doors/Door"), NodePath("../../doors/Door2")]
-
-[node name="Button2" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
-position = Vector2(216, 96)
-list_of_doors = [NodePath("../../doors/Door3"), NodePath("../../doors/Door4")]
-
-[node name="Button3" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
-position = Vector2(320, 96)
-list_of_doors = [NodePath("../../doors/Door5"), NodePath("../../doors/Door6"), NodePath("../../doors/doormiddle"), NodePath("../../doors/doormiddle2")]
-
-[node name="Button4" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
-position = Vector2(424, 96)
-list_of_doors = [NodePath("../../doors/Door7"), NodePath("../../doors/Door8")]
-
-[node name="Button5" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("9_4k4ab")]
-position = Vector2(528, 96)
-list_of_doors = [NodePath("../../doors/Door9"), NodePath("../../doors/Door10")]
 
 [node name="other" type="Node2D" parent="."]
 

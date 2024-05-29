@@ -49,6 +49,7 @@ animation = &"pressed"
 autoplay = "unpressed"
 
 [node name="Down" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_b0ikm")
 
 [node name="PressAudio" type="AudioStreamPlayer2D" parent="."]
