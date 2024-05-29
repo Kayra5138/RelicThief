@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d4d8d8vkryx0u"]
+[gd_scene load_steps=17 format=3 uid="uid://d4d8d8vkryx0u"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_qbkj0"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_88amo"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="12_ibgjc"]
 [ext_resource type="PackedScene" uid="uid://cv6btmmc8s1lj" path="res://assets/ui/inf_skill.tscn" id="13_h80u7"]
 [ext_resource type="PackedScene" uid="uid://oo5mwr6716re" path="res://assets/terrain/trackline.tscn" id="14_2wxh6"]
-[ext_resource type="PackedScene" uid="uid://dx0vnb8s77py0" path="res://assets/ui/no_blood.tscn" id="14_crc1f"]
 [ext_resource type="PackedScene" uid="uid://cfuymasi14n4t" path="res://assets/objects/realestmc.tscn" id="14_eakqk"]
 
 [sub_resource type="Curve2D" id="Curve2D_rt1bn"]
@@ -132,11 +131,8 @@ libraries = {
 "": SubResource("AnimationLibrary_00j0a")
 }
 
-[node name="NoBlood" parent="." instance=ExtResource("14_crc1f")]
-position = Vector2(992, 32)
-
 [node name="InfSkill" parent="." instance=ExtResource("13_h80u7")]
-position = Vector2(928, 32)
+position = Vector2(984, 32)
 
 [node name="TrackLine" parent="." instance=ExtResource("14_2wxh6")]
 position = Vector2(256, 216)

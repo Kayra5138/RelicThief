@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdprupc4xebwk"]
+[gd_scene load_steps=18 format=3 uid="uid://bdprupc4xebwk"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_01new"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_d6ym4"]
 [ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="3_a284v"]
 [ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="4_onc8s"]
 [ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="5_iq33a"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/buttons/brownButton.tscn" id="6_1arvl"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="6_1arvl"]
 [ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://assets/characters/puffball.tscn" id="7_wxygj"]
 [ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://assets/characters/cultist_walking.tscn" id="8_p7krd"]
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="9_nbal3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dvr7em1luh0o8" path="res://assets/objects/wooden_box.tscn" id="12_4vdgt"]
 [ext_resource type="PackedScene" uid="uid://dx0vnb8s77py0" path="res://assets/ui/no_blood.tscn" id="13_xf40d"]
 [ext_resource type="PackedScene" uid="uid://v3xcxbcpaaf" path="res://assets/ui/no_spike.tscn" id="14_1hjlb"]
+[ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="15_vkbts"]
 
 [sub_resource type="Animation" id="Animation_04yek"]
 resource_name = "restart"
@@ -81,66 +82,87 @@ position = Vector2(208, 528)
 position = Vector2(208, 496)
 
 [node name="Door3" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(464, 528)
 
 [node name="Door4" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(464, 496)
 
 [node name="Door5" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(464, 464)
 
 [node name="Door6" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(464, 432)
 
 [node name="Door7" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(664, 400)
 
 [node name="Door8" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(664, 368)
 
 [node name="Door9" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(696, 400)
 
 [node name="Door10" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(696, 368)
 
 [node name="Door11" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0, 0.603922, 0.0745098, 1)
 position = Vector2(928, 528)
 
 [node name="Door12" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0, 0.603922, 0.0745098, 1)
 position = Vector2(928, 496)
 
 [node name="Door13" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0, 0.603922, 0.0745098, 1)
 position = Vector2(928, 464)
 
 [node name="Door14" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0, 0.776471, 0.109804, 1)
 position = Vector2(896, 528)
 
 [node name="Door15" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0, 0.776471, 0.109804, 1)
 position = Vector2(896, 496)
 
 [node name="Door16" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0, 0.776471, 0.109804, 1)
 position = Vector2(896, 464)
 
 [node name="Door17" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(864, 528)
 
 [node name="Door18" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(864, 496)
 
 [node name="Door19" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(864, 464)
 
 [node name="Door20" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 1, 1, 1)
 position = Vector2(472, 144)
 
 [node name="Door21" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.392157, 1, 1, 1)
 position = Vector2(472, 176)
 
 [node name="Door22" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.774159, 0.768491, 0, 1)
 position = Vector2(416, 144)
 
 [node name="Door23" parent="Doors" instance=ExtResource("5_iq33a")]
+modulate = Color(0.774159, 0.768491, 0, 1)
 position = Vector2(416, 176)
 
 [node name="Buttons" type="Node2D" parent="."]
@@ -150,34 +172,42 @@ position = Vector2(160, 512)
 list_of_doors = [NodePath("../../Doors/Door"), NodePath("../../Doors/Door2")]
 
 [node name="Button2" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(416, 512)
 list_of_doors = [NodePath("../../Doors/Door3"), NodePath("../../Doors/Door4"), NodePath("../../Doors/Door5"), NodePath("../../Doors/Door6")]
 
 [node name="Button3" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(1, 0.392157, 0.392157, 1)
 position = Vector2(720, 512)
 list_of_doors = [NodePath("../../Doors/Door3"), NodePath("../../Doors/Door4"), NodePath("../../Doors/Door5"), NodePath("../../Doors/Door6")]
 
 [node name="Button4" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(0.392157, 0.392157, 1, 1)
 position = Vector2(512, 384)
 list_of_doors = [NodePath("../../Doors/Door7"), NodePath("../../Doors/Door8"), NodePath("../../Doors/Door9"), NodePath("../../Doors/Door10")]
 
 [node name="Button5" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(0.392157, 1, 0.392157, 1)
 position = Vector2(72, 160)
 list_of_doors = [NodePath("../../Doors/Door17"), NodePath("../../Doors/Door18"), NodePath("../../Doors/Door19")]
 
 [node name="Button6" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(0, 0.776471, 0.109804, 1)
 position = Vector2(200, 160)
 list_of_doors = [NodePath("../../Doors/Door14"), NodePath("../../Doors/Door15"), NodePath("../../Doors/Door16")]
 
 [node name="Button7" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(0, 0.603922, 0.0745098, 1)
 position = Vector2(328, 160)
 list_of_doors = [NodePath("../../Doors/Door11"), NodePath("../../Doors/Door12"), NodePath("../../Doors/Door13")]
 
 [node name="Button8" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(0.392157, 1, 1, 1)
 position = Vector2(928, 160)
 list_of_doors = [NodePath("../../Doors/Door20"), NodePath("../../Doors/Door21")]
 
 [node name="Button9" parent="Buttons" node_paths=PackedStringArray("list_of_doors") instance=ExtResource("6_1arvl")]
+modulate = Color(0.774159, 0.768491, 0, 1)
 position = Vector2(704, 160)
 list_of_doors = [NodePath("../../Doors/Door22"), NodePath("../../Doors/Door23")]
 
@@ -241,6 +271,42 @@ position = Vector2(928, 32)
 
 [node name="NoSpike" parent="." instance=ExtResource("14_1hjlb")]
 position = Vector2(992, 32)
+
+[node name="ButtonDown" type="Sprite2D" parent="."]
+position = Vector2(72, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown2" type="Sprite2D" parent="."]
+position = Vector2(200, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown3" type="Sprite2D" parent="."]
+position = Vector2(328, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown4" type="Sprite2D" parent="."]
+position = Vector2(704, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown5" type="Sprite2D" parent="."]
+position = Vector2(928, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown6" type="Sprite2D" parent="."]
+position = Vector2(512, 384)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown7" type="Sprite2D" parent="."]
+position = Vector2(416, 512)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown8" type="Sprite2D" parent="."]
+position = Vector2(160, 512)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown9" type="Sprite2D" parent="."]
+position = Vector2(720, 512)
+texture = ExtResource("15_vkbts")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
