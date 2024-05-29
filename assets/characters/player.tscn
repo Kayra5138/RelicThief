@@ -392,8 +392,9 @@ sprite_frames = SubResource("SpriteFrames_n2dc4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_lgenu")
+position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_8y6ks")
-animation = &"carrying jump"
+animation = &"walk"
 autoplay = "idle"
 speed_scale = 2.0
 

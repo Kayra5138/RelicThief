@@ -56,4 +56,5 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_sx0us")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-13, -16, -9, -16, -9, -13, -13, -13)

@@ -12,12 +12,12 @@ func _process(_delta):
 		pressedrn = true
 	if pressed != pressedrn:
 		if pressedrn:
-			$AnimatedSprite2D.animation = "pressed"
+			$Top.animation = "pressed"
 			$PressAudio.play()
 			for door in list_of_doors:
 				door.open()
 		else:
-			$AnimatedSprite2D.animation = "unpressed"
+			$Top.animation = "unpressed"
 			$UnpressAudio.play()
 			for door in list_of_doors:
 				door.close()
