@@ -152,7 +152,7 @@ type = 1
 position = Vector2(640, 480)
 
 [node name="CultistWalking" parent="." instance=ExtResource("9_j6f5m")]
-position = Vector2(832, 416)
+position = Vector2(824, 416)
 
 [node name="CultistWalking2" parent="." instance=ExtResource("10_jdxim")]
 position = Vector2(528, 224)
