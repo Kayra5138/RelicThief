@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="8_27gqo"]
 [ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="9_c4mwa"]
 [ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="10_0rugs"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="11_80d0v"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/buttons/brownButton.tscn" id="11_80d0v"]
 [ext_resource type="PackedScene" uid="uid://cjeqayij4shr4" path="res://assets/characters/cultist_walking.tscn" id="12_37gau"]
 
 [sub_resource type="Animation" id="Animation_04yek"]

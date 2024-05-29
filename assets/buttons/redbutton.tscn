@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdxx5p5uslhi3"]
+
+[ext_resource type="Script" path="res://assets/scripts/button.gd" id="1_c2jsq"]
+[ext_resource type="Texture2D" uid="uid://bkmwt4muwge6" path="res://textures/objects/button top.png" id="2_asuym"]
+[ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="3_5dcm2"]
+[ext_resource type="AudioStream" uid="uid://b6mmwaq5i7n7a" path="res://sounds/buttonPress.wav" id="4_tdgon"]
+[ext_resource type="AudioStream" uid="uid://combvqpx8bjyk" path="res://sounds/buttonUnpress.wav" id="5_2t6ai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78r50"]
+size = Vector2(62.8394, 20.055)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5nxa"]
+atlas = ExtResource("2_asuym")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42c4x"]
+atlas = ExtResource("2_asuym")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hlph5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5nxa")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42c4x")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[node name="Button" type="Area2D" groups=["strong"]]
+script = ExtResource("1_c2jsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0254059, 21.4187)
+shape = SubResource("RectangleShape2D_78r50")
+
+[node name="Top" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.392157, 0.392157, 1)
+sprite_frames = SubResource("SpriteFrames_hlph5")
+animation = &"pressed"
+autoplay = "unpressed"
+
+[node name="Down" type="Sprite2D" parent="."]
+texture = ExtResource("3_5dcm2")
+
+[node name="PressAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tdgon")
+
+[node name="UnpressAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2t6ai")

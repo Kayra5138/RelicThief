@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ddsokcxvng3o5" path="res://assets/objects/water.tscn" id="4_5wk1l"]
 [ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="5_52m0q"]
 [ext_resource type="PackedScene" uid="uid://yuf2lpqfe8ef" path="res://assets/objects/cave_door.tscn" id="6_wud8k"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="7_3785g"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/buttons/brownButton.tscn" id="7_3785g"]
 [ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="8_6n1m4"]
 [ext_resource type="PackedScene" uid="uid://c4b6ax6g8wx7w" path="res://assets/characters/cultist_idle.tscn" id="10_5kmd3"]
 [ext_resource type="PackedScene" uid="uid://dnd8tokwljq6g" path="res://assets/characters/puffball.tscn" id="11_6qbg0"]

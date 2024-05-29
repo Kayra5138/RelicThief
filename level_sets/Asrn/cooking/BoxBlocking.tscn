@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvr7em1luh0o8" path="res://assets/objects/wooden_box.tscn" id="4_foy84"]
 [ext_resource type="PackedScene" uid="uid://ctj1spwblps66" path="res://assets/characters/player.tscn" id="5_tonmo"]
 [ext_resource type="PackedScene" uid="uid://bta7ydnfwumj4" path="res://assets/skills/tilemap.tscn" id="6_f0thl"]
-[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/objects/button.tscn" id="7_6eyw6"]
+[ext_resource type="PackedScene" uid="uid://cdxx5p5uslhi3" path="res://assets/buttons/brownButton.tscn" id="7_6eyw6"]
 [ext_resource type="PackedScene" uid="uid://dbpe3nn7oukb0" path="res://assets/objects/door.tscn" id="8_i51c3"]
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="9_5iaxv"]
 
