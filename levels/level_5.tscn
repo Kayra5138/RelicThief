@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://babm65apehjmu"]
+[gd_scene load_steps=17 format=3 uid="uid://babm65apehjmu"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_ijhvn"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_c1gxw"]
@@ -14,29 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://byp1f8v47b8pk" path="res://assets/objects/platform.tscn" id="12_6vw8n"]
 [ext_resource type="Texture2D" uid="uid://1oy6hx2p3l0r" path="res://textures/objects/button down.png" id="13_iybth"]
 [ext_resource type="PackedScene" uid="uid://dx0vnb8s77py0" path="res://assets/ui/no_blood.tscn" id="14_ajqq0"]
+[ext_resource type="PackedScene" uid="uid://kun5uq04uqtm" path="res://assets/ui/darken_scene_animation.tscn" id="15_q71gm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dplbe"]
 size = Vector2(64, 32)
-
-[sub_resource type="Animation" id="Animation_04yek"]
-resource_name = "restart"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DarkenScene:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 2.82842),
-"update": 0,
-"values": [0.0, 1.0, 5.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_00j0a"]
-_data = {
-"restart": SubResource("Animation_04yek")
-}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ijhvn")
@@ -352,13 +333,10 @@ range_layer_min = -512
 range_layer_max = 512
 shadow_filter = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_00j0a")
-}
-
 [node name="NoBlood" parent="." instance=ExtResource("14_ajqq0")]
 position = Vector2(992, 32)
 
+[node name="DarkenSceneAnimation" parent="." instance=ExtResource("15_q71gm")]
+
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="DarkenSceneAnimation" to="." method="_on_darken_scene_animation_animation_finished"]

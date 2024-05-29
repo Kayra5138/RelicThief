@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3mct85ngfcqt"]
+[gd_scene load_steps=14 format=3 uid="uid://d3mct85ngfcqt"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_txvqg"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_5lw6f"]
@@ -31,8 +31,24 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 5.0]
 }
 
+[sub_resource type="Animation" id="Animation_xwdtv"]
+resource_name = "next"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkenScene:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 2.82842),
+"update": 0,
+"values": [0.0, 1.0, 5.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_00j0a"]
 _data = {
+"next": SubResource("Animation_xwdtv"),
 "restart": SubResource("Animation_04yek")
 }
 
@@ -41,14 +57,6 @@ script = ExtResource("1_txvqg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 288)
-
-[node name="DarkenScene" type="DirectionalLight2D" parent="."]
-color = Color(1, 0.890196, 0.780392, 1)
-energy = 0.0
-blend_mode = 1
-range_layer_min = -512
-range_layer_max = 512
-shadow_filter = 1
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_5lw6f")]
 offset = Vector2(-64, -128)
@@ -75,8 +83,8 @@ position = Vector2(40, 544)
 curve = SubResource("Curve2D_07rj1")
 reversed = true
 
-[node name="DarkenScene2" type="DirectionalLight2D" parent="."]
-color = Color(0.623529, 1, 0.87451, 1)
+[node name="DarkenScene" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.890196, 0.780392, 1)
 energy = 0.0
 blend_mode = 1
 range_layer_min = -512
@@ -84,6 +92,7 @@ range_layer_max = 512
 shadow_filter = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../DarkenScene")
 libraries = {
 "": SubResource("AnimationLibrary_00j0a")
 }
@@ -96,4 +105,3 @@ points = PackedVector2Array(-24, 32, 32, 32, 408, -256, 504, -256, 616, -160, 67
 position = Vector2(992, 32)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

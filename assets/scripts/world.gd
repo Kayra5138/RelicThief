@@ -39,14 +39,15 @@ func _input(event : InputEvent):
 	if event.is_action_pressed("restart"):
 		reload()
 		
-func _on_animation_player_animation_finished(anim):
+func _on_darken_scene_animation_animation_finished(anim):
 	if anim == "restart":
 		get_tree().reload_current_scene()
 	if anim == "next":
 		cave_door.go_next_level()
 
 func fln():
-	$AnimationPlayer.play("next")
+	$DarkenSceneAnimation.play("next")
 
 func reload():
-	$AnimationPlayer.play("restart")
+	$DarkenSceneAnimation.play("restart")
+

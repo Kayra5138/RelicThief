@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d4d8d8vkryx0u"]
+[gd_scene load_steps=16 format=3 uid="uid://d4d8d8vkryx0u"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_qbkj0"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_88amo"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bcq5w1bn4yp66" path="res://assets/objects/ladder.tscn" id="12_ibgjc"]
 [ext_resource type="PackedScene" uid="uid://cv6btmmc8s1lj" path="res://assets/ui/inf_skill.tscn" id="13_h80u7"]
 [ext_resource type="PackedScene" uid="uid://oo5mwr6716re" path="res://assets/terrain/trackline.tscn" id="14_2wxh6"]
+[ext_resource type="PackedScene" uid="uid://kun5uq04uqtm" path="res://assets/ui/darken_scene_animation.tscn" id="14_cfp17"]
 [ext_resource type="PackedScene" uid="uid://cfuymasi14n4t" path="res://assets/objects/realestmc.tscn" id="14_eakqk"]
 
 [sub_resource type="Curve2D" id="Curve2D_rt1bn"]
@@ -19,26 +20,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -464, 0, 0, 0, 0, 0, -16, 0)
 }
 point_count = 2
-
-[sub_resource type="Animation" id="Animation_04yek"]
-resource_name = "restart"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DarkenScene:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 2.82842),
-"update": 0,
-"values": [0.0, 1.0, 5.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_00j0a"]
-_data = {
-"restart": SubResource("Animation_04yek")
-}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_qbkj0")
@@ -126,11 +107,6 @@ range_layer_min = -512
 range_layer_max = 512
 shadow_filter = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_00j0a")
-}
-
 [node name="InfSkill" parent="." instance=ExtResource("13_h80u7")]
 position = Vector2(984, 32)
 
@@ -138,5 +114,7 @@ position = Vector2(984, 32)
 position = Vector2(256, 216)
 points = PackedVector2Array(-24, 40, 472, 40)
 
+[node name="DarkenSceneAnimation" parent="." instance=ExtResource("14_cfp17")]
+
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="DarkenSceneAnimation" to="." method="_on_darken_scene_animation_animation_finished"]

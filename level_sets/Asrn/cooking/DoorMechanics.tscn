@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdprupc4xebwk"]
+[gd_scene load_steps=19 format=3 uid="uid://bdprupc4xebwk"]
 
 [ext_resource type="Script" path="res://assets/scripts/world.gd" id="1_01new"]
 [ext_resource type="PackedScene" uid="uid://b2u1q1dafwxbk" path="res://assets/terrain/parallaxbackground.tscn" id="2_d6ym4"]
@@ -31,8 +31,24 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 5.0]
 }
 
+[sub_resource type="Animation" id="Animation_xwdtv"]
+resource_name = "next"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkenScene:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 2.82842),
+"update": 0,
+"values": [0.0, 1.0, 5.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_00j0a"]
 _data = {
+"next": SubResource("Animation_xwdtv"),
 "restart": SubResource("Animation_04yek")
 }
 
@@ -41,14 +57,6 @@ script = ExtResource("1_01new")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 288)
-
-[node name="DarkenScene" type="DirectionalLight2D" parent="."]
-color = Color(1, 0.890196, 0.780392, 1)
-energy = 0.0
-blend_mode = 1
-range_layer_min = -512
-range_layer_max = 512
-shadow_filter = 1
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_d6ym4")]
 offset = Vector2(-64, -128)
@@ -59,19 +67,6 @@ position = Vector2(984, 496)
 
 [node name="TileMap" parent="." instance=ExtResource("4_onc8s")]
 layer_0/tile_data = PackedInt32Array(-65504, 589824, 1, 32, 851968, 1, 65568, 589824, 1, 131104, 589824, 1, 196640, 589824, 1, 262176, 589824, 1, 327712, 589824, 1, 393248, 589824, 1, 458784, 589824, 1, 524320, 589824, 1, 589856, 589824, 1, 655392, 589824, 1, 720928, 589824, 1, 786464, 589824, 1, 852000, 589824, 1, 917536, 589824, 1, 983072, 589824, 1, 1048608, 589824, 1, 1114144, 589824, 1, 1179680, 589824, 1, 1179679, 589824, 1, 1179678, 589824, 1, 1179677, 589824, 1, 1179676, 589824, 1, 1179675, 589824, 1, 1179674, 589824, 1, 1179673, 589824, 1, 1179672, 589824, 1, 1179671, 589824, 1, 1179670, 589824, 1, 1179669, 589824, 1, 1179668, 589824, 1, 1179667, 589824, 1, 1179666, 589824, 1, 1179665, 589824, 1, 1179664, 589824, 1, 1179663, 589824, 1, 1179662, 589824, 1, 1179661, 589824, 1, 1179660, 589824, 1, 1179659, 589824, 1, 1179658, 589824, 1, 1179657, 589824, 1, 1179656, 589824, 1, 1179655, 589824, 1, 1179654, 589824, 1, 1179653, 589824, 1, 1179652, 589824, 1, 1179651, 589824, 1, 1179650, 589824, 1, 1179649, 589824, 1, 1179648, 589824, 1, 1245183, 589824, 1, 1179647, 589824, 1, 1114111, 589824, 1, 1048575, 589824, 1, 983039, 589824, 1, 917503, 589824, 1, 851967, 589824, 1, 786431, 589824, 1, 720895, 589824, 1, 655359, 589824, 1, 589823, 589824, 1, 524287, 589824, 1, 458751, 589824, 1, 393215, 589824, 1, 327679, 589824, 1, 262143, 589824, 1, 196607, 589824, 1, 131071, 589824, 1, 65535, 589824, 1, -1, 589824, 1, -65536, 589824, 1, -65535, 589824, 1, -65534, 589824, 1, -65533, 589824, 1, -65532, 589824, 1, -65531, 589824, 1, -65530, 589824, 1, -65529, 589824, 1, -65528, 589824, 1, -65527, 589824, 1, -65526, 589824, 1, -65525, 589824, 1, -65524, 589824, 1, -65523, 589824, 1, -65522, 589824, 1, -65521, 589824, 1, -65520, 589824, 1, -65519, 589824, 1, -65518, 589824, 1, -65517, 589824, 1, -65516, 589824, 1, -65515, 589824, 1, -65514, 589824, 1, -65513, 589824, 1, -65512, 589824, 1, -65511, 589824, 1, -65510, 589824, 1, -65509, 589824, 1, -65508, 589824, 1, -65507, 589824, 1, -65506, 589824, 1, -65505, 589824, 1, 1114112, 851968, 1, 1114113, 851968, 1, 1114114, 851968, 1, 1114115, 851968, 1, 1114116, 851968, 1, 1114117, 851968, 1, 1114118, 851968, 1, 1048583, 589824, 1, 1048584, 589824, 1, 983048, 589824, 1, 1114127, 851968, 1, 1114128, 851968, 1, 1114129, 851968, 1, 1114126, 851968, 1, 1114125, 851968, 1, 1114124, 851968, 1, 983047, 589824, 1, 1114120, 851968, 1, 1114119, 851968, 1, 1114121, 851968, 1, 1114122, 851968, 1, 1114123, 851968, 1, 1114130, 851968, 1, 1114131, 851968, 1, 1114132, 851968, 1, 1114133, 851968, 1, 1114134, 851968, 1, 851990, 589824, 1, 851989, 589824, 1, 851988, 589824, 1, 851987, 589824, 1, 851986, 589824, 1, 851992, 589824, 1, 851993, 589824, 1, 851994, 589824, 1, 851995, 589824, 1, 851996, 589824, 1, 851997, 589824, 1, 851998, 589824, 1, 851991, 589824, 1, 786460, 589824, 1, 786461, 589824, 1, 786462, 589824, 1, 786463, 589824, 1, 851999, 589824, 1, 196636, 589824, 1, 196635, 589824, 1, 196631, 589824, 1, 131099, 589824, 1, 196637, 589824, 1, 196638, 589824, 1, 196639, 589824, 1, 131100, 589824, 1, 65563, 589824, 1, 65564, 589824, 1, 27, 589824, 1, 28, 589824, 1, 29, 589824, 1, 30, 589824, 1, 31, 589824, 1, 65567, 589824, 1, 65566, 589824, 1, 131102, 589824, 1, 131101, 589824, 1, 65565, 589824, 1, 131103, 589824, 1, 1114143, 589824, 1, 851985, 589824, 1, 196630, 589824, 1, 1114135, 851968, 1, 1114136, 589824, 1, 1114137, 589824, 1, 1114138, 589824, 1, 1114139, 589824, 1, 1114140, 589824, 1, 1114141, 589824, 1, 1114142, 589824, 1, 851983, 589824, 1, 851984, 589824, 1, 655388, 589824, 1, 720924, 589824, 1, 655389, 589824, 1, 720925, 589824, 1, 655391, 589824, 1, 720927, 589824, 1, 720926, 589824, 1, 655390, 589824, 1, 393245, 589824, 1, 393244, 589824, 1, 393243, 589824, 1, 393242, 589824, 1, 393241, 589824, 1, 393240, 589824, 1, 393239, 589824, 1, 393238, 589824, 1, 393237, 589824, 1, 393236, 589824, 1, 393235, 589824, 1, 393234, 589824, 1, 393233, 589824, 1, 393231, 589824, 1, 393230, 589824, 1, 393229, 589824, 1, 393228, 589824, 1, 196629, 589824, 1, 393232, 589824, 1, 196628, 589824, 1, 393227, 589824, 1, 393226, 589824, 1, 393225, 589824, 1, 393224, 589824, 1, 393223, 589824, 1, 393222, 589824, 1, 393221, 589824, 1, 393220, 589824, 1, 393219, 589824, 1, 393218, 589824, 1, 393217, 589824, 1, 393216, 589824, 1)
-
-[node name="DarkenScene2" type="DirectionalLight2D" parent="."]
-color = Color(0.623529, 1, 0.87451, 1)
-energy = 0.0
-blend_mode = 1
-range_layer_min = -512
-range_layer_max = 512
-shadow_filter = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_00j0a")
-}
 
 [node name="Doors" type="Node2D" parent="."]
 
@@ -211,6 +206,42 @@ modulate = Color(0.774159, 0.768491, 0, 1)
 position = Vector2(704, 160)
 list_of_doors = [NodePath("../../Doors/Door22"), NodePath("../../Doors/Door23")]
 
+[node name="ButtonDown" type="Sprite2D" parent="Buttons"]
+position = Vector2(72, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown2" type="Sprite2D" parent="Buttons"]
+position = Vector2(200, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown3" type="Sprite2D" parent="Buttons"]
+position = Vector2(328, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown4" type="Sprite2D" parent="Buttons"]
+position = Vector2(704, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown5" type="Sprite2D" parent="Buttons"]
+position = Vector2(928, 160)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown6" type="Sprite2D" parent="Buttons"]
+position = Vector2(512, 384)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown7" type="Sprite2D" parent="Buttons"]
+position = Vector2(416, 512)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown8" type="Sprite2D" parent="Buttons"]
+position = Vector2(160, 512)
+texture = ExtResource("15_vkbts")
+
+[node name="ButtonDown9" type="Sprite2D" parent="Buttons"]
+position = Vector2(720, 512)
+texture = ExtResource("15_vkbts")
+
 [node name="Ladders" type="Node2D" parent="."]
 
 [node name="Ladder" parent="Ladders" instance=ExtResource("9_nbal3")]
@@ -272,41 +303,18 @@ position = Vector2(928, 32)
 [node name="NoSpike" parent="." instance=ExtResource("14_1hjlb")]
 position = Vector2(992, 32)
 
-[node name="ButtonDown" type="Sprite2D" parent="."]
-position = Vector2(72, 160)
-texture = ExtResource("15_vkbts")
+[node name="DarkenScene" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.890196, 0.780392, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -512
+range_layer_max = 512
+shadow_filter = 1
 
-[node name="ButtonDown2" type="Sprite2D" parent="."]
-position = Vector2(200, 160)
-texture = ExtResource("15_vkbts")
-
-[node name="ButtonDown3" type="Sprite2D" parent="."]
-position = Vector2(328, 160)
-texture = ExtResource("15_vkbts")
-
-[node name="ButtonDown4" type="Sprite2D" parent="."]
-position = Vector2(704, 160)
-texture = ExtResource("15_vkbts")
-
-[node name="ButtonDown5" type="Sprite2D" parent="."]
-position = Vector2(928, 160)
-texture = ExtResource("15_vkbts")
-
-[node name="ButtonDown6" type="Sprite2D" parent="."]
-position = Vector2(512, 384)
-texture = ExtResource("15_vkbts")
-
-[node name="ButtonDown7" type="Sprite2D" parent="."]
-position = Vector2(416, 512)
-texture = ExtResource("15_vkbts")
-
-[node name="ButtonDown8" type="Sprite2D" parent="."]
-position = Vector2(160, 512)
-texture = ExtResource("15_vkbts")
-
-[node name="ButtonDown9" type="Sprite2D" parent="."]
-position = Vector2(720, 512)
-texture = ExtResource("15_vkbts")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../DarkenScene")
+libraries = {
+"": SubResource("AnimationLibrary_00j0a")
+}
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
