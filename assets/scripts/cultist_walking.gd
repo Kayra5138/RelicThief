@@ -34,6 +34,7 @@ func am_dom(delta):
 	velocity = velocity.move_toward(Vector2.ZERO,friction)
 
 func _physics_process(delta):
+	$GPUParticles2D.emitting = dominated
 	if locked:
 		return
 	if facing:
@@ -44,6 +45,7 @@ func _physics_process(delta):
 		turn_counter = 0
 		am_dom(delta)
 		return
+		
 	if !$GroundCheck.is_colliding() or ($WallCheck.get_collider() != null and !$WallCheck.get_collider() is Player):
 		flip(false)
 		turn_counter += 10 * delta

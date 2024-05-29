@@ -64,7 +64,7 @@ size = Vector2(1, 11)
 offsets = PackedFloat32Array(0.663934, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_aosor"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tb8k2"]
 gradient = SubResource("Gradient_p6uop")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o38rw"]
@@ -76,7 +76,7 @@ initial_velocity_min = -100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
-color_ramp = SubResource("GradientTexture1D_aosor")
+color_ramp = SubResource("GradientTexture1D_tb8k2")
 
 [node name="IceSpike" type="CharacterBody2D" groups=["strong"]]
 collision_mask = 31

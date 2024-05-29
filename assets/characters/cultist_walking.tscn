@@ -1,7 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjeqayij4shr4"]
+[gd_scene load_steps=11 format=3 uid="uid://cjeqayij4shr4"]
 
 [ext_resource type="Script" path="res://assets/scripts/cultist_walking.gd" id="1_2rhdr"]
 [ext_resource type="Texture2D" uid="uid://d2wpgfn5moccc" path="res://textures/characters/cultist/cultist.png" id="2_fjo6a"]
+[ext_resource type="Texture2D" uid="uid://fbxgj1q0rfmb" path="res://textures/objects/particle.png" id="2_vpj3u"]
+
+[sub_resource type="Gradient" id="Gradient_67xay"]
+offsets = PackedFloat32Array(0.663934, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aosor"]
+gradient = SubResource("Gradient_67xay")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_64tx2"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector3(0, 0, 0)
+initial_velocity_min = -100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_aosor")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhfrp"]
 size = Vector2(20, 57)
@@ -29,6 +48,16 @@ platform_on_leave = 2
 platform_floor_layers = 4294967040
 script = ExtResource("1_2rhdr")
 metadata/enemy = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.843137, 0, 0, 1)
+position = Vector2(-0.5147, -0.176777)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_64tx2")
+texture = ExtResource("2_vpj3u")
+lifetime = 0.5
+speed_scale = 0.35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)

@@ -55,6 +55,8 @@ func domination(delta):
 		dominating.move_left()
 	elif Input.is_action_pressed("right"):
 		dominating.move_right()
+	elif Input.is_action_pressed("release"):
+		stop_dominating()
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	#Setting max speed
@@ -281,13 +283,16 @@ func ladder_check():
 		curState = sMOVE
 		topCol.set_deferred("disabled",false)
 
+func stop_dominating():
+	if dominating != null:
+		dominating.dominated = false
+		dominating = null
+		releaseMovement()
+
 func mouse_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if dominating != null:
-				dominating.dominated = false
-				dominating = null
-				releaseMovement()
+			stop_dominating()
 
 func _on_hitbox_input_event(_a, event, _b):
 	mouse_input(event)

@@ -24,6 +24,7 @@ func am_dom(delta):
 	velocity = velocity.move_toward(Vector2.ZERO,friction)
 	
 func _physics_process(delta):
+	$GPUParticles2D.emitting = dominated
 	if locked:
 		return
 	if facing:
@@ -33,6 +34,7 @@ func _physics_process(delta):
 	if dominated:
 		am_dom(delta)
 		return
+
 	playerSeen = false
 	var seen1col = $EyeSight/EyeSight1.get_collider()
 	if seen1col != null and seen1col.has_meta("Player"):
