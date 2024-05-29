@@ -181,27 +181,18 @@ list_of_doors = [NodePath("../../Doors/Door20"), NodePath("../../Doors/Door21")]
 position = Vector2(704, 160)
 list_of_doors = [NodePath("../../Doors/Door22"), NodePath("../../Doors/Door23")]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Ladders" type="Node2D" parent="."]
 
-[node name="puffball" parent="Enemies" instance=ExtResource("7_wxygj")]
-position = Vector2(800, 528)
-
-[node name="CultistWalking" parent="Enemies" instance=ExtResource("8_p7krd")]
-position = Vector2(440, 160)
-flipped = true
-
-[node name="Other" type="Node2D" parent="."]
-
-[node name="Ladder" parent="Other" instance=ExtResource("9_nbal3")]
+[node name="Ladder" parent="Ladders" instance=ExtResource("9_nbal3")]
 position = Vector2(976, 272)
 
-[node name="Ladder3" parent="Other" instance=ExtResource("9_nbal3")]
+[node name="Ladder3" parent="Ladders" instance=ExtResource("9_nbal3")]
 position = Vector2(976, 208)
 
-[node name="Ladder4" parent="Other" instance=ExtResource("9_nbal3")]
+[node name="Ladder4" parent="Ladders" instance=ExtResource("9_nbal3")]
 position = Vector2(976, 240)
 
-[node name="Ladder2" parent="Other" instance=ExtResource("9_nbal3")]
+[node name="Ladder2" parent="Ladders" instance=ExtResource("9_nbal3")]
 position = Vector2(624, 136)
 
 [node name="Platforms" type="Node2D" parent="."]
@@ -221,8 +212,14 @@ position = Vector2(560, 120)
 [node name="Platform" parent="Platforms" instance=ExtResource("10_8hl8s")]
 position = Vector2(976, 192)
 
-[node name="Player" parent="." instance=ExtResource("11_hvavi")]
-position = Vector2(64, 512)
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="puffball" parent="Enemies" instance=ExtResource("7_wxygj")]
+position = Vector2(800, 528)
+
+[node name="CultistWalking" parent="Enemies" instance=ExtResource("8_p7krd")]
+position = Vector2(440, 160)
+flipped = true
 
 [node name="WoodenBox" parent="." instance=ExtResource("12_4vdgt")]
 position = Vector2(496, 528)
@@ -235,6 +232,9 @@ position = Vector2(728, 80)
 
 [node name="WoodenBox4" parent="." instance=ExtResource("12_4vdgt")]
 position = Vector2(680, 80)
+
+[node name="Player" parent="." instance=ExtResource("11_hvavi")]
+position = Vector2(64, 512)
 
 [node name="NoBlood" parent="." instance=ExtResource("13_xf40d")]
 position = Vector2(928, 32)
